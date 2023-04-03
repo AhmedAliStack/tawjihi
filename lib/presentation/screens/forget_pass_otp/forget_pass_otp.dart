@@ -40,13 +40,13 @@ class ForgetPassOtp extends StatelessWidget {
                     ),
                     SizedBox(height: 16.h),
                     TextWidget(
-                      title: "كود تغير كلمة المرور".tr(),
+                      title: "كود تغير كلمة المرور",
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: 8.h),
                     TextWidget(
-                      title: "قم بإدخال الكود المكون من اربع ارقام".tr(),
+                      title: "قم بإدخال الكود المكون من اربع ارقام",
                       fontWeight: FontWeight.w500,
                       color: secondaryColor,
                     ),
@@ -102,7 +102,7 @@ class ForgetPassOtp extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             TextWidget(
-                              title: "02:00".tr(),
+                              title: "02:00",
                               fontSize: 12.sp,
                               color: Colors.black,
                             ),
@@ -133,7 +133,7 @@ class ForgetPassOtp extends StatelessWidget {
                   ),
                   SizedBox(width: 4.w),
                   TextWidget(
-                    title: "تأكيد".tr(),
+                    title: "تأكيد",
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
                   )
@@ -154,7 +154,7 @@ class ForgetPassOtp extends StatelessWidget {
                         ),
                         SizedBox(width: 4.w),
                         TextWidget(
-                          title: "إعادة الإرسال".tr(),
+                          title: "إعادة الإرسال",
                           fontWeight: FontWeight.w500,
                           color: const Color(0xff6D6D6D),
                         )

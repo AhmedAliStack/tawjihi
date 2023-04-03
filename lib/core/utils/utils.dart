@@ -1,12 +1,35 @@
+import 'dart:convert';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tawjihi_quiz/core/utils/statics.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
-import 'package:toast/toast.dart';
-
+import 'package:tawjihi_quiz/data/local/local_hive.dart';
+import 'package:tawjihi_quiz/domain/models/all_lists_model.dart';
+import 'package:tawjihi_quiz/services_locator.dart';
 import '../../presentation/components/text_widget.dart';
 
 class Utils {
+  static String token = '';
+
+  static late List<Countries> countries;
+  static late List<Manhags> manhags;
+  static late List<Terms> terms;
+  static late List<Types> types;
+
+  static Future<AllListsModel?> getAllListModel() async {
+    try {
+      final jsonAllList =
+          await locator<DataManager>().getData(Statics.allLists);
+      final lists = AllListsModel.fromJson(jsonAllList);
+      return lists;
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
+
   static void openScreen(BuildContext? context, Widget screen,
       {bool replacment = false, bool remove = false}) {
     if (context == null) {
@@ -25,13 +48,6 @@ class Utils {
     } else {
       Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
     }
-  }
-
-  static void showMsg(String msg, {bool error = false}) {
-    Toast.show(msg,
-        duration: Toast.lengthShort,
-        backgroundColor: error ? Colors.red : Colors.black,
-        gravity: Toast.bottom);
   }
 
   static Widget backWidget(BuildContext context,
@@ -103,7 +119,7 @@ class Utils {
               ),
               SizedBox(height: 32.h),
               TextWidget(
-                title: title.tr(),
+                title: title,
                 fontSize: 24.sp,
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w500,

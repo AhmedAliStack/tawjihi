@@ -35,13 +35,13 @@ class ResetPassword extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               TextWidget(
-                title: "تغير كلمة المرور".tr(),
+                title: "تغير كلمة المرور",
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
               ),
               SizedBox(height: 8.h),
               TextWidget(
-                title: "قم بكتابة الرقم السري الجديد مرتين واضغط تأكيد ".tr(),
+                title: "قم بكتابة الرقم السري الجديد مرتين واضغط تأكيد ",
                 color: secondaryColor,
               ),
               SizedBox(height: 32.h),
@@ -101,7 +101,7 @@ class ResetPassword extends StatelessWidget {
                         ),
                         SizedBox(width: 4.w),
                         TextWidget(
-                          title: "تأكيد".tr(),
+                          title: "تأكيد",
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         )

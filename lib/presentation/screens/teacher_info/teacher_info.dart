@@ -160,7 +160,7 @@ class Teacherinfo extends StatelessWidget {
                           ),
                           SizedBox(width: 8.w),
                           TextWidget(
-                            title: "ارسال رسالة".tr(),
+                            title: "ارسال رسالة",
                             fontSize: 16.sp,
                             color: Colors.white,
                           )

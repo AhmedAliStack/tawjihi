@@ -26,12 +26,12 @@ class Forgetpassword extends StatelessWidget {
                       Utils.backWidget(context, authScreensBack: true),
                       SizedBox(height: 32.h),
                       TextWidget(
-                          title: "استعادة".tr(),
+                          title: "استعادة",
                           fontSize: 24.sp,
                           fontWeight: FontWeight.w500),
                       SizedBox(height: 8.h),
                       TextWidget(
-                          title: "كلمة المرور".tr(),
+                          title: "كلمة المرور",
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w600),
                       SizedBox(height: 8.h),
@@ -61,8 +61,7 @@ class Forgetpassword extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 16.0.w),
                         child: TextWidget(
                           title:
-                              "رجاء، قم بإدخال البريد الالكتروني الخاص بك وسيتم إرسال رسالة بكود التفعيل"
-                                  .tr(),
+                              "رجاء، قم بإدخال البريد الالكتروني الخاص بك وسيتم إرسال رسالة بكود التفعيل",
                           color: const Color(0xff36476A),
                           fontWeight: FontWeight.w500,
                           textAlign: TextAlign.center,
@@ -70,7 +69,7 @@ class Forgetpassword extends StatelessWidget {
                       ),
                       SizedBox(height: 32.w),
                       EditTextWidget(
-                        label: "البريد الالكتروني".tr(),
+                        label: "البريد الالكتروني",
                         prefixIcon:
                             Row(mainAxisSize: MainAxisSize.min, children: [
                           SizedBox(width: 8.w),

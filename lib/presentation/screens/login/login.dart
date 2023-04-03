@@ -31,13 +31,13 @@ class LoginScreen extends StatelessWidget {
           ),
           SizedBox(height: 32.h),
           TextWidget(
-            title: "مرحبا , بعودتك".tr(),
+            title: "مرحبا , بعودتك",
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
           ),
           SizedBox(height: 8.h),
           TextWidget(
-            title: "قم بتسجيل الدخول حتي يمكنك تصفح التطبيق".tr(),
+            title: "قم بتسجيل الدخول حتي يمكنك تصفح التطبيق",
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
           ),
@@ -132,7 +132,7 @@ class LoginScreen extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: GestureDetector(
-              onTap: () => Utils.openScreen(context, const SignUp()),
+              onTap: () => Utils.openScreen(context, SignUp()),
               child: RichText(
                   text: TextSpan(
                       text: "ليس لديك حساب ؟ ",

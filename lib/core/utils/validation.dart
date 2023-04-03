@@ -7,12 +7,12 @@ class Validation {
   String? emailValidation(String? value, {bool isRequired = true}) {
     if (value!.trim().isEmpty) {
       if (isRequired) {
-        return ('email_Validation'.tr());
+        return ('email_Validation');
       } else {
         return null;
       }
     } else if (!emailReg.hasMatch(value.trim())) {
-      return ('wrong_Email_Validation'.tr());
+      return ('wrong_Email_Validation');
     } else {
       return null;
     }
@@ -22,10 +22,10 @@ class Validation {
       r'^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$');
   String? validatePassword(String? value) {
     if (value!.trim().isEmpty) {
-      return 'password_Validation'.tr();
+      return 'password_Validation';
     } else {
       if (!passwordReg.hasMatch(value.trim())) {
-        return "wrongPasswordValidation".tr();
+        return "wrongPasswordValidation";
       } else {
         return null;
       }
@@ -37,9 +37,9 @@ class Validation {
 
     RegExp regExp = RegExp(p);
     if (value!.trim().isEmpty) {
-      return ('phoneValidation'.tr());
+      return ('phoneValidation');
     } else if (!regExp.hasMatch(value.trim())) {
-      return ('wrongPhoneValidation'.tr());
+      return ('wrongPhoneValidation');
     } else {
       return null;
     }
@@ -47,9 +47,9 @@ class Validation {
 
   String? confirmPasswordValidation(value, String password) {
     if (value!.isEmpty) {
-      return 'confirmPasswordValidation'.tr();
+      return 'confirmPasswordValidation';
     } else if (password != value) {
-      return ('wrongConfirmPasswordValidation'.tr());
+      return ('wrongConfirmPasswordValidation');
     } else {
       return null;
     }
@@ -57,7 +57,7 @@ class Validation {
 
   String? defaultValidation(value) {
     if (value!.isEmpty) {
-      return ("requiredField".tr());
+      return ("هذا الحقل مطلوب");
     } else {
       return null;
     }
@@ -66,13 +66,13 @@ class Validation {
   String? taxNumberValidation(value, {bool isRequired = true}) {
     if (value!.isEmpty) {
       if (isRequired) {
-        return ("requiredField".tr());
+        return ("requiredField");
       } else {
         return null;
       }
     } else {
       if (value.length != 15) {
-        return ("wrongTaxNumberValidation".tr());
+        return ("wrongTaxNumberValidation");
       } else {
         return null;
       }

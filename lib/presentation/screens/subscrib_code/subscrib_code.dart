@@ -41,14 +41,13 @@ class SubscribCode extends StatelessWidget {
                     ),
                     SizedBox(height: 32.h),
                     TextWidget(
-                      title: "كود الاشتراك".tr(),
+                      title: "كود الاشتراك",
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: 8.h),
                     TextWidget(
-                      title:
-                          "قم بادخال كود الاشتراك المكون من اربعة ارقام".tr(),
+                      title: "قم بادخال كود الاشتراك المكون من اربعة ارقام",
                       textAlign: TextAlign.center,
                     ),
                     Padding(
@@ -113,7 +112,7 @@ class SubscribCode extends StatelessWidget {
                   ),
                   SizedBox(width: 4.w),
                   TextWidget(
-                    title: "تفعيل الكود".tr(),
+                    title: "تفعيل الكود",
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
                   )
@@ -134,7 +133,7 @@ class SubscribCode extends StatelessWidget {
                         ),
                         SizedBox(width: 4.w),
                         TextWidget(
-                          title: "الغاء".tr(),
+                          title: "الغاء",
                           fontWeight: FontWeight.w500,
                           color: const Color(0xff6D6D6D),
                         )

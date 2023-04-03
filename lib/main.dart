@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:tawjihi_quiz/presentation/screens/splash/splash.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
+import 'package:tawjihi_quiz/services_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +19,7 @@ void main() async {
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
   ));
+  ServicesLocator.init();
   runApp(EasyLocalization(
       supportedLocales: const [Locale('ar')],
       path: 'assets/translations',
@@ -45,6 +48,8 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'Bahij',
                 appBarTheme:
                     const AppBarTheme(color: primaryColor, elevation: 0)),
+            navigatorObservers: [FlutterSmartDialog.observer],
+            builder: FlutterSmartDialog.init(),
             home: const SplashScreen(),
           );
         });
