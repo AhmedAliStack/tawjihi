@@ -6,9 +6,14 @@ class SignUpInitial extends SignUpState {}
 
 class LoadingSignUpState extends SignUpState {}
 
+class SuccessGetAllLists extends SignUpState {}
+
 class SuccessSignUpState extends SignUpState {}
 
-class ErrorSignUpState extends SignUpState {}
+class ErrorSignUpState extends SignUpState {
+  final String error;
+  ErrorSignUpState(this.error);
+}
 
 class ChangeSelectedItemDropDown extends SignUpState {}
 

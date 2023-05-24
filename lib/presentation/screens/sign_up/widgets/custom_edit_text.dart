@@ -13,12 +13,17 @@ class CustomEditText extends StatelessWidget {
   IconData? icon;
   String label;
   TextEditingController? controller;
+  TextInputType? type;
+  String? Function(String?)? validator;
+
   CustomEditText({
     Key? key,
     this.img,
     this.icon,
     required this.label,
     this.controller,
+    this.type,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -26,6 +31,7 @@ class CustomEditText extends StatelessWidget {
     return EditTextWidget(
       label: label,
       controller: controller,
+      type: type ?? TextInputType.text,
       prefixIcon: Row(mainAxisSize: MainAxisSize.min, children: [
         SizedBox(width: 8.w),
         icon != null
@@ -48,7 +54,7 @@ class CustomEditText extends StatelessWidget {
         ),
         SizedBox(width: 8.w),
       ]),
-      validator: locator<Validation>().defaultValidation,
+      validator: validator ?? locator<Validation>().defaultValidation,
     );
   }
 }

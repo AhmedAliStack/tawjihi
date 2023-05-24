@@ -14,9 +14,10 @@ class DataManager {
     return await box.get(key);
   }
 
-  deleteData() async {
+  deleteData(String key) async {
     await Hive.initFlutter();
     final box = await Hive.openBox('data');
-    await box.clear();
+    await box.delete(key);
+    box.close();
   }
 }

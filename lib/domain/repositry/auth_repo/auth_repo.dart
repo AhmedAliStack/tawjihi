@@ -1,58 +1,53 @@
 import 'package:tawjihi_quiz/core/utils/statics.dart';
 import 'package:tawjihi_quiz/data/api/my_api.dart';
 import 'package:tawjihi_quiz/data/local/local_hive.dart';
+import 'package:tawjihi_quiz/domain/models/all_lists_model.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
 
 import '../../../core/utils/utils.dart';
 
 class AuthRepo {
-  // static loginRequest({required String phone, required String password}) async {
-  //   final respose = await Utils.dio.postData(
-  //       url: EndPoints.LOGIN,
-  //       body: {'phone': phone, 'password': password, 'fcm_token': Utils.FCMToken},
-  //       loading: true,
-  //       );
-  //   if (respose != null) {
-  //     Utils.token = respose.data['data']['token'];
-  //     return respose.data['data'];
-  //   }
-  // }
+  static getAllLists() async {
+    final respose = await locator<DioHelper>().getData(
+      url: "getters/all",
+      loading: false,
+    );
+    if (respose != null) {
+      await locator<DataManager>().saveData(Statics.allLists, respose.data);
+      await Utils.getAllListModel();
+      return respose.data['data'];
+    } else {
+      return null;
+    }
+  }
 
-  static signUpRequest({
-    required String firstName,
-    required String lastName,
-    required String email,
-    required String phone,
-    required String nationality,
-    required String password,
-    required String passwordConfirmation,
-    required String countryId,
-    required String manhagId,
-    required String termId,
-  }) async {
+  static loginRequest({required String phone, required String password}) async {
     final respose = await locator<DioHelper>().postData(
-      url: "user/register",
-      body: {
-        'name': firstName + lastName,
-        'email': email,
-        "phone": phone,
-        'password': password,
-        'password_confirmation': passwordConfirmation,
-        'first_name': firstName,
-        'last_name': lastName,
-        'nationality': nationality,
-        'country_id': countryId,
-        'manhag_id': manhagId,
-        'term_id': termId,
-      },
+      url: "user/login",
+      body: {'phone': phone, 'password': password},
       loading: true,
     );
     if (respose != null) {
-      Utils.token = respose.data['data']['token'];
-      await locator<DataManager>()
-          .saveData(Statics.token, respose.data['data']['token']);
       await locator<DataManager>().saveData(Statics.user, respose.data['data']);
-      return respose.data['data']['user'];
+      Utils.token = respose.data['data']['token'];
+      return respose.data['data'];
+    } else {
+      return null;
+    }
+  }
+
+  static signUpRequest({
+    required Map<String, String> requestBody,
+  }) async {
+    final respose = await locator<DioHelper>().postData(
+      url: "user/register",
+      body: requestBody,
+      loading: true,
+    );
+    if (respose != null) {
+      await locator<DataManager>().saveData(Statics.user, respose.data['data']);
+      Utils.token = respose.data['data']['token'];
+      return respose.data['data'];
     } else {
       return null;
     }

@@ -90,6 +90,7 @@ class EditTextWidget extends StatelessWidget {
                   borderSide: const BorderSide(color: Colors.red, width: 1.0),
                   borderRadius:
                       BorderRadius.all(Radius.circular(borderRadius))),
+              errorMaxLines: 3,
               labelStyle: const TextStyle(color: primaryColor),
               hintStyle: TextStyle(color: primaryColor, fontSize: 12.sp),
               hintText: hintText),

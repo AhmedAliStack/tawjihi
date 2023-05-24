@@ -110,9 +110,9 @@ class ResetPassword extends StatelessWidget {
                     Utils.successDialog(
                             context: context,
                             title: "تم تغير كلمة المرور بنجاح",
-                            screen: const LoginScreen())
+                            screen: LoginScreen())
                         .then((value) =>
-                            Utils.openScreen(context, const LoginScreen()));
+                            Utils.openScreen(context, LoginScreen()));
                   },
                 ),
               )

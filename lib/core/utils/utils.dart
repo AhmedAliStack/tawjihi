@@ -1,34 +1,20 @@
-import 'dart:convert';
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/core/utils/statics.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/data/local/local_hive.dart';
 import 'package:tawjihi_quiz/domain/models/all_lists_model.dart';
+import 'package:tawjihi_quiz/domain/models/user_model.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
 import '../../presentation/components/text_widget.dart';
 
 class Utils {
   static String token = '';
 
-  static late List<Countries> countries;
-  static late List<Manhags> manhags;
-  static late List<Terms> terms;
-  static late List<Types> types;
-
-  static Future<AllListsModel?> getAllListModel() async {
-    try {
-      final jsonAllList =
-          await locator<DataManager>().getData(Statics.allLists);
-      final lists = AllListsModel.fromJson(jsonAllList);
-      return lists;
-    } catch (e) {
-      debugPrint(e.toString());
-      return null;
-    }
-  }
+  static List<Countries> countries = [];
+  static List<Manhags> manhags = [];
+  static List<Terms> terms = [];
+  static List<Types> subjectType = [];
 
   static void openScreen(BuildContext? context, Widget screen,
       {bool replacment = false, bool remove = false}) {
@@ -129,5 +115,32 @@ class Utils {
         ),
       ),
     );
+  }
+
+  static Future<AllListsModel?> getAllListModel() async {
+    try {
+      final jsonAllList =
+          await locator<DataManager>().getData(Statics.allLists);
+      final lists = AllListsModel.fromJson(jsonAllList);
+      countries = lists.data?.countries ?? [];
+      manhags = lists.data?.manhags ?? [];
+      terms = lists.data?.terms ?? [];
+      subjectType = lists.data?.types ?? [];
+      return lists;
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
+
+  static Future<UserModel?> getUser() async {
+    try {
+      final jsonUser = await locator<DataManager>().getData(Statics.user);
+      final user = UserModel.fromJson(jsonUser);
+      return user;
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
   }
 }

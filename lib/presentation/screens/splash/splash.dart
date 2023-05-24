@@ -19,11 +19,7 @@ class SplashScreen extends StatelessWidget {
       body: BlocProvider(
         create: (context) => SplashCubit(),
         child: BlocConsumer<SplashCubit, SplashState>(
-          listener: (context, state) {
-            if (state is SuccessSplashState) {
-              Utils.openScreen(context, const LoginScreen(), remove: true);
-            }
-          },
+          listener: (context, state) {},
           builder: (context, state) {
             return Stack(
               children: [
@@ -61,15 +57,12 @@ class SplashScreen extends StatelessWidget {
                         animationFinished: (finished) async {
                           final token = await locator<DataManager>()
                               .getData(Statics.token);
-                          print(token);
-                          print(token);
-                          print(token);
-
                           if (token != null) {
                             Utils.openScreen(context, const Home(),
                                 remove: true);
                           } else {
-                            BlocProvider.of<SplashCubit>(context).getAll();
+                            Utils.openScreen(context, LoginScreen(),
+                                remove: true);
                           }
                         },
                         child: Column(

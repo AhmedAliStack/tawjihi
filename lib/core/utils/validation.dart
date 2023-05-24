@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 
 class Validation {
   static RegExp emailReg = RegExp(
@@ -7,12 +8,12 @@ class Validation {
   String? emailValidation(String? value, {bool isRequired = true}) {
     if (value!.trim().isEmpty) {
       if (isRequired) {
-        return ('email_Validation');
+        return 'هذا الحقل مطلوب';
       } else {
         return null;
       }
     } else if (!emailReg.hasMatch(value.trim())) {
-      return ('wrong_Email_Validation');
+      return 'ادخل بريد صحيح';
     } else {
       return null;
     }
@@ -22,10 +23,10 @@ class Validation {
       r'^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$');
   String? validatePassword(String? value) {
     if (value!.trim().isEmpty) {
-      return 'password_Validation';
+      return 'هذا الحقل مطلوب';
     } else {
       if (!passwordReg.hasMatch(value.trim())) {
-        return "wrongPasswordValidation";
+        return "يجب ادخال على الاقل 8 خانات ولابد ان تحتوى على حرف capital وعلامة مميزة مثل @ او # ";
       } else {
         return null;
       }
@@ -37,9 +38,9 @@ class Validation {
 
     RegExp regExp = RegExp(p);
     if (value!.trim().isEmpty) {
-      return ('phoneValidation');
+      return 'هذا الحقل مطلوب';
     } else if (!regExp.hasMatch(value.trim())) {
-      return ('wrongPhoneValidation');
+      return ('رقم الهاتف غير صحيح');
     } else {
       return null;
     }
@@ -47,9 +48,9 @@ class Validation {
 
   String? confirmPasswordValidation(value, String password) {
     if (value!.isEmpty) {
-      return 'confirmPasswordValidation';
+      return 'هذا الحقل مطلوب';
     } else if (password != value) {
-      return ('wrongConfirmPasswordValidation');
+      return ('رقم المرور غير متطابق');
     } else {
       return null;
     }
@@ -57,7 +58,7 @@ class Validation {
 
   String? defaultValidation(value) {
     if (value!.isEmpty) {
-      return ("هذا الحقل مطلوب");
+      return 'هذا الحقل مطلوب';
     } else {
       return null;
     }
@@ -66,7 +67,7 @@ class Validation {
   String? taxNumberValidation(value, {bool isRequired = true}) {
     if (value!.isEmpty) {
       if (isRequired) {
-        return ("requiredField");
+        return 'هذا الحقل مطلوب';
       } else {
         return null;
       }

@@ -91,30 +91,30 @@ class ForgetPassOtp extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(16.0.w),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(22.r)),
-                        color: borderMainColor,
-                      ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextWidget(
-                              title: "02:00",
-                              fontSize: 12.sp,
-                              color: Colors.black,
-                            ),
-                            SizedBox(width: 8.w),
-                            Image.asset(
-                              "assets/icons/timer.png",
-                              width: 18.w,
-                              height: 18.w,
-                              fit: BoxFit.contain,
-                            )
-                          ]),
-                    )
+                    // Container(
+                    //   padding: EdgeInsets.all(16.0.w),
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.all(Radius.circular(22.r)),
+                    //     color: borderMainColor,
+                    //   ),
+                    //   child: Row(
+                    //       mainAxisAlignment: MainAxisAlignment.center,
+                    //       mainAxisSize: MainAxisSize.min,
+                    //       children: [
+                    //         TextWidget(
+                    //           title: "02:00",
+                    //           fontSize: 12.sp,
+                    //           color: Colors.black,
+                    //         ),
+                    //         SizedBox(width: 8.w),
+                    //         Image.asset(
+                    //           "assets/icons/timer.png",
+                    //           width: 18.w,
+                    //           height: 18.w,
+                    //           fit: BoxFit.contain,
+                    //         )
+                    //       ]),
+                    // )
                   ]),
             ),
           ),

@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:tawjihi_quiz/bloc_observer.dart';
 import 'package:tawjihi_quiz/presentation/screens/splash/splash.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
@@ -20,6 +22,7 @@ void main() async {
     statusBarIconBrightness: Brightness.dark,
   ));
   ServicesLocator.init();
+  Bloc.observer = AppBlocObserver();
   runApp(EasyLocalization(
       supportedLocales: const [Locale('ar')],
       path: 'assets/translations',
@@ -37,20 +40,23 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, screenUtil) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            title: 'Tawjihi Quiz',
-            theme: ThemeData(
-                primaryColor: primaryColor,
-                fontFamily: 'Bahij',
-                appBarTheme:
-                    const AppBarTheme(color: primaryColor, elevation: 0)),
-            navigatorObservers: [FlutterSmartDialog.observer],
-            builder: FlutterSmartDialog.init(),
-            home: const SplashScreen(),
+          return GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              title: 'Tawjihi Quiz',
+              theme: ThemeData(
+                  primaryColor: primaryColor,
+                  fontFamily: 'Bahij',
+                  appBarTheme:
+                      const AppBarTheme(color: primaryColor, elevation: 0)),
+              navigatorObservers: [FlutterSmartDialog.observer],
+              builder: FlutterSmartDialog.init(),
+              home: const SplashScreen(),
+            ),
           );
         });
   }
