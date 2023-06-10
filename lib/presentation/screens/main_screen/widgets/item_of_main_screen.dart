@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../components/text_widget.dart';
 
 class ItemOfMainScreen extends StatelessWidget {
-  List<Color> colors;
-  String backImg;
-  String icon;
-  String title;
-  String subTitle;
-  ItemOfMainScreen({
+  final List<Color> colors;
+  final String backImg;
+  final String icon;
+  final String title;
+  final String subTitle;
+  const ItemOfMainScreen({
     super.key,
     required this.colors,
     required this.backImg,

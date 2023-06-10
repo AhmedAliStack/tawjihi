@@ -1,6 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:tawjihi_quiz/domain/models/my_teachers_model.dart';
+
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/button_widget.dart';
@@ -8,7 +11,11 @@ import '../../components/text_widget.dart';
 import '../chat/chat.dart';
 
 class Teacherinfo extends StatelessWidget {
-  const Teacherinfo({super.key});
+  final Data? teacherData;
+  const Teacherinfo({
+    Key? key,
+    required this.teacherData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +60,14 @@ class Teacherinfo extends StatelessWidget {
               child: Column(children: [
                 SizedBox(height: 64.h),
                 TextWidget(
-                  title: "أ/مصطفى بسيونى",
+                  title: teacherData?.name,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xff444444),
                 ),
                 SizedBox(height: 16.h),
                 TextWidget(
-                  title: "الرياضيات",
+                  title: teacherData?.subject,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w300,
                   color: const Color(0xff444444).withOpacity(0.5),
@@ -139,7 +146,7 @@ class Teacherinfo extends StatelessWidget {
                 ),
                 SizedBox(height: 16.h),
                 TextWidget(
-                  title: "نسبة التفاعل مع الطلاب : 90%",
+                  title: "نسبة التفاعل مع الطلاب : ${teacherData?.average}%",
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,

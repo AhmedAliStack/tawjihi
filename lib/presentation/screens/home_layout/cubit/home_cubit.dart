@@ -4,7 +4,7 @@ import '../../main_screen/main_screen.dart';
 import '../../messages/messages.dart';
 import '../../notifications/notifications.dart';
 import '../../settings/settings.dart';
-import '../../teachers/teachers.dart';
+import '../../teachers/my_teachers.dart';
 
 part 'home_state.dart';
 
@@ -16,7 +16,7 @@ class HomeCubit extends Cubit<HomeState> {
     Messages(),
     Notifications(),
     MainScreen(),
-    Teachers(),
+    MyTeachers(),
     Settings()
   ];
   void changeIndex(int index) {

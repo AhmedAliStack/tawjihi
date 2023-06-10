@@ -5,9 +5,9 @@ import '../../../../core/values/colors.dart';
 import '../../../components/text_widget.dart';
 
 class ItemOfSettings extends StatelessWidget {
-  String img;
-  String title;
-  ItemOfSettings({
+  final String img;
+  final String title;
+  const ItemOfSettings({
     super.key,
     required this.img,
     required this.title,

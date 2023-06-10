@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../components/text_widget.dart';
 
 class ItemOfNotifications extends StatelessWidget {
+  final String title;
   const ItemOfNotifications({
     super.key,
+    required this.title,
   });
 
   @override
@@ -21,8 +23,7 @@ class ItemOfNotifications extends StatelessWidget {
         SizedBox(width: 16.w),
         Expanded(
           child: TextWidget(
-            title:
-                "هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم،",
+            title: title,
             fontSize: 12.sp,
             fontWeight: FontWeight.w300,
             textAlign: TextAlign.start,

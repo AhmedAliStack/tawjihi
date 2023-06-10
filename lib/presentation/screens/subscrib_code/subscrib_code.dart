@@ -1,5 +1,4 @@
 // because Directionality of otp ltr agnoire with tr() method i use as tr
-import 'package:easy_localization/easy_localization.dart' as tr;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -8,8 +7,6 @@ import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
-import '../reset_password/reset_password.dart';
-import '../settings/settings.dart';
 
 class SubscribCode extends StatelessWidget {
   const SubscribCode({super.key});
@@ -60,7 +57,9 @@ class SubscribCode extends StatelessWidget {
                           appContext: context,
                           length: 4,
                           animationType: AnimationType.fade,
-                          validator: (v) {},
+                          validator: (v) {
+                            return null;
+                          },
                           pinTheme: PinTheme(
                             shape: PinCodeFieldShape.circle,
                             fieldHeight: 60.w,

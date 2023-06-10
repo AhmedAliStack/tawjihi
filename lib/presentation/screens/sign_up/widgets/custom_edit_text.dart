@@ -9,14 +9,16 @@ import '../../../../core/values/colors.dart';
 import '../../../components/edit_text_widget.dart';
 
 class CustomEditText extends StatelessWidget {
-  String? img;
-  IconData? icon;
-  String label;
-  TextEditingController? controller;
-  TextInputType? type;
-  String? Function(String?)? validator;
+  final String? img;
+  final IconData? icon;
+  final String label;
+  final TextEditingController? controller;
+  final TextInputType? type;
+  final int? miniLine;
+  final int? maxLines;
+  final String? Function(String?)? validator;
 
-  CustomEditText({
+  const CustomEditText({
     Key? key,
     this.img,
     this.icon,
@@ -24,6 +26,8 @@ class CustomEditText extends StatelessWidget {
     this.controller,
     this.type,
     this.validator,
+    this.miniLine,
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -55,6 +59,8 @@ class CustomEditText extends StatelessWidget {
         SizedBox(width: 8.w),
       ]),
       validator: validator ?? locator<Validation>().defaultValidation,
+      minLines: miniLine,
+      maxLines: miniLine,
     );
   }
 }

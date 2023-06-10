@@ -1,7 +1,7 @@
 import 'package:tawjihi_quiz/core/utils/statics.dart';
 import 'package:tawjihi_quiz/data/api/my_api.dart';
 import 'package:tawjihi_quiz/data/local/local_hive.dart';
-import 'package:tawjihi_quiz/domain/models/all_lists_model.dart';
+import 'package:tawjihi_quiz/domain/models/user_model.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
 
 import '../../../core/utils/utils.dart';
@@ -30,6 +30,7 @@ class AuthRepo {
     if (respose != null) {
       await locator<DataManager>().saveData(Statics.user, respose.data['data']);
       Utils.token = respose.data['data']['token'];
+      Utils.userModel = UserModel.fromJson(respose.data['data']);
       return respose.data['data'];
     } else {
       return null;
@@ -47,6 +48,8 @@ class AuthRepo {
     if (respose != null) {
       await locator<DataManager>().saveData(Statics.user, respose.data['data']);
       Utils.token = respose.data['data']['token'];
+      Utils.userModel = UserModel.fromJson(respose.data['data']);
+
       return respose.data['data'];
     } else {
       return null;

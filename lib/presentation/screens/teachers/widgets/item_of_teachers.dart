@@ -2,14 +2,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:tawjihi_quiz/domain/models/my_teachers_model.dart';
+
 import '../../../../core/values/colors.dart';
 import '../../../components/text_widget.dart';
 
 class ItemOfTeachers extends StatelessWidget {
-  Color? card;
-  ItemOfTeachers({
+  final Color? cardColor;
+  final Data cardData;
+  const ItemOfTeachers({
     Key? key,
-    this.card,
+    this.cardColor,
+    required this.cardData,
   }) : super(key: key);
 
   @override
@@ -18,21 +22,27 @@ class ItemOfTeachers extends StatelessWidget {
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25.r),
-        color: card ?? const Color(0xffF8F8F8),
+        color: cardColor ?? const Color(0xffF8F8F8),
       ),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
-        leading: Image.asset(
-          'assets/images/teacher.png',
+        leading: Image.network(
+          "",
           width: 70.w,
           height: 70.w,
           fit: BoxFit.contain,
+          errorBuilder: (context, error, stackTrace) => Image.asset(
+            'assets/images/teacher.png',
+            width: 70.w,
+            height: 70.w,
+            fit: BoxFit.contain,
+          ),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextWidget(
-              title: "أ / محمد عبد العال",
+              title: cardData.name,
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
               color: const Color(0xff444444),
@@ -42,7 +52,7 @@ class ItemOfTeachers extends StatelessWidget {
               children: [
                 Flexible(
                   child: TextWidget(
-                    title: "الرياضيات",
+                    title: cardData.subject,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w300,
                     color: const Color(0xff444444).withOpacity(0.5),
@@ -57,7 +67,7 @@ class ItemOfTeachers extends StatelessWidget {
                         color: borderMainColor),
                     child: Row(children: [
                       TextWidget(
-                        title: "4.5",
+                        title: cardData.rate.toString(),
                         fontSize: 12.sp,
                         color: Colors.black,
                       ),
@@ -68,7 +78,7 @@ class ItemOfTeachers extends StatelessWidget {
             ),
             SizedBox(height: 8.w),
             TextWidget(
-                title: "عدد الاختبارات : 5",
+                title: "عدد الاختبارات : ${cardData.examsCount}",
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
                 color: mauveColor),

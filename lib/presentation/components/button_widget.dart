@@ -4,18 +4,18 @@ import '../../core/values/colors.dart';
 import 'text_widget.dart';
 
 class ButtonWidget extends StatelessWidget {
-  String title;
-  double width, height, radius;
-  double? fontSize;
-  FontWeight? fontWeight;
-  Widget? child;
-  Color? backgroundButtonColor;
-  Color textColor, borderColor, inkColor;
-  void Function()? onTap;
-  bool withBorder;
-  Gradient? gradient;
+  final String title;
+  final double width, height, radius;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final Widget? child;
+  final Color? backgroundButtonColor;
+  final Color textColor, borderColor, inkColor;
+  final void Function()? onTap;
+  final bool withBorder;
+  final Gradient? gradient;
 
-  ButtonWidget({
+  const ButtonWidget({
     Key? key,
     this.title = "OK",
     this.width = 88.0,

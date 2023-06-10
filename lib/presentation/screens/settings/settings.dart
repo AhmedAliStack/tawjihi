@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tawjihi_quiz/presentation/screens/about_us/about_us.dart';
 import 'package:tawjihi_quiz/presentation/screens/settings/widgets/item_of_settings.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
+import 'package:tawjihi_quiz/presentation/screens/support/support.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/alerts.dart';
 import '../../components/text_widget.dart';
@@ -119,7 +121,7 @@ class Settings extends StatelessWidget {
                   child: Column(children: [
                     GestureDetector(
                       onTap: () => Utils.openScreen(context, const Profile()),
-                      child: ItemOfSettings(
+                      child: const ItemOfSettings(
                         img: 'assets/icons/profile.png',
                         title: "الملف الشخصي",
                       ),
@@ -128,29 +130,35 @@ class Settings extends StatelessWidget {
                     GestureDetector(
                         onTap: () =>
                             Utils.openScreen(context, const SubscribCode()),
-                        child: ItemOfSettings(
+                        child: const ItemOfSettings(
                             img: 'assets/icons/code.png', title: "الكود")),
                     SizedBox(height: 16.w),
-                    ItemOfSettings(
-                      img: 'assets/icons/about.png',
-                      title: "عن التطبيق",
+                    GestureDetector(
+                      onTap: () => Utils.openScreen(context, const AboutUs()),
+                      child: const ItemOfSettings(
+                        img: 'assets/icons/about.png',
+                        title: "عن التطبيق",
+                      ),
                     ),
                     SizedBox(height: 16.w),
-                    ItemOfSettings(
+                    const ItemOfSettings(
                       img: 'assets/icons/share_app.png',
                       title: "مشاركة التطبيق",
                     ),
                     SizedBox(height: 16.w),
-                    ItemOfSettings(
-                      img: 'assets/icons/support.png',
-                      title: "الدعم الفنى",
+                    GestureDetector(
+                      onTap: () => Utils.openScreen(context, Support()),
+                      child: const ItemOfSettings(
+                        img: 'assets/icons/support.png',
+                        title: "الدعم الفنى",
+                      ),
                     ),
                     SizedBox(height: 16.w),
-                    ItemOfSettings(
-                      img: 'assets/icons/lang.png',
-                      title: "اللغة",
-                    ),
-                    SizedBox(height: 16.w),
+                    // const ItemOfSettings(
+                    //   img: 'assets/icons/lang.png',
+                    //   title: "اللغة",
+                    // ),
+                    // SizedBox(height: 16.w),
                   ]),
                 )
               ]),

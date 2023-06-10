@@ -6,12 +6,12 @@ import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
 import 'package:tawjihi_quiz/core/utils/utils.dart';
 import 'package:tawjihi_quiz/presentation/screens/forget_password/cubit/forget_password_cubit.dart';
+import 'package:tawjihi_quiz/presentation/screens/forget_password_otp/forget_pass_otp.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
 import '../../../core/values/colors.dart';
 import '../../components/button_widget.dart';
 import '../../components/edit_text_widget.dart';
 import '../base/base_stateless.dart';
-import '../forget_pass_otp/forget_pass_otp.dart';
 
 class Forgetpassword extends StatelessWidget {
   Forgetpassword({super.key});
@@ -25,7 +25,6 @@ class Forgetpassword extends StatelessWidget {
         listener: (context, state) {
           if (state is SuccessForgetPasswordState) {
             OverLays.toast(text: state.msg);
-            Utils.openScreen(context, const ForgetPassOtp());
           }
         },
         builder: (context, state) {
@@ -118,7 +117,15 @@ class Forgetpassword extends StatelessWidget {
                                   child: ButtonWidget(
                                     onTap: () {
                                       if (formKey.currentState!.validate()) {
-                                        cubit.forgetPassword();
+                                        cubit.requiredMsgForgetpassword(
+                                            onSuccess: () {
+                                          Utils.openScreen(
+                                              context,
+                                              BlocProvider.value(
+                                                value: cubit,
+                                                child: const ForgetPassOtp(),
+                                              ));
+                                        });
                                       }
                                     },
                                     title: "ارسال",

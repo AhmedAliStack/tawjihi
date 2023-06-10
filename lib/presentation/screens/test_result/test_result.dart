@@ -6,7 +6,6 @@ import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
-import '../settings/settings.dart';
 import '../unit_test/unit_test.dart';
 
 class TestResult extends StatelessWidget {
@@ -56,7 +55,7 @@ class TestResult extends StatelessWidget {
                   circularStrokeCap: CircularStrokeCap.square,
                   backgroundColor: borderMainColor,
                   rotateLinearGradient: true,
-                  linearGradient: LinearGradient(colors: gradientButton),
+                  linearGradient: const LinearGradient(colors: gradientButton),
                 ),
                 SizedBox(width: 16.w),
                 Flexible(
@@ -74,7 +73,7 @@ class TestResult extends StatelessWidget {
                           title: "اجابة خاطئة : 2",
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xffD40E0E),
+                          color: const Color(0xffD40E0E),
                         ),
                       ]),
                 ),
@@ -93,7 +92,7 @@ class TestResult extends StatelessWidget {
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
           ),
-          Expanded(child: SizedBox()),
+          const Expanded(child: SizedBox()),
           Padding(
             padding: EdgeInsets.all(16.0.w),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -111,10 +110,10 @@ class TestResult extends StatelessWidget {
                 child: ButtonWidget(
                   onTap: () => Utils.openScreen(context, const UnitTest()),
                   backgroundButtonColor: borderMainColor,
-                  child: TextWidget(
+                  child: const TextWidget(
                     title: "مراجعة الاختبار",
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xff6D6D6D),
+                    color: Color(0xff6D6D6D),
                   ),
                 ),
               ),

@@ -8,24 +8,24 @@ class EditTextWidget extends StatelessWidget {
   final TextInputType type;
   final bool password;
   final bool expanded;
-  Color activeBorderColor, borderColor, backgroundColor;
-  bool floatingHint;
-  int? maxLines;
-  int? minLines;
-  void Function()? onTap;
-  TextAlign textalign;
-  int? maxLengh;
-  TextDirection? textdirection;
-  EdgeInsetsDirectional? contentPadding;
-  double borderRadius;
-  Widget? prefixIcon, suffixIcon, suffixWidget, prefixWidget;
-  TextEditingController? controller;
-  InputDecoration? inputDecoration;
-  ValueChanged<String>? onChanged;
-  ValueChanged<String?>? onSaved;
-  String? Function(String?)? validator;
+  final Color activeBorderColor, borderColor, backgroundColor;
+  final bool floatingHint;
+  final int? maxLines;
+  final int? minLines;
+  final void Function()? onTap;
+  final TextAlign textalign;
+  final int? maxLengh;
+  final TextDirection? textdirection;
+  final EdgeInsetsDirectional? contentPadding;
+  final double borderRadius;
+  final Widget? prefixIcon, suffixIcon, suffixWidget, prefixWidget;
+  final TextEditingController? controller;
+  final InputDecoration? inputDecoration;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String?>? onSaved;
+  final String? Function(String?)? validator;
 
-  EditTextWidget(
+  const EditTextWidget(
       {this.onChanged,
       this.onSaved,
       this.validator,

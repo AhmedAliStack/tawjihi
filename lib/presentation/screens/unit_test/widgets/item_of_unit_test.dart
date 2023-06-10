@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../components/text_widget.dart';
 
 class ItemOfUnitTest extends StatelessWidget {
-  bool correct;
-  String title;
+  final bool correct;
+  final String title;
 
-  ItemOfUnitTest({
+  const ItemOfUnitTest({
     Key? key,
     this.correct = false,
     required this.title,

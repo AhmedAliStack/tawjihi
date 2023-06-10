@@ -58,6 +58,7 @@ class SplashScreen extends StatelessWidget {
                           final token = await locator<DataManager>()
                               .getData(Statics.token);
                           if (token != null) {
+                            await Utils.getUser();
                             Utils.openScreen(context, const Home(),
                                 remove: true);
                           } else {

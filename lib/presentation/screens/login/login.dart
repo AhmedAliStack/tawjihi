@@ -81,26 +81,26 @@ class LoginScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 32.h),
                       Row(children: [
-                        Transform.scale(
-                          scale: 1.3.w,
-                          child: Theme(
-                            data: Theme.of(context).copyWith(
-                              unselectedWidgetColor: const Color(0xffCBD5E1),
-                            ),
-                            child: Checkbox(
-                              value: cubit.checkBox,
-                              onChanged: (value) {
-                                cubit.changeCheckBox(value!);
-                              },
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(3.r)),
-                            ),
-                          ),
-                        ),
-                        const TextWidget(
-                          title: "تذكرني",
-                          color: secondaryColor,
-                        ),
+                        // Transform.scale(
+                        //   scale: 1.3.w,
+                        //   child: Theme(
+                        //     data: Theme.of(context).copyWith(
+                        //       unselectedWidgetColor: const Color(0xffCBD5E1),
+                        //     ),
+                        //     child: Checkbox(
+                        //       value: cubit.checkBox,
+                        //       onChanged: (value) {
+                        //         cubit.changeCheckBox(value!);
+                        //       },
+                        //       shape: RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(3.r)),
+                        //     ),
+                        //   ),
+                        // ),
+                        // const TextWidget(
+                        //   title: "تذكرني",
+                        //   color: secondaryColor,
+                        // ),
                         const Spacer(),
                         GestureDetector(
                           onTap: () =>

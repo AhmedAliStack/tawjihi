@@ -10,6 +10,7 @@ import '../../presentation/components/text_widget.dart';
 
 class Utils {
   static String token = '';
+  static UserModel userModel = UserModel();
 
   static List<Countries> countries = [];
   static List<Manhags> manhags = [];
@@ -57,6 +58,7 @@ class Utils {
                 child: const Icon(
                   Icons.arrow_back_outlined,
                   color: mauveColor,
+                  size: 20,
                 ),
               )
             : Image.asset(
@@ -137,6 +139,7 @@ class Utils {
     try {
       final jsonUser = await locator<DataManager>().getData(Statics.user);
       final user = UserModel.fromJson(jsonUser);
+      userModel = user;
       return user;
     } catch (e) {
       debugPrint(e.toString());

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/text_widget.dart';
-import '../achievements_details/achievements_details.dart';
 
 class MyTests extends StatelessWidget {
   const MyTests({super.key});
@@ -47,7 +45,9 @@ class MyTests extends StatelessWidget {
               separatorBuilder: (context, index) => SizedBox(height: 8.w),
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () => Utils.openScreen(context, AchievementsDetails()),
+                  onTap: () {
+                    //  Utils.openScreen(context, AchievementsDetails());
+                  },
                   child: Container(
                     padding: EdgeInsets.all(16.w),
                     decoration: BoxDecoration(

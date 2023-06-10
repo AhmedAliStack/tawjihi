@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
+import 'package:tawjihi_quiz/presentation/screens/subject_details/cubit/subject_details_cubit.dart';
+import 'package:tawjihi_quiz/presentation/screens/teachers/widgets/item_of_teachers.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/text_widget.dart';
 import '../teacher_tests/teacher_tests.dart';
-import '../teacher_info/teacher_info.dart';
-import '../teachers/widgets/item_of_teachers.dart';
 
 class SubjectDetails extends StatelessWidget {
-  const SubjectDetails({super.key});
+  final int id;
+  final String subjectTitle;
+  const SubjectDetails(
+      {super.key, required this.id, required this.subjectTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class SubjectDetails extends StatelessWidget {
                 bottomLeft: Radius.circular(10.r),
                 bottomRight: Radius.circular(10.r),
               ),
-              gradient: LinearGradient(colors: gradientButton)),
+              gradient: const LinearGradient(colors: gradientButton)),
           child: Padding(
             padding: EdgeInsetsDirectional.only(start: 16.w, top: 16.h),
             child: Row(
@@ -34,7 +38,7 @@ class SubjectDetails extends StatelessWidget {
                   width: 32.w,
                 ),
                 TextWidget(
-                  title: "الرياضيات",
+                  title: subjectTitle,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
@@ -66,14 +70,14 @@ class SubjectDetails extends StatelessWidget {
                     ),
                   ),
                   title: TextFormField(
-                    decoration: new InputDecoration(
+                    decoration: const InputDecoration(
                         hintText: 'اكتب بحثك هنا', border: InputBorder.none),
                     // onChanged: onSearchTextChanged,
                   ),
                   trailing: IconButton(
                     icon: Icon(
                       Icons.search,
-                      color: Color(0xffD4D4D4),
+                      color: const Color(0xffD4D4D4),
                       size: 30.w,
                     ),
                     onPressed: () {
@@ -85,18 +89,49 @@ class SubjectDetails extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView.separated(
-                padding: EdgeInsets.all(16.w),
-                separatorBuilder: (context, index) => SizedBox(height: 16.w),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                      onTap: () =>
-                          Utils.openScreen(context, const TeacherTests()),
-                      child: ItemOfTeachers(
-                        card: Colors.white,
-                      ));
-                },
-                itemCount: 10,
+              child: BlocProvider(
+                create: (context) =>
+                    SubjectDetailsCubit()..getDetailsSubject(id),
+                child: BlocConsumer<SubjectDetailsCubit, SubjectDetailsState>(
+                  listener: (context, state) {},
+                  builder: (context, state) {
+                    SubjectDetailsCubit cubit =
+                        SubjectDetailsCubit.get(context);
+                    return LoadingAndError(
+                      isError: state is ErrorSubjectDetailsState,
+                      errorMessage: state is ErrorSubjectDetailsState
+                          ? state.error
+                          : null,
+                      isLoading: state is LoadingSubjectDetailsState,
+                      function: () async => cubit.getDetailsSubject(id),
+                      child: cubit.subjectDetails != null &&
+                              cubit.subjectDetails!.isNotEmpty
+                          ? RefreshIndicator(
+                              onRefresh: () async =>
+                                  cubit.getDetailsSubject(id),
+                              child: ListView.separated(
+                                padding: EdgeInsets.all(16.w),
+                                separatorBuilder: (context, index) =>
+                                    SizedBox(height: 16.w),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () => Utils.openScreen(
+                                        context, const TeacherTests()),
+                                    child: ItemOfTeachers(
+                                      cardColor: Colors.white,
+                                      cardData: cubit.subjectDetails![index],
+                                    ),
+                                  );
+                                },
+                                itemCount: cubit.subjectDetails!.length,
+                              ),
+                            )
+                          : const Center(
+                              child: TextWidget(title: "لا يوجد مدرسين "),
+                            ),
+                    );
+                  },
+                ),
               ),
             ),
           ],

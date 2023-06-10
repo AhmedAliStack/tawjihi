@@ -5,8 +5,15 @@ import '../../../../core/values/colors.dart';
 import '../../../components/text_widget.dart';
 
 class ItemOfDetails extends StatelessWidget {
-  ItemOfDetails({
+  final String title;
+  final int index;
+
+  final int percent;
+  const ItemOfDetails({
     super.key,
+    required this.title,
+    required this.percent,
+    required this.index,
   });
 
   @override
@@ -21,12 +28,12 @@ class ItemOfDetails extends StatelessWidget {
           children: [
             Container(
                 padding: EdgeInsets.all(16.w),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  gradient: const LinearGradient(colors: gradientButton),
+                  gradient: LinearGradient(colors: gradientButton),
                 ),
                 child: TextWidget(
-                  title: "1",
+                  title: "${index + 1}",
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
                 )),
@@ -39,18 +46,19 @@ class ItemOfDetails extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextWidget(
-                            title: "نتيجة اختبار الوحدة الاولى",
+                            title: title,
                             fontWeight: FontWeight.w500,
                             color: secondaryColor,
                           ),
-                          TextWidget(title: "99%", fontWeight: FontWeight.w500),
+                          TextWidget(
+                              title: "$percent %", fontWeight: FontWeight.w500),
                         ]),
                     SizedBox(height: 8.h),
                     RotatedBox(
                       quarterTurns: 2,
                       child: LinearPercentIndicator(
                         padding: EdgeInsets.zero,
-                        percent: 0.5,
+                        percent: percent / 100,
                         animation: true,
                         barRadius: Radius.circular(40.r),
                         linearGradient:

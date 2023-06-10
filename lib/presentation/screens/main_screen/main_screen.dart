@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
-
+import 'package:tawjihi_quiz/presentation/screens/the_best/the_best.dart';
 import '../../../core/utils/utils.dart';
 import '../achievements/achievements.dart';
-import '../most_distinguished/most_distinguished.dart';
 import '../my_tests/my_tests.dart';
 import '../subjects/subjects.dart';
 import 'widgets/item_of_main_screen.dart';
@@ -43,7 +42,7 @@ class MainScreen extends StatelessWidget {
                       Row(
                         children: [
                           TextWidget(
-                            title: "محمد ابراهيم",
+                            title: Utils.userModel.user?.name,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
                             color: Colors.black,
@@ -70,46 +69,45 @@ class MainScreen extends StatelessWidget {
               SizedBox(height: 32.w),
               GestureDetector(
                 onTap: () => Utils.openScreen(context, const Achievements()),
-                child: ItemOfMainScreen(
+                child: const ItemOfMainScreen(
                   title: "انجازاتك",
                   subTitle: "شرح بسيط يكتب هنا يدل على العبارة",
                   icon: "assets/icons/cup_icon.png",
                   backImg: "assets/images/cup.png",
-                  colors: const [Color(0xff2DD9DF), Color(0xff00A6AC)],
+                  colors: [Color(0xff2DD9DF), Color(0xff00A6AC)],
                 ),
               ),
               SizedBox(height: 16.h),
               GestureDetector(
-                onTap: () =>
-                    Utils.openScreen(context, const MostDistinguished()),
-                child: ItemOfMainScreen(
+                onTap: () => Utils.openScreen(context, const TheBest()),
+                child: const ItemOfMainScreen(
                   title: "الاكثر تميزا",
                   subTitle: "شرح بسيط يكتب هنا يدل على العبارة",
                   icon: "assets/icons/crown_icon.png",
                   backImg: "assets/images/crown_img.png",
-                  colors: const [Color(0xff7CDE4F), Color(0xff316A16)],
+                  colors: [Color(0xff7CDE4F), Color(0xff316A16)],
                 ),
               ),
               SizedBox(height: 16.h),
               GestureDetector(
                 onTap: () => Utils.openScreen(context, const Subjects()),
-                child: ItemOfMainScreen(
+                child: const ItemOfMainScreen(
                   title: "المواد الدراسية",
                   subTitle: "شرح بسيط يكتب هنا يدل على العبارة",
                   icon: "assets/icons/book_icon.png",
                   backImg: "assets/images/book_img.png",
-                  colors: const [Color(0xffA52C00), Color(0xffEA4F16)],
+                  colors: [Color(0xffA52C00), Color(0xffEA4F16)],
                 ),
               ),
               SizedBox(height: 16.h),
               GestureDetector(
                 onTap: () => Utils.openScreen(context, const MyTests()),
-                child: ItemOfMainScreen(
+                child: const ItemOfMainScreen(
                   title: "اختباراتى",
                   subTitle: "شرح بسيط يكتب هنا يدل على العبارة",
                   icon: "assets/icons/question_icon.png",
                   backImg: "assets/images/question_img.png",
-                  colors: const [Color(0xffCCA4FA), Color(0xffA647A4)],
+                  colors: [Color(0xffCCA4FA), Color(0xffA647A4)],
                 ),
               ),
               SizedBox(height: 16.w),

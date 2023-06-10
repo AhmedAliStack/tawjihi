@@ -72,6 +72,7 @@ class DioHelper {
       getDioError(
         e: e,
       );
+      return e.response;
     } catch (e) {
       return null;
     }
@@ -110,6 +111,7 @@ class DioHelper {
       return response;
     } on DioError catch (e) {
       getDioError(e: e);
+      return e.response;
     } catch (e) {
       return null;
     }
@@ -140,6 +142,7 @@ class DioHelper {
       return response;
     } on DioError catch (e) {
       getDioError(e: e);
+      return e.response;
     } catch (e) {
       return null;
     }
@@ -178,9 +181,8 @@ class DioHelper {
       }
       return response;
     } on DioError catch (e) {
-      getDioError(
-        e: e,
-      );
+      getDioError(e: e);
+      return e.response;
     } catch (e) {
       return null;
     }
@@ -283,15 +285,26 @@ class DioHelper {
         text: 'No Network'.tr(),
       );
     } else if (DioErrorType.unknown == e.type) {
-      log('case 4');
-      log('Problem connecting to the server. Please try again.');
-      OverLays.toast(
-        text: 'حدث مشكلة حاول مرة أخرى'.tr(),
-      );
+      if (e.error.toString().contains("SocketException")) {
+        log('Network error');
+        log('case 4');
+        OverLays.toast(
+            text: 'حدث مشكلة تأكد انك متصل بالانترنت ثم أعد المحاولة');
+      }
+      if (e.message.toString().contains('SocketException')) {
+        log('Network error');
+        log('case 5');
+        OverLays.toast(
+          text: 'حدث مشكلة تأكد انك متصل بالانترنت ثم أعد المحاولة',
+        );
+      }
     } else {
       // show snak server error
-      log('case 5');
+      log('case 6');
       log('Problem connecting to the server. Please try again.');
+      OverLays.toast(
+        text: 'Problem connecting to the server. Please try again.'.tr(),
+      );
     }
     return null;
   }
