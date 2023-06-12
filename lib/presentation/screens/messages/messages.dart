@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/presentation/screens/messages/widgets/item_of_messages.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
-import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
 
@@ -18,18 +17,11 @@ class Messages extends StatelessWidget {
           Padding(
             padding: EdgeInsetsDirectional.only(
                 start: 16.w, top: 32.h, end: 16.w, bottom: 16.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Utils.backWidget(context, authScreensBack: true),
-                TextWidget(
-                  title: "الرسائل",
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-                SizedBox(width: 32.w),
-              ],
+            child: TextWidget(
+              title: "الرسائل",
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
             ),
           ),
           Expanded(

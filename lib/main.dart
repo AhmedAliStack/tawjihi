@@ -11,6 +11,7 @@ import 'package:tawjihi_quiz/presentation/screens/notifications/cubit/notificati
 import 'package:tawjihi_quiz/presentation/screens/splash/splash.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
+import 'presentation/screens/exams_by_teacher/cubit/exams_by_teacher_cubit.dart';
 import 'presentation/screens/subjects/cubit/subject_cubit.dart';
 import 'presentation/screens/teachers/cubit/my_teacher_cubit.dart';
 import 'presentation/screens/the_best/cubit/the_best_cubit.dart';
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
                         AchievementsCubit()..getAchievements()),
                 BlocProvider(create: (context) => TheBestCubit()..getBest()),
                 BlocProvider(create: (context) => AboutUsCubit()..getAboutUs()),
+                BlocProvider(create: (context) => ExamsByTeacherCubit()),
               ],
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,

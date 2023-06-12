@@ -13,7 +13,7 @@ class CustomDropDown extends StatelessWidget {
       required this.dropdownItems,
       required this.dropdownValue,
       required this.onItemSelected,
-      required this.validator,
+      this.validator,
       required this.icon})
       : super(key: key);
   final String title;

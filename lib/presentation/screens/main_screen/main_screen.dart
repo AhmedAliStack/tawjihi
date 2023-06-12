@@ -5,7 +5,6 @@ import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/the_best/the_best.dart';
 import '../../../core/utils/utils.dart';
 import '../achievements/achievements.dart';
-import '../my_tests/my_tests.dart';
 import '../subjects/subjects.dart';
 import 'widgets/item_of_main_screen.dart';
 
@@ -101,7 +100,8 @@ class MainScreen extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               GestureDetector(
-                onTap: () => Utils.openScreen(context, const MyTests()),
+                onTap: () => Utils.openScreen(context, const Achievements()),
+                // onTap: () => Utils.openScreen(context, const MyTests()),
                 child: const ItemOfMainScreen(
                   title: "اختباراتى",
                   subTitle: "شرح بسيط يكتب هنا يدل على العبارة",

@@ -101,6 +101,14 @@ class Subjects extends StatelessWidget {
                                             width: 30.w,
                                             height: 30.w,
                                             fit: BoxFit.contain,
+                                            errorBuilder:
+                                                (context, error, stackTrace) =>
+                                                    Image.asset(
+                                              'assets/images/teacher.png',
+                                              width: 30.w,
+                                              height: 30.w,
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
                                         ),
                                         SizedBox(height: 16.h),

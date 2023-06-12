@@ -106,12 +106,12 @@ class User {
   String? phone;
   dynamic commercialRegNum;
   String? nationality;
-  int? countryId;
-  int? manhagId;
-  int? termId;
+  dynamic countryId;
+  dynamic manhagId;
+  dynamic termId;
   dynamic subjectTypeId;
   dynamic deviceToken;
-  int? score;
+  num? score;
   String? email;
   dynamic otp;
   dynamic otpExpiredAt;

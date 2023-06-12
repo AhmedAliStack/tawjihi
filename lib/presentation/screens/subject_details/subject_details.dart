@@ -7,7 +7,7 @@ import 'package:tawjihi_quiz/presentation/screens/teachers/widgets/item_of_teach
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/text_widget.dart';
-import '../teacher_tests/teacher_tests.dart';
+import '../exams_by_teacher/exams_by_teacher.dart';
 
 class SubjectDetails extends StatelessWidget {
   final int id;
@@ -116,7 +116,17 @@ class SubjectDetails extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
                                     onTap: () => Utils.openScreen(
-                                        context, const TeacherTests()),
+                                        context,
+                                        ExamsByTeacher(
+                                          id: cubit.subjectDetails![index].id!,
+                                          rate: cubit
+                                              .subjectDetails![index].rate
+                                              .toString(),
+                                          teacherName: cubit
+                                                  .subjectDetails![index]
+                                                  .name ??
+                                              "",
+                                        )),
                                     child: ItemOfTeachers(
                                       cardColor: Colors.white,
                                       cardData: cubit.subjectDetails![index],
