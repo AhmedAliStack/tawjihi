@@ -177,11 +177,11 @@ class Profile extends StatelessWidget {
                               title: "حفظ",
                               fontSize: 16.sp,
                               onTap: () {
-                                // cubit.updateProfile();
-                                Utils.successDialog(
-                                  context: context,
-                                  title: "تم الحفظ بنجاح",
-                                ).then((value) => Navigator.pop(context));
+                                cubit.updateProfile();
+                                // Utils.successDialog(
+                                //   context: context,
+                                //   title: "تم الحفظ بنجاح",
+                                // ).then((value) => Navigator.pop(context));
                               }),
                         ],
                       ),

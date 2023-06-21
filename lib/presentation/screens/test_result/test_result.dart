@@ -6,7 +6,6 @@ import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
-import '../unit_test/unit_test.dart';
 
 class TestResult extends StatelessWidget {
   const TestResult({super.key});
@@ -108,7 +107,7 @@ class TestResult extends StatelessWidget {
               SizedBox(width: 16.w),
               Expanded(
                 child: ButtonWidget(
-                  onTap: () => Utils.openScreen(context, const UnitTest()),
+                  onTap: () {},
                   backgroundButtonColor: borderMainColor,
                   child: const TextWidget(
                     title: "مراجعة الاختبار",

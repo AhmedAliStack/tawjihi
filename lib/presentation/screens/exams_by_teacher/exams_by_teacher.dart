@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:tawjihi_quiz/presentation/screens/exams_by_teacher/cubit/exams_by_teacher_cubit.dart';
-import 'package:tawjihi_quiz/presentation/screens/unit_test/unit_test.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions/questions.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/text_widget.dart';
@@ -141,7 +141,11 @@ class _ExamsByTeacherState extends State<ExamsByTeacher> {
                             // onTap: () => BlocProvider.of<HomeCubit>(context)
                             //     .changeCurrentIndex(2,
                             //         chanceId: item.id as int),
-                            onTap: () => Utils.openScreen(context, UnitTest()),
+                            onTap: () => Utils.openScreen(
+                                context,
+                                QuestionsScreen(
+                                  examId: item.id!,
+                                )),
                             child: ExamCard(
                               title: item.title ?? "",
                             ),

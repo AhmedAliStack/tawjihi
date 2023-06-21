@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../components/text_widget.dart';
 
-class ItemOfUnitTest extends StatelessWidget {
+class ItemOfQuestions extends StatelessWidget {
   final bool correct;
   final String title;
 
-  const ItemOfUnitTest({
+  const ItemOfQuestions({
     Key? key,
     this.correct = false,
     required this.title,
@@ -26,11 +26,13 @@ class ItemOfUnitTest extends StatelessWidget {
         border: Border.all(color: const Color(0xff93D774)),
       ),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        TextWidget(
-          title: title,
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w500,
-          color: Colors.black,
+        Expanded(
+          child: TextWidget(
+            title: title,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
         ),
         correct
             ? Image.asset("assets/icons/correct_circle.png",

@@ -130,7 +130,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       print("tessssss${Utils.userModel.token}");
       emit(SuccessProfileState());
     } else {
-      emit(ErrorProfileState(error: respose?.statusMessage));
+      emit(ErrorProfileState(error: respose?.data.toString()));
     }
   }
 }
