@@ -75,7 +75,8 @@ class AchievementsDetails extends StatelessWidget {
                       AchievementsCard(
                         headerCard: true,
                         subject: "نسبة الانجاز العامة",
-                        teacherName: "مستوى منخفض",
+                        teacherName:
+                            cubit.achievementsDetailsModel?.data?.level ?? "",
                         percentHeaderCard:
                             cubit.achievementsDetailsModel?.data?.total ?? 0,
                         percentCard: null,

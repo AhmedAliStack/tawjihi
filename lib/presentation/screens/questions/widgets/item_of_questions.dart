@@ -5,12 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../components/text_widget.dart';
 
 class ItemOfQuestions extends StatelessWidget {
-  final bool correct;
+  final bool? correct;
   final String title;
 
   const ItemOfQuestions({
     Key? key,
-    this.correct = false,
+    this.correct,
     required this.title,
   }) : super(key: key);
 
@@ -23,7 +23,12 @@ class ItemOfQuestions extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(37.r),
         ),
-        border: Border.all(color: const Color(0xff93D774)),
+        border: Border.all(
+            color: correct == null
+                ? Colors.grey
+                : correct!
+                    ? const Color(0xff93D774)
+                    : const Color(0xffD40E0E)),
       ),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Expanded(
@@ -34,11 +39,13 @@ class ItemOfQuestions extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        correct
-            ? Image.asset("assets/icons/correct_circle.png",
-                width: 24.w, height: 24.w, fit: BoxFit.fill)
-            : Image.asset("assets/icons/wrong_circle.png",
-                width: 24.w, height: 24.w, fit: BoxFit.fill),
+        correct == null
+            ? const SizedBox()
+            : correct!
+                ? Image.asset("assets/icons/correct_circle.png",
+                    width: 24.w, height: 24.w, fit: BoxFit.fill)
+                : Image.asset("assets/icons/wrong_circle.png",
+                    width: 24.w, height: 24.w, fit: BoxFit.fill),
       ]),
     );
   }

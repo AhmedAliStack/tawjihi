@@ -37,6 +37,7 @@ class MyTeachersModel {
 /// manhag_id : 2
 /// year_id : 1
 /// age : 30
+/// image
 /// bio : "مدرس متخصص بتدريس الياضيات بخبرة تتجاوز 10 سنوات و نتائج طلاب مبهرة في الثانوية"
 /// cv : null
 /// average : 0
@@ -55,6 +56,9 @@ class Data {
     this.manhagId,
     this.yearId,
     this.age,
+    this.image,
+    this.phone,
+    this.studentCount,
     this.bio,
     this.cv,
     this.average,
@@ -73,6 +77,9 @@ class Data {
     manhagId = json['manhag_id'];
     yearId = json['year_id'];
     age = json['age'];
+    image = json['image'];
+    phone = json['phone'];
+    studentCount = json['student_count'];
     bio = json['bio'];
     cv = json['cv'];
     average = json['average'];
@@ -94,6 +101,9 @@ class Data {
   int? manhagId;
   int? yearId;
   int? age;
+  String? image;
+  int? phone;
+  int? studentCount;
   String? bio;
   dynamic cv;
   int? average;
@@ -112,6 +122,9 @@ class Data {
     map['manhag_id'] = manhagId;
     map['year_id'] = yearId;
     map['age'] = age;
+    map['image'] = image;
+    map['phone'] = phone;
+    map['student_count'] = studentCount;
     map['bio'] = bio;
     map['cv'] = cv;
     map['average'] = average;

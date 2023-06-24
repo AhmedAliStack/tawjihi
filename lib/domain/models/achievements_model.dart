@@ -1,5 +1,5 @@
 /// status : 200
-/// data : {"total":0,"subjects":[{"subject_id":3,"total":2,"percent":0,"result":0,"teacher_name":"محمد علي","subject":"الرياضيات"}]}
+/// data : {"total":0,"level":"منخفض","subjects":[{"subject_id":3,"total":2,"percent":0,"result":0,"teacher_name":"محمد علي","subject":"الرياضيات"}]}
 
 class AchievementsModel {
   AchievementsModel({
@@ -30,11 +30,14 @@ class AchievementsModel {
 class Data {
   Data({
     this.total,
+    this.level,
     this.subjects,
   });
 
   Data.fromJson(dynamic json) {
     total = json['total'];
+    level = json['level'];
+
     if (json['subjects'] != null) {
       subjects = [];
       json['subjects'].forEach((v) {
@@ -43,11 +46,13 @@ class Data {
     }
   }
   int? total;
+  String? level;
   List<Subjects>? subjects;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['total'] = total;
+    map['level'] = level;
     if (subjects != null) {
       map['subjects'] = subjects?.map((v) => v.toJson()).toList();
     }

@@ -139,7 +139,7 @@ class Teacherinfo extends StatelessWidget {
                 ),
                 SizedBox(height: 32.h),
                 TextWidget(
-                  title: "عدد الطلاب : 45",
+                  title: "عدد الطلاب : ${teacherData?.studentCount}",
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
@@ -188,9 +188,25 @@ class Teacherinfo extends StatelessWidget {
                 radius: 50.r,
                 backgroundColor: Colors.white,
                 child: CircleAvatar(
-                  radius: 43.r,
-                  backgroundImage:
-                      const AssetImage('assets/images/teacher.png'),
+                  radius: 46.r,
+                  child: Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.network(
+                      teacherData?.image ?? '',
+                      width: 100.w,
+                      height: 100.w,
+                      fit: BoxFit.fill,
+                      errorBuilder: (context, error, stackTrace) => Image.asset(
+                        'assets/images/app_logo.png',
+                        width: 100.w,
+                        height: 100.w,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ]),

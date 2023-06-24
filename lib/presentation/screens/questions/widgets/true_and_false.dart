@@ -12,12 +12,37 @@ class TrueAndFalse extends StatelessWidget {
     return BlocConsumer<QuestionsCubit, QuestionsState>(
       listener: (context, state) {},
       builder: (context, state) {
+        QuestionsCubit cubit = QuestionsCubit.get(context);
         return Column(children: [
           GestureDetector(
-              onTap: () {}, child: const ItemOfQuestions(title: "صح")),
+              onTap: () {
+                cubit.trueOrFalseClick
+                    ? null
+                    : cubit.trueOrFalseChange(field1: "1");
+              },
+              child: ItemOfQuestions(
+                title: "صح",
+                correct: cubit.trueOrFalse == null
+                    ? null
+                    : cubit.trueOrFalse == 1
+                        ? true
+                        : false,
+              )),
           SizedBox(height: 16.h),
           GestureDetector(
-              onTap: () {}, child: const ItemOfQuestions(title: "خطأ")),
+              onTap: () {
+                cubit.trueOrFalseClick
+                    ? null
+                    : cubit.trueOrFalseChange(field2: "0");
+              },
+              child: ItemOfQuestions(
+                title: "خطأ",
+                correct: cubit.trueOrFalse == null
+                    ? null
+                    : cubit.trueOrFalse == 2
+                        ? true
+                        : false,
+              )),
         ]);
       },
     );

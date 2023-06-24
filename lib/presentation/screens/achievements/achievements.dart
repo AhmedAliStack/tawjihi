@@ -64,7 +64,7 @@ class _AchievementsState extends State<Achievements>
                   AchievementsCard(
                     headerCard: true,
                     subject: "نسبة الانجاز العامة",
-                    teacherName: "مستوى منخفض",
+                    teacherName: cubit.achievementsModel?.data?.level ?? "",
                     percentHeaderCard:
                         cubit.achievementsModel?.data?.total != null
                             ? cubit.achievementsModel!.data!.total!

@@ -8,7 +8,7 @@ class ItemOfDetails extends StatelessWidget {
   final String title;
   final int index;
 
-  final int percent;
+  final num percent;
   const ItemOfDetails({
     super.key,
     required this.title,

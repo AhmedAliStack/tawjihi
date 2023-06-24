@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../main_screen/main_screen.dart';
-import '../../messages/messages.dart';
+import '../../converstions/converstions.dart';
 import '../../notifications/notifications.dart';
 import '../../settings/settings.dart';
 import '../../teachers/my_teachers.dart';
@@ -13,7 +13,7 @@ class HomeCubit extends Cubit<HomeState> {
   static HomeCubit get(context) => BlocProvider.of(context);
   int currentIndex = 2;
   List<Widget> screens = [
-    Messages(),
+    Converstions(),
     Notifications(),
     MainScreen(),
     MyTeachers(),

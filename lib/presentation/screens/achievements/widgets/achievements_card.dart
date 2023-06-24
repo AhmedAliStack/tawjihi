@@ -10,7 +10,7 @@ class AchievementsCard extends StatelessWidget {
   final String teacherName;
   final int? questionTotal;
   final int? questionResult;
-  final int? percentHeaderCard;
+  final num? percentHeaderCard;
   final int? percentCard;
   final bool headerCard;
   const AchievementsCard({
@@ -66,7 +66,7 @@ class AchievementsCard extends StatelessWidget {
               SizedBox(height: 8.h),
               TextWidget(
                 title: teacherName,
-                fontSize: headerCard ? 10.sp : 12.sp,
+                fontSize: headerCard ? 12.sp : 14.sp,
                 fontWeight: headerCard ? FontWeight.w300 : FontWeight.w500,
                 color: header,
               ),

@@ -6,6 +6,10 @@ class TheBestInitial extends TheBestState {}
 
 class LoadingTheBestState extends TheBestState {}
 
+class LoadingTheBestStudentsState extends TheBestState {}
+
+class LoadingTheBestTeachersState extends TheBestState {}
+
 class SuccessTheBestState extends TheBestState {}
 
 class ErrorTheBestState extends TheBestState {

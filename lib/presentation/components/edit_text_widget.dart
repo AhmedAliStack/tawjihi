@@ -77,7 +77,8 @@ class EditTextWidget extends StatelessWidget {
               prefix: prefixWidget,
               suffixIcon: suffixIcon,
               errorText: errorText,
-              label: TextWidget(title: label),
+              label: TextWidget(
+                  title: label, color: Colors.black.withOpacity(0.5)),
               focusedBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: yellow, width: 1.0),
                   borderRadius:

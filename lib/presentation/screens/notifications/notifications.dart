@@ -72,10 +72,20 @@ class _NotificationsState extends State<Notifications>
                             itemCount: cubit.notificationsModel!.data!.length,
                           ),
                         )
-                      : const Center(
-                          child: TextWidget(
-                          title: "لا يوجد إشعارات",
-                        )),
+                      : RefreshIndicator(
+                          onRefresh: () async {
+                            await cubit.getNotifications();
+                          },
+                          child: SingleChildScrollView(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            child: Padding(
+                              padding: EdgeInsets.only(top: 0.3.sh),
+                              child: const TextWidget(
+                                title: "لا يوجد إشعارات",
+                              ),
+                            ),
+                          ),
+                        ),
                 );
               },
             ),

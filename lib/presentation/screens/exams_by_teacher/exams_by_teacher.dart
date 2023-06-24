@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:tawjihi_quiz/presentation/screens/exam_description/exam_description.dart';
 import 'package:tawjihi_quiz/presentation/screens/exams_by_teacher/cubit/exams_by_teacher_cubit.dart';
-import 'package:tawjihi_quiz/presentation/screens/questions/questions.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/text_widget.dart';
@@ -143,8 +143,10 @@ class _ExamsByTeacherState extends State<ExamsByTeacher> {
                             //         chanceId: item.id as int),
                             onTap: () => Utils.openScreen(
                                 context,
-                                QuestionsScreen(
+                                ExamDescription(
                                   examId: item.id!,
+                                  examTitle: item.title ?? "",
+                                  time: int.tryParse(item.time ?? "0") ?? 0,
                                 )),
                             child: ExamCard(
                               title: item.title ?? "",

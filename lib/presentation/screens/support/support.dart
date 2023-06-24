@@ -74,11 +74,11 @@ class Support extends StatelessWidget {
                             color: Colors.black,
                           ),
                           SizedBox(height: 8.h),
-                          TextWidget(
-                            title: "محمد الزيات",
-                            fontSize: 12.sp,
-                            color: secondaryColor.withOpacity(0.5),
-                          ),
+                          // TextWidget(
+                          //   title: "محمد الزيات",
+                          //   fontSize: 12.sp,
+                          //   color: secondaryColor.withOpacity(0.5),
+                          // ),
                         ],
                       ),
                     ],

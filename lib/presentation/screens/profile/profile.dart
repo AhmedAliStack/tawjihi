@@ -67,8 +67,26 @@ class Profile extends StatelessWidget {
                                       'assets/images/gradient_circle.png'),
                                   child: CircleAvatar(
                                     radius: 45.r,
-                                    backgroundImage: const AssetImage(
-                                        'assets/images/teacher.png'),
+                                    child: Container(
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        Utils.userModel.user?.image ?? '',
+                                        width: 100.w,
+                                        height: 100.w,
+                                        fit: BoxFit.fill,
+                                        errorBuilder:
+                                            (context, error, stackTrace) =>
+                                                Image.asset(
+                                          'assets/images/teacher.png',
+                                          width: 100.w,
+                                          height: 100.w,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 Container(

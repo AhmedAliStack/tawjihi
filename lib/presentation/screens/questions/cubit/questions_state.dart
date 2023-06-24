@@ -13,4 +13,15 @@ class ErrorQuestionsState extends QuestionsState {
   ErrorQuestionsState({this.error});
 }
 
-class IncrementQuestionNumber extends QuestionsState {}
+class LoadingSendAnswer extends QuestionsState {}
+
+class SuccessSendAnswer extends QuestionsState {}
+
+class ErrorSendAnswerState extends QuestionsState {
+  final String? error;
+  ErrorSendAnswerState({this.error});
+}
+
+class TrueOrFalse extends QuestionsState {}
+
+class FinishExam extends QuestionsState {}
