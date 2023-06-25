@@ -74,18 +74,17 @@ class _AchievementsState extends State<Achievements>
                     questionResult: null,
                   ),
                   Expanded(
-                      child: RefreshIndicator(
-                    onRefresh: () async => cubit.getAchievements(),
-                    child: LoadingAndError(
-                      isError: state is ErrorAchievementsState,
-                      errorMessage:
-                          state is ErrorAchievementsState ? state.error : null,
-                      isLoading: state is LoadingAchievementsState,
-                      function: () async => cubit.getAchievements(),
-                      child: cubit.achievementsModel?.data?.subjects != null &&
-                              cubit
-                                  .achievementsModel!.data!.subjects!.isNotEmpty
-                          ? ListView.separated(
+                      child: LoadingAndError(
+                    isError: state is ErrorAchievementsState,
+                    errorMessage:
+                        state is ErrorAchievementsState ? state.error : null,
+                    isLoading: state is LoadingAchievementsState,
+                    function: () async => cubit.getAchievements(),
+                    child: cubit.achievementsModel?.data?.subjects != null &&
+                            cubit.achievementsModel!.data!.subjects!.isNotEmpty
+                        ? RefreshIndicator(
+                            onRefresh: () => cubit.getAchievements(),
+                            child: ListView.separated(
                               separatorBuilder: (context, index) =>
                                   SizedBox(height: 8.h),
                               itemBuilder: (context, index) => GestureDetector(
@@ -117,11 +116,11 @@ class _AchievementsState extends State<Achievements>
                               ),
                               itemCount: cubit
                                   .achievementsModel!.data!.subjects!.length,
-                            )
-                          : const Center(
-                              child: TextWidget(title: "لا يوجد بيانات سايقة "),
                             ),
-                    ),
+                          )
+                        : const Center(
+                            child: TextWidget(title: "لا يوجد بيانات سايقة "),
+                          ),
                   ))
                 ]),
               );

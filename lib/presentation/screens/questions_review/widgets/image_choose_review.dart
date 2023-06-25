@@ -4,22 +4,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tawjihi_quiz/domain/models/answer_model.dart';
-import 'package:tawjihi_quiz/presentation/screens/questions/cubit/questions_cubit.dart';
+import 'package:tawjihi_quiz/domain/models/result_model.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions_review/cubit/questions_review_cubit.dart';
 
-class ImageChoose extends StatelessWidget {
-  const ImageChoose({super.key});
+class ImageChooseReview extends StatelessWidget {
+  const ImageChooseReview({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<QuestionsCubit, QuestionsState>(
+    return BlocConsumer<QuestionsReviewCubit, QuestionsReviewState>(
       listener: (context, state) {},
       builder: (context, state) {
-        QuestionsCubit cubit = QuestionsCubit.get(context);
+        QuestionsReviewCubit cubit = QuestionsReviewCubit.get(context);
         List<AnswerModel>? answers = [];
-        cubit.questionsModel!.questions![cubit.questionNumber].answer
+        cubit.resultModel!.data!.answers![cubit.questionNumber].question!.answer
             .forEach((element) {
           answers.add(AnswerModel.fromJson(element));
         });
+        Answers answer =
+            cubit.resultModel!.data!.answers![cubit.questionNumber];
+
         return GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -30,24 +34,15 @@ class ImageChoose extends StatelessWidget {
           ),
           itemCount: answers.length,
           itemBuilder: (BuildContext context, int index) {
-            print(answers[index].key);
-
-            return GestureDetector(
-              onTap: () {
-                cubit.click
-                    ? null
-                    : cubit.oneChoose(
-                        value: answers[index].value.toString(),
-                        key: answers[index].key);
-              },
-              child: ImageWidget(
-                imageUrl: answers[index].value,
-                correct: cubit.click == false
-                    ? null
-                    : answers[index].key != null
-                        ? true
-                        : false,
-              ),
+            return ImageWidget(
+              imageUrl: answers[index].value,
+              correct: answer.answer == answers[index].value
+                  ? answer.correctAnswer == answer.answer
+                      ? true
+                      : false
+                  : answer.correctAnswer == answers[index].value
+                      ? true
+                      : null,
             );
           },
         );

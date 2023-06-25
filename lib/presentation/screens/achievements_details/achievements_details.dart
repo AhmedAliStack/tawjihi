@@ -7,6 +7,7 @@ import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements_details/cubit/achievements_details_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements_details/widgets/item_of_details.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions_review/questions_review.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
@@ -14,9 +15,11 @@ import '../achievements/widgets/achievements_card.dart';
 
 class AchievementsDetails extends StatelessWidget {
   final int id;
+  final String? myTestTitle;
   const AchievementsDetails({
     Key? key,
     required this.id,
+    this.myTestTitle,
   }) : super(key: key);
 
   @override
@@ -57,7 +60,7 @@ class AchievementsDetails extends StatelessWidget {
                           SizedBox(width: 16.w),
                           Expanded(
                             child: TextWidget(
-                              title:
+                              title: myTestTitle ??
                                   " الانجاز فى اختبارات ${cubit.achievementsDetailsModel?.data?.subject}",
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
@@ -72,17 +75,21 @@ class AchievementsDetails extends StatelessWidget {
                     padding:
                         EdgeInsets.only(top: 0.2.sh, left: 16.w, right: 16.w),
                     child: Column(children: [
-                      AchievementsCard(
-                        headerCard: true,
-                        subject: "نسبة الانجاز العامة",
-                        teacherName:
-                            cubit.achievementsDetailsModel?.data?.level ?? "",
-                        percentHeaderCard:
-                            cubit.achievementsDetailsModel?.data?.total ?? 0,
-                        percentCard: null,
-                        questionResult: null,
-                        questionTotal: null,
-                      ),
+                      myTestTitle != null
+                          ? const SizedBox()
+                          : AchievementsCard(
+                              headerCard: true,
+                              subject: "نسبة الانجاز العامة",
+                              teacherName:
+                                  cubit.achievementsDetailsModel?.data?.level ??
+                                      "",
+                              percentHeaderCard:
+                                  cubit.achievementsDetailsModel?.data?.total ??
+                                      0,
+                              percentCard: null,
+                              questionResult: null,
+                              questionTotal: null,
+                            ),
                       Expanded(
                           child: RefreshIndicator(
                         onRefresh: () async => cubit.getAchievementsDetails(id),
@@ -93,14 +100,34 @@ class AchievementsDetails extends StatelessWidget {
                             ? ListView.separated(
                                 separatorBuilder: (context, index) =>
                                     SizedBox(height: 8.h),
-                                itemBuilder: (context, index) => ItemOfDetails(
-                                  index: index,
-                                  title: cubit.achievementsDetailsModel?.data
-                                          ?.exams?[index].exam ??
-                                      "",
-                                  percent: cubit.achievementsDetailsModel?.data
-                                          ?.exams?[index].percent ??
-                                      0,
+                                itemBuilder: (context, index) =>
+                                    GestureDetector(
+                                  onTap: () {
+                                    myTestTitle == null
+                                        ? null
+                                        : Utils.openScreen(
+                                            context,
+                                            QuestionsReview(
+                                                examTitle: cubit
+                                                    .achievementsDetailsModel!
+                                                    .data!
+                                                    .exams![index]
+                                                    .exam!,
+                                                resultId: cubit
+                                                    .achievementsDetailsModel!
+                                                    .data!
+                                                    .exams![index]
+                                                    .resultId!));
+                                  },
+                                  child: ItemOfDetails(
+                                    index: index,
+                                    title: cubit.achievementsDetailsModel?.data
+                                            ?.exams?[index].exam ??
+                                        "",
+                                    percent: cubit.achievementsDetailsModel
+                                            ?.data?.exams?[index].percent ??
+                                        0,
+                                  ),
                                 ),
                                 itemCount: cubit.achievementsDetailsModel!.data!
                                     .exams!.length,

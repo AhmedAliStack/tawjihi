@@ -22,6 +22,6 @@ class ErrorSendAnswerState extends QuestionsState {
   ErrorSendAnswerState({this.error});
 }
 
-class TrueOrFalse extends QuestionsState {}
+class AnswerDone extends QuestionsState {}
 
 class FinishExam extends QuestionsState {}

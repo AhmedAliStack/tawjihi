@@ -39,6 +39,7 @@ class Data {
   Data.fromJson(dynamic json) {
     total = json['total'];
     level = json['level'];
+
     subject = json['subject'];
     if (json['exams'] != null) {
       exams = [];
@@ -56,6 +57,7 @@ class Data {
     final map = <String, dynamic>{};
     map['total'] = total;
     map['level'] = level;
+
     map['subject'] = subject;
     if (exams != null) {
       map['exams'] = exams?.map((v) => v.toJson()).toList();
@@ -73,6 +75,7 @@ class Exams {
   Exams({
     this.exam,
     this.result,
+    int? resultId,
     this.total,
     this.percent,
   });
@@ -80,11 +83,14 @@ class Exams {
   Exams.fromJson(dynamic json) {
     exam = json['exam'];
     result = json['result'];
+    resultId = json['result_id'];
+
     total = json['total'];
     percent = json['percent'];
   }
   String? exam;
   String? result;
+  int? resultId;
   int? total;
   num? percent;
 
@@ -92,6 +98,7 @@ class Exams {
     final map = <String, dynamic>{};
     map['exam'] = exam;
     map['result'] = result;
+    map['result_id'] = resultId;
     map['total'] = total;
     map['percent'] = percent;
     return map;

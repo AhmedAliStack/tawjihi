@@ -26,8 +26,25 @@ class MoreChoose extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            return ItemOfQuestions(
-              title: answers[index].value.toString(),
+            return GestureDetector(
+              onTap: () {
+                cubit.click
+                    ? null
+                    : cubit.morechooseTrue(
+                        field: index,
+                        value1: answers[index].value.toString(),
+                        key1: answers[index].key,
+                      );
+              },
+              child: ItemOfQuestions(
+                title: answers[index].value.toString(),
+                more: cubit.more.contains(index) && cubit.click == false,
+                correct: cubit.click == false
+                    ? null
+                    : answers[index].key != null
+                        ? true
+                        : false,
+              ),
             );
           },
           separatorBuilder: (context, index) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
+import 'package:tawjihi_quiz/presentation/screens/my_tests/my_tests.dart';
 import 'package:tawjihi_quiz/presentation/screens/the_best/the_best.dart';
 import '../../../core/utils/utils.dart';
 import '../achievements/achievements.dart';
@@ -100,7 +101,7 @@ class MainScreen extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               GestureDetector(
-                onTap: () => Utils.openScreen(context, const Achievements()),
+                onTap: () => Utils.openScreen(context, const MyTests()),
                 // onTap: () => Utils.openScreen(context, const MyTests()),
                 child: const ItemOfMainScreen(
                   title: "اختباراتى",

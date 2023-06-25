@@ -16,30 +16,30 @@ class TrueAndFalse extends StatelessWidget {
         return Column(children: [
           GestureDetector(
               onTap: () {
-                cubit.trueOrFalseClick
-                    ? null
-                    : cubit.trueOrFalseChange(field1: "1");
+                cubit.click ? null : cubit.trueOrFalseChange(value: "1");
               },
               child: ItemOfQuestions(
                 title: "صح",
-                correct: cubit.trueOrFalse == null
+                correct: cubit.click == false
                     ? null
-                    : cubit.trueOrFalse == 1
+                    : cubit.questionsModel!.questions![cubit.questionNumber]
+                                .answer ==
+                            "1"
                         ? true
                         : false,
               )),
           SizedBox(height: 16.h),
           GestureDetector(
               onTap: () {
-                cubit.trueOrFalseClick
-                    ? null
-                    : cubit.trueOrFalseChange(field2: "0");
+                cubit.click ? null : cubit.trueOrFalseChange(value: "0");
               },
               child: ItemOfQuestions(
                 title: "خطأ",
-                correct: cubit.trueOrFalse == null
+                correct: cubit.click == false
                     ? null
-                    : cubit.trueOrFalse == 2
+                    : cubit.questionsModel!.questions![cubit.questionNumber]
+                                .answer ==
+                            "0"
                         ? true
                         : false,
               )),

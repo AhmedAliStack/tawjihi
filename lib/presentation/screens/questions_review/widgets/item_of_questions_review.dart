@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../components/text_widget.dart';
 
-class ItemOfQuestions extends StatelessWidget {
+class ItemOfQuestionsReview extends StatelessWidget {
   final bool? correct;
   final String title;
   final bool more;
 
-  const ItemOfQuestions({
+  const ItemOfQuestionsReview({
     Key? key,
     this.correct,
     required this.title,

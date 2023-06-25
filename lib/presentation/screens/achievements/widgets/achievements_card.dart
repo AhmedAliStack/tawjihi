@@ -8,10 +8,10 @@ import '../../../components/text_widget.dart';
 class AchievementsCard extends StatelessWidget {
   final String subject;
   final String teacherName;
-  final int? questionTotal;
-  final int? questionResult;
+  final num? questionTotal;
+  final num? questionResult;
   final num? percentHeaderCard;
-  final int? percentCard;
+  final num? percentCard;
   final bool headerCard;
   const AchievementsCard({
     super.key,

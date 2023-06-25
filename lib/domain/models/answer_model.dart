@@ -1,11 +1,11 @@
 class AnswerModel {
-  String? key;
+  dynamic key;
   String? value;
 
   AnswerModel({this.key, this.value});
 
   AnswerModel.fromJson(Map<String, dynamic> json) {
-    key = json['key'].toString();
+    key = json['key'];
     value = json['value'].toString();
   }
 

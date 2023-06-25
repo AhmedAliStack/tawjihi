@@ -45,7 +45,7 @@ class Data {
       });
     }
   }
-  int? total;
+  num? total;
   String? level;
   List<Subjects>? subjects;
 
@@ -86,9 +86,9 @@ class Subjects {
     subject = json['subject'];
   }
   int? subjectId;
-  int? total;
-  int? percent;
-  int? result;
+  num? total;
+  num? percent;
+  num? result;
   String? teacherName;
   String? subject;
 

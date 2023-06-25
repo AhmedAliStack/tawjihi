@@ -99,12 +99,14 @@ class ExamDescription extends StatelessWidget {
                               fontSize: 16.sp,
                               onTap: () {
                                 Utils.openScreen(
-                                    context,
-                                    BlocProvider.value(
-                                      value: cubit,
-                                      child: QuestionsScreen(
-                                          examTitle: examTitle, time: time),
-                                    ));
+                                  context,
+                                  QuestionsScreen(
+                                    examTitle: examTitle,
+                                    time: time,
+                                    examId: examId,
+                                  ),
+                                  replacment: true,
+                                );
                               },
                             ),
                           ),

@@ -26,8 +26,23 @@ class OneChoose extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            return ItemOfQuestions(
-              title: answers[index].value.toString(),
+            print(answers[index].key);
+            return GestureDetector(
+              onTap: () {
+                cubit.click
+                    ? null
+                    : cubit.oneChoose(
+                        value: answers[index].value.toString(),
+                        key: answers[index].key);
+              },
+              child: ItemOfQuestions(
+                title: answers[index].value.toString(),
+                correct: cubit.click == false
+                    ? null
+                    : answers[index].key != null
+                        ? true
+                        : false,
+              ),
             );
           },
           separatorBuilder: (context, index) {
