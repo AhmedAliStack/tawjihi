@@ -11,6 +11,7 @@ part 'exams_by_teacher_state.dart';
 class ExamsByTeacherCubit extends Cubit<ExamsByTeacherState> {
   ExamsByTeacherCubit() : super(ExamsByTeacherInitial());
   static ExamsByTeacherCubit get(context) => BlocProvider.of(context);
+  int activeExam = 0;
   PagingController<int, exams.Data> pagingController =
       PagingController(firstPageKey: 1);
 
@@ -20,6 +21,7 @@ class ExamsByTeacherCubit extends Cubit<ExamsByTeacherState> {
     if (response?.statusCode == 200) {
       exams.ExamsByTeacherModel examsByTeacher =
           exams.ExamsByTeacherModel.fromJson(response?.data);
+      activeExam = examsByTeacher.activeExam ?? 0;
       final isLastPage = examsByTeacher.meta?.total == page;
       if (isLastPage) {
         pagingController.appendLastPage(examsByTeacher.data ?? []);

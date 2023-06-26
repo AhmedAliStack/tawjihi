@@ -126,12 +126,12 @@ class Settings extends StatelessWidget {
                         title: "الملف الشخصي",
                       ),
                     ),
-                    SizedBox(height: 16.w),
-                    GestureDetector(
-                        onTap: () =>
-                            Utils.openScreen(context, const SubscribCode()),
-                        child: const ItemOfSettings(
-                            img: 'assets/icons/code.png', title: "الكود")),
+                    // SizedBox(height: 16.w),
+                    // GestureDetector(
+                    //     onTap: () =>
+                    //         Utils.openScreen(context,  SubscribCode()),
+                    //     child: const ItemOfSettings(
+                    //         img: 'assets/icons/code.png', title: "الكود")),
                     SizedBox(height: 16.w),
                     GestureDetector(
                       onTap: () => Utils.openScreen(context, const AboutUs()),

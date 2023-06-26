@@ -5,6 +5,7 @@
 class ExamsByTeacherModel {
   ExamsByTeacherModel({
     this.data,
+    this.activeExam,
     this.meta,
     this.response,
   });
@@ -16,10 +17,13 @@ class ExamsByTeacherModel {
         data?.add(Data.fromJson(v));
       });
     }
+    activeExam = json['active_exam'];
+
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
     response = json['response'];
   }
   List<Data>? data;
+  int? activeExam;
   Meta? meta;
   int? response;
 
@@ -28,6 +32,8 @@ class ExamsByTeacherModel {
     if (data != null) {
       map['data'] = data?.map((v) => v.toJson()).toList();
     }
+    map['active_exam'] = activeExam;
+
     if (meta != null) {
       map['meta'] = meta?.toJson();
     }
