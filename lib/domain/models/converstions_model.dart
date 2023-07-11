@@ -1,4 +1,4 @@
-/// data : [{"id":1,"user":{"name":"Mohamed","first_name":"aaaaa","last_name":"dddddd","phone":"012125459885","nationality":"Egyptian","country_id":1,"manhag_id":1,"term_id":2,"subject_type_id":2,"score":0},"teacher":{"id":2,"name":"محمد علي","email":"mohammad@gmail.com","nationality":"jordan","country_id":2,"manhag_id":2,"year_id":1,"age":30,"bio":"مدرس متخصص بتدريس الياضيات بخبرة تتجاوز 10 سنوات و نتائج طلاب مبهرة في الثانوية","cv":null,"average":0,"rate":0,"exams_count":0,"subjects":[{"id":3,"title":"الرياضيات","year_id":1,"term_id":2,"subjecttype_id":2,"created_at":"2023-05-14T12:02:37.000000Z","updated_at":"2023-05-14T12:02:37.000000Z","manhag_id":2,"half_id":0,"pic":"1684065757.png","date":"2022-2023","pivot":{"teacher_id":2,"subjects_id":3}}],"subject":"الرياضيات"},"last_message":{"id":4,"message":"Hello again3","sender":0,"teacher_id":2,"is_read":1,"conversation_id":1,"created_at":"2023-06-23 00:33:rd"},"created_at":"2023-06-23 00:33:57"},{"id":2,"user":{"name":"Mohamed","first_name":"aaaaa","last_name":"dddddd","phone":"012125459885","nationality":"Egyptian","country_id":1,"manhag_id":1,"term_id":2,"subject_type_id":2,"score":0},"teacher":{"id":1,"name":"Maryam Estrada","email":"vopihi@mailinator.com","nationality":"Eiusmod et sed est i","country_id":1,"manhag_id":1,"year_id":1,"age":0,"bio":"Amet eiusmod eiusmo","cv":null,"average":0,"rate":0,"exams_count":0,"subjects":[{"id":1,"title":"ماده العلوم","year_id":1,"term_id":1,"subjecttype_id":1,"created_at":"2023-01-07T19:10:42.000000Z","updated_at":"2023-01-07T19:10:42.000000Z","manhag_id":1,"half_id":0,"pic":"1673118642.jpg","date":"2022-2023","pivot":{"teacher_id":1,"subjects_id":1}}],"subject":"ماده العلوم"},"last_message":{"id":5,"message":"Hello again4","sender":0,"teacher_id":1,"is_read":1,"conversation_id":2,"created_at":"2023-06-23 00:39:rd"},"created_at":"2023-06-23 00:39:01"},{"id":3,"user":{"name":"Mohamed","first_name":"aaaaa","last_name":"dddddd","phone":"012125459885","nationality":"Egyptian","country_id":1,"manhag_id":1,"term_id":2,"subject_type_id":2,"score":0},"teacher":{"id":3,"name":"مروان احمد","email":"marwan@em.com","nationality":"jordan","country_id":2,"manhag_id":2,"year_id":1,"age":30,"bio":"مدرس متخصص في تدريس الفيزياء للفرع العلمي","cv":null,"average":0,"rate":0,"exams_count":0,"subjects":[{"id":2,"title":"الفيزياء","year_id":1,"term_id":2,"subjecttype_id":2,"created_at":"2023-05-14T12:02:03.000000Z","updated_at":"2023-05-14T12:02:03.000000Z","manhag_id":2,"half_id":0,"pic":"1684065723.png","date":"2022-2023","pivot":{"teacher_id":3,"subjects_id":2}}],"subject":"الفيزياء"},"last_message":{"id":7,"message":"salem test","sender":0,"teacher_id":3,"is_read":1,"conversation_id":3,"created_at":"2023-06-23 00:45:rd"},"created_at":"2023-06-23 00:39:32"}]
+/// data : [{"id":1,"user":{"name":"Mohamed","first_name":"aaaaa","last_name":"dddddd","phone":"012125459885","nationality":"Egyptian","country_id":1,"manhag_id":1,"term_id":2,"subject_type_id":2,"score":1,"active_exam":0},"teacher":{"id":2,"name":"محمد علي","email":"mohammad@gmail.com","nationality":"jordan","country_id":2,"manhag_id":2,"year_id":1,"age":30,"image":"http://www.tawjihiquiz.com/uploaded/teachers/1684065757.png","phone":5555555,"student_count":0,"bio":"مدرس متخصص بتدريس الياضيات بخبرة تتجاوز 10 سنوات و نتائج طلاب مبهرة في الثانوية","cv":null,"average":0,"rate":0,"exams_count":0,"subjects":[{"id":3,"title":"الرياضيات","year_id":1,"term_id":2,"subjecttype_id":2,"created_at":"2023-05-14T12:02:37.000000Z","updated_at":"2023-05-14T12:02:37.000000Z","manhag_id":2,"half_id":0,"pic":"1684065757.png","date":"2022-2023","pivot":{"teacher_id":2,"subjects_id":3}}],"subject":"الرياضيات"},"last_message":{"id":4,"message":"Hello again3","sender":0,"teacher_id":2,"is_read":1,"conversation_id":1,"created_at":"2023-06-23 00:33:rd"},"created_at":"2023-06-23 00:33:57"}]
 /// response : 200
 
 class ConverstionsModel {
@@ -30,8 +30,8 @@ class ConverstionsModel {
 }
 
 /// id : 1
-/// user : {"name":"Mohamed","first_name":"aaaaa","last_name":"dddddd","phone":"012125459885","nationality":"Egyptian","country_id":1,"manhag_id":1,"term_id":2,"subject_type_id":2,"score":0}
-/// teacher : {"id":2,"name":"محمد علي","email":"mohammad@gmail.com","nationality":"jordan","country_id":2,"manhag_id":2,"year_id":1,"age":30,"bio":"مدرس متخصص بتدريس الياضيات بخبرة تتجاوز 10 سنوات و نتائج طلاب مبهرة في الثانوية","cv":null,"average":0,"rate":0,"exams_count":0,"subjects":[{"id":3,"title":"الرياضيات","year_id":1,"term_id":2,"subjecttype_id":2,"created_at":"2023-05-14T12:02:37.000000Z","updated_at":"2023-05-14T12:02:37.000000Z","manhag_id":2,"half_id":0,"pic":"1684065757.png","date":"2022-2023","pivot":{"teacher_id":2,"subjects_id":3}}],"subject":"الرياضيات"}
+/// user : {"name":"Mohamed","first_name":"aaaaa","last_name":"dddddd","phone":"012125459885","nationality":"Egyptian","country_id":1,"manhag_id":1,"term_id":2,"subject_type_id":2,"score":1,"active_exam":0}
+/// teacher : {"id":2,"name":"محمد علي","email":"mohammad@gmail.com","nationality":"jordan","country_id":2,"manhag_id":2,"year_id":1,"age":30,"image":"http://www.tawjihiquiz.com/uploaded/teachers/1684065757.png","phone":5555555,"student_count":0,"bio":"مدرس متخصص بتدريس الياضيات بخبرة تتجاوز 10 سنوات و نتائج طلاب مبهرة في الثانوية","cv":null,"average":0,"rate":0,"exams_count":0,"subjects":[{"id":3,"title":"الرياضيات","year_id":1,"term_id":2,"subjecttype_id":2,"created_at":"2023-05-14T12:02:37.000000Z","updated_at":"2023-05-14T12:02:37.000000Z","manhag_id":2,"half_id":0,"pic":"1684065757.png","date":"2022-2023","pivot":{"teacher_id":2,"subjects_id":3}}],"subject":"الرياضيات"}
 /// last_message : {"id":4,"message":"Hello again3","sender":0,"teacher_id":2,"is_read":1,"conversation_id":1,"created_at":"2023-06-23 00:33:rd"}
 /// created_at : "2023-06-23 00:33:57"
 
@@ -134,6 +134,9 @@ class LastMessage {
 /// manhag_id : 2
 /// year_id : 1
 /// age : 30
+/// image : "http://www.tawjihiquiz.com/uploaded/teachers/1684065757.png"
+/// phone : 5555555
+/// student_count : 0
 /// bio : "مدرس متخصص بتدريس الياضيات بخبرة تتجاوز 10 سنوات و نتائج طلاب مبهرة في الثانوية"
 /// cv : null
 /// average : 0
@@ -152,6 +155,9 @@ class Teacher {
     this.manhagId,
     this.yearId,
     this.age,
+    this.image,
+    this.phone,
+    this.studentCount,
     this.bio,
     this.cv,
     this.average,
@@ -170,6 +176,9 @@ class Teacher {
     manhagId = json['manhag_id'];
     yearId = json['year_id'];
     age = json['age'];
+    image = json['image'];
+    phone = json['phone'];
+    studentCount = json['student_count'];
     bio = json['bio'];
     cv = json['cv'];
     average = json['average'];
@@ -191,6 +200,9 @@ class Teacher {
   int? manhagId;
   int? yearId;
   int? age;
+  String? image;
+  int? phone;
+  int? studentCount;
   String? bio;
   dynamic cv;
   int? average;
@@ -209,6 +221,9 @@ class Teacher {
     map['manhag_id'] = manhagId;
     map['year_id'] = yearId;
     map['age'] = age;
+    map['image'] = image;
+    map['phone'] = phone;
+    map['student_count'] = studentCount;
     map['bio'] = bio;
     map['cv'] = cv;
     map['average'] = average;
@@ -331,7 +346,8 @@ class Pivot {
 /// manhag_id : 1
 /// term_id : 2
 /// subject_type_id : 2
-/// score : 0
+/// score : 1
+/// active_exam : 0
 
 class User {
   User({
@@ -345,6 +361,7 @@ class User {
     this.termId,
     this.subjectTypeId,
     this.score,
+    this.activeExam,
   });
 
   User.fromJson(dynamic json) {
@@ -358,6 +375,7 @@ class User {
     termId = json['term_id'];
     subjectTypeId = json['subject_type_id'];
     score = json['score'];
+    activeExam = json['active_exam'];
   }
   String? name;
   String? firstName;
@@ -369,6 +387,7 @@ class User {
   int? termId;
   int? subjectTypeId;
   int? score;
+  int? activeExam;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -382,6 +401,7 @@ class User {
     map['term_id'] = termId;
     map['subject_type_id'] = subjectTypeId;
     map['score'] = score;
+    map['active_exam'] = activeExam;
     return map;
   }
 }

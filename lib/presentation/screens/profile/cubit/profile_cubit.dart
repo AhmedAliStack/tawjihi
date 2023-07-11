@@ -123,9 +123,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     if (respose?.statusCode == 200) {
       Map<String, dynamic> user = {
         "token": Utils.token,
-        "data": respose?.data["data"],
+        "user": respose?.data["data"],
       };
-      await locator<DataManager>().saveData(Statics.user, user.toString());
+      await locator<DataManager>().saveData(Statics.user, user);
       Utils.userModel = UserModel.fromJson(user);
       print("tessssss${Utils.userModel.token}");
       emit(SuccessProfileState());

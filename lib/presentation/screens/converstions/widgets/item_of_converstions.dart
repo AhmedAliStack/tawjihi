@@ -20,10 +20,19 @@ class ItemOfConverstions extends StatelessWidget {
   Widget build(BuildContext context) {
     final data = cubit.converstionsModel!.data![index];
     String dateTimeString = data.lastMessage?.createdAt ?? "";
-    DateTime dateTime = DateTime.parse(dateTimeString.replaceAll(':rd', ''));
+    //2023-07-11 05:37:th
+    DateTime dateTime = DateTime.parse(dateTimeString.substring(0, 16));
     String timeString = DateFormat('hh:mm a').format(dateTime);
     return GestureDetector(
-      onTap: () => Utils.openScreen(context, Chat()),
+      onTap: () => Utils.openScreen(
+        context,
+        Chat(
+          teacherId: data.teacher?.id ?? 0,
+          chatId: data.id ?? 0,
+          image: data.teacher?.image ?? "",
+          name: data.teacher?.name ?? "",
+        ),
+      ),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         Row(
           children: [

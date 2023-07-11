@@ -54,7 +54,7 @@ class Validation {
   }
 
   String? defaultValidation(value) {
-    if (value!.isEmpty) {
+    if (value == null || value!.isEmpty) {
       return 'هذا الحقل مطلوب';
     } else {
       return null;

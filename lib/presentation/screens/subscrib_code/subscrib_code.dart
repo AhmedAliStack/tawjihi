@@ -42,6 +42,8 @@ class SubscribCode extends StatelessWidget {
                   OverLays.toast(text: state.error ?? "حدث خطأ حاول مرة اخرى");
                 }
                 if (state is SuccessCodeState) {
+                  OverLays.toast(text: "تم الاشتراك بنجاح");
+
                   Utils.openScreen(
                       context,
                       ExamsByTeacher(

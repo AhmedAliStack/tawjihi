@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tawjihi_quiz/domain/models/my_teachers_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
@@ -79,16 +80,27 @@ class Teacherinfo extends StatelessWidget {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(16.w),
-                            decoration: BoxDecoration(
-                                color: Color(0xff53D575),
-                                shape: BoxShape.circle),
-                            child: Image.asset(
-                              "assets/icons/call.png",
-                              width: 30.w,
-                              height: 30.w,
-                              fit: BoxFit.contain,
+                          GestureDetector(
+                            onTap: () async {
+                              int phoneNumber = teacherData?.phone ?? 0;
+                              final url = 'tel:$phoneNumber';
+                              if (await canLaunchUrl(Uri.parse(url))) {
+                                await launchUrl(Uri.parse(url));
+                              } else {
+                                throw 'Unable to open phone number';
+                              }
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(16.w),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff53D575),
+                                  shape: BoxShape.circle),
+                              child: Image.asset(
+                                "assets/icons/call.png",
+                                width: 30.w,
+                                height: 30.w,
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           ),
                           VerticalDivider(
@@ -97,16 +109,27 @@ class Teacherinfo extends StatelessWidget {
                             endIndent: 8.h,
                             indent: 8.h,
                           ),
-                          Container(
-                            padding: EdgeInsets.all(16.w),
-                            decoration: BoxDecoration(
-                                color: Color(0xff6B5AED),
-                                shape: BoxShape.circle),
-                            child: Image.asset(
-                              "assets/icons/sms.png",
-                              width: 30.w,
-                              height: 30.w,
-                              fit: BoxFit.contain,
+                          GestureDetector(
+                            onTap: () async {
+                              int phoneNumber = teacherData?.phone ?? 0;
+                              final url = 'sms:$phoneNumber';
+                              if (await canLaunchUrl(Uri.parse(url))) {
+                                await launchUrl(Uri.parse(url));
+                              } else {
+                                throw 'Unable to open sms';
+                              }
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(16.w),
+                              decoration: BoxDecoration(
+                                  color: Color(0xff6B5AED),
+                                  shape: BoxShape.circle),
+                              child: Image.asset(
+                                "assets/icons/sms.png",
+                                width: 30.w,
+                                height: 30.w,
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           ),
                           VerticalDivider(
@@ -155,7 +178,14 @@ class Teacherinfo extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32.0.w),
                   child: ButtonWidget(
-                    onTap: () => Utils.openScreen(context, Chat()),
+                    onTap: () => Utils.openScreen(
+                        context,
+                        Chat(
+                          teacherId: teacherData?.id ?? 0,
+                          chatId: teacherData?.id ?? 0,
+                          image: teacherData?.image ?? "",
+                          name: teacherData?.name ?? "",
+                        )),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
