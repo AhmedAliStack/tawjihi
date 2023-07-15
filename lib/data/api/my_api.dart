@@ -39,18 +39,19 @@ class DioHelper {
     String? base,
     bool loading = false,
     bool isForm = false,
+    bool isFile = false,
   }) async {
     mydio.options.headers = {
-      'Content-Type': 'application/json',
+      'Content-Type': isFile ? "multipart/form-data" : 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token',
-      //'Accept-Language': Utiles.lang,
+      // 'Accept-Language': Utils.lang,
     };
     if (token == null) {
       mydio.options.headers = {
-        'Content-Type': 'application/json',
+        'Content-Type': isFile ? "multipart/form-data" : 'application/json',
         'Accept': 'application/json',
-        //'Accept-Language': Utiles.lang,
+        // 'Accept-Language': Utils.lang,
       };
     }
     try {

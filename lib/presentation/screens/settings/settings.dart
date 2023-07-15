@@ -10,7 +10,6 @@ import '../../components/alerts.dart';
 import '../../components/text_widget.dart';
 import '../login/login.dart';
 import '../profile/profile.dart';
-import '../subscrib_code/subscrib_code.dart';
 import 'cubit/settings_cubit.dart';
 
 class Settings extends StatelessWidget {
