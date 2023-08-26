@@ -192,38 +192,41 @@ class QuestionsScreen extends StatelessWidget {
                                             horizontal: 16.0.w, vertical: 32.h),
                                         child: Row(children: [
                                           Expanded(
-                                            child: ButtonWidget(
-                                              onTap: () {
-                                                cubit.questionNumber == 0
-                                                    ? null
-                                                    : cubit.sendAnswer(
-                                                        back: true,
-                                                        questionId: cubit
-                                                            .questionsModel!
-                                                            .questions![cubit
-                                                                .questionNumber]
-                                                            .id!);
-                                              },
-                                              height: 50.w,
-                                              child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.arrow_back,
-                                                      color: Colors.white,
-                                                      size: 25.w,
-                                                    ),
-                                                    SizedBox(width: 4.w),
-                                                    const TextWidget(
-                                                      title: "السابق",
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: Colors.white,
-                                                    )
-                                                  ]),
-                                            ),
+                                            child: SizedBox(),
                                           ),
+                                          // Expanded(
+                                          //   child: ButtonWidget(
+                                          //     onTap: () {
+                                          //       cubit.questionNumber == 0
+                                          //           ? null
+                                          //           : cubit.sendAnswer(
+                                          //               back: true,
+                                          //               questionId: cubit
+                                          //                   .questionsModel!
+                                          //                   .questions![cubit
+                                          //                       .questionNumber]
+                                          //                   .id!);
+                                          //     },
+                                          //     height: 50.w,
+                                          //     child: Row(
+                                          //         mainAxisAlignment:
+                                          //             MainAxisAlignment.center,
+                                          //         children: [
+                                          //           Icon(
+                                          //             Icons.arrow_back,
+                                          //             color: Colors.white,
+                                          //             size: 25.w,
+                                          //           ),
+                                          //           SizedBox(width: 4.w),
+                                          //           const TextWidget(
+                                          //             title: "السابق",
+                                          //             fontWeight:
+                                          //                 FontWeight.w500,
+                                          //             color: Colors.white,
+                                          //           )
+                                          //         ]),
+                                          //   ),
+                                          // ),
                                           SizedBox(width: 16.w),
                                           Expanded(
                                             child: state is LoadingSendAnswer
