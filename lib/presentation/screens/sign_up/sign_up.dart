@@ -88,7 +88,7 @@ class SignUp extends StatelessWidget {
                           SizedBox(height: 16.w),
                           CustomEditText(
                             icon: Icons.phone_outlined,
-                            label: "الهاتف الجوال",
+                            label: "رقم الهاتف",
                             controller: cubit.phoneControler,
                             type: TextInputType.phone,
                             validator: locator<Validation>().defaultValidation,
@@ -155,7 +155,7 @@ class SignUp extends StatelessWidget {
                           ),
                           SizedBox(height: 16.w),
                           CustomDropDown(
-                            title: "القسم",
+                            title: "الفرع",
                             icon: Icons.school,
                             onItemSelected: (value) {
                               cubit.changeSelectedItemDropDown(
@@ -166,7 +166,7 @@ class SignUp extends StatelessWidget {
                             dropdownValue: cubit.subjectType,
                             validator: (value) {
                               if (value == null) {
-                                return 'الرجاء اختيار القسم';
+                                return 'الرجاء اختيار الفرع';
                               }
                               return null;
                             },
@@ -174,7 +174,7 @@ class SignUp extends StatelessWidget {
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/lock.png",
-                            label: "رقم المرور",
+                            label: "كلمة المرور",
                             controller: cubit.passwordController,
                             type: TextInputType.visiblePassword,
                             validator: locator<Validation>().validatePassword,
@@ -182,7 +182,7 @@ class SignUp extends StatelessWidget {
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/lock.png",
-                            label: "تأكيد رقم المرور",
+                            label: "تأكيد كلمة0100 المرور",
                             controller: cubit.passwordConfirmation,
                             type: TextInputType.visiblePassword,
                             validator: (p) {

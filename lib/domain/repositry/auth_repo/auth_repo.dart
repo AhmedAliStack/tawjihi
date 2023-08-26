@@ -29,6 +29,8 @@ class AuthRepo {
     );
     if (respose != null) {
       await locator<DataManager>().saveData(Statics.user, respose.data['data']);
+      await locator<DataManager>()
+          .saveData(Statics.token, respose.data['data']['token']);
       Utils.token = respose.data['data']['token'];
       Utils.userModel = UserModel.fromJson(respose.data['data']);
       return respose.data['data'];
@@ -47,6 +49,8 @@ class AuthRepo {
     );
     if (respose != null) {
       await locator<DataManager>().saveData(Statics.user, respose.data['data']);
+      await locator<DataManager>()
+          .saveData(Statics.token, respose.data['data']['token']);
       Utils.token = respose.data['data']['token'];
       Utils.userModel = UserModel.fromJson(respose.data['data']);
 

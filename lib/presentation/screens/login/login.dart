@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(height: 32.h),
                       CustomEditText(
                         icon: Icons.phone_outlined,
-                        label: "الهاتف الجوال",
+                        label: "رقم الهاتف",
                         controller: cubit.phoneControler,
                         type: TextInputType.phone,
                         validator: locator<Validation>().defaultValidation,
@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(height: 8.h),
                       CustomEditText(
                         img: "assets/icons/lock.png",
-                        label: "رقم المرور",
+                        label: "كلمة المرور",
                         controller: cubit.passwordController,
                         type: TextInputType.visiblePassword,
                         // validator: locator<Validation>().validatePassword,
@@ -125,54 +125,54 @@ class LoginScreen extends StatelessWidget {
                         },
                         title: "دخول",
                       ),
-                      SizedBox(height: 32.h),
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Divider(
-                              color: borderMainColor,
-                              thickness: 1,
-                            ),
-                          ),
-                          SizedBox(width: 8.w),
-                          const TextWidget(
-                            title: " أو عبر",
-                          ),
-                          SizedBox(width: 8.w),
-                          const Expanded(
-                            child: Divider(
-                              color: borderMainColor,
-                              thickness: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 26.w),
-                      ButtonWidget(
-                        backgroundButtonColor: Colors.white,
-                        withBorder: true,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Image.asset(
-                                  "assets/icons/google_icon.png",
-                                  width: 24.w,
-                                  height: 24.w,
-                                  alignment: AlignmentDirectional.center,
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              const Expanded(
-                                flex: 2,
-                                child: TextWidget(
-                                  title: "دخول عبر جوجل",
-                                  textAlign: TextAlign.start,
-                                ),
-                              ),
-                            ]),
-                      ),
-                      SizedBox(height: 32.h),
+                      SizedBox(height: 16.h),
+                      // Row(
+                      //   children: [
+                      //     const Expanded(
+                      //       child: Divider(
+                      //         color: borderMainColor,
+                      //         thickness: 1,
+                      //       ),
+                      //     ),
+                      //     SizedBox(width: 8.w),
+                      //     const TextWidget(
+                      //       title: " أو عبر",
+                      //     ),
+                      //     SizedBox(width: 8.w),
+                      //     const Expanded(
+                      //       child: Divider(
+                      //         color: borderMainColor,
+                      //         thickness: 1,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
+                      // SizedBox(height: 26.w),
+                      // ButtonWidget(
+                      //   backgroundButtonColor: Colors.white,
+                      //   withBorder: true,
+                      //   child: Row(
+                      //       mainAxisAlignment: MainAxisAlignment.center,
+                      //       children: [
+                      //         Expanded(
+                      //           child: Image.asset(
+                      //             "assets/icons/google_icon.png",
+                      //             width: 24.w,
+                      //             height: 24.w,
+                      //             alignment: AlignmentDirectional.center,
+                      //             fit: BoxFit.contain,
+                      //           ),
+                      //         ),
+                      //         const Expanded(
+                      //           flex: 2,
+                      //           child: TextWidget(
+                      //             title: "دخول عبر جوجل",
+                      //             textAlign: TextAlign.start,
+                      //           ),
+                      //         ),
+                      //       ]),
+                      // ),
+                      // SizedBox(height: 32.h),
                       Align(
                         alignment: Alignment.center,
                         child: GestureDetector(

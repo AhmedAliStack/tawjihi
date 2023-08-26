@@ -33,8 +33,9 @@ class _AchievementsState extends State<Achievements>
           Container(
             height: 0.3.sh,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.horizontal(
-                  left: Radius.circular(20.r), right: Radius.circular(20.r)),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20.r),
+                  bottomRight: Radius.circular(20.r)),
               gradient: const LinearGradient(colors: gradientButton),
             ),
             child: Padding(

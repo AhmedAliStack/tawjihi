@@ -135,7 +135,15 @@ class QuestionsReview extends StatelessWidget {
                                           ? const TextWidget(
                                               title: "لا يوجداسئلة حتى الاّن")
                                           : QuestionWidget(cubit: cubit),
-                                      SizedBox(height: 16.h),
+                                      SizedBox(height: 8.h),
+                                      HtmlWidget(
+                                          htmlData: cubit
+                                              .resultModel!
+                                              .data!
+                                              .answers![cubit.questionNumber]
+                                              .question!
+                                              .feedback!),
+                                      SizedBox(height: 8.h),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,

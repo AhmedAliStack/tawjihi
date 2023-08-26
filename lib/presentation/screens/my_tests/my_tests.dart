@@ -46,7 +46,7 @@ class MyTests extends StatelessWidget {
           ),
           Expanded(
             child: BlocProvider(
-              create: (context) => AchievementsCubit(),
+              create: (context) => AchievementsCubit()..getAchievements(),
               child: BlocConsumer<AchievementsCubit, AchievementsState>(
                 listener: (context, state) {},
                 builder: (context, state) {

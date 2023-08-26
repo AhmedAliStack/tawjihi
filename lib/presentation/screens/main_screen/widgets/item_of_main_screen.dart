@@ -8,14 +8,14 @@ class ItemOfMainScreen extends StatelessWidget {
   final String backImg;
   final String icon;
   final String title;
-  final String subTitle;
+  // final String subTitle;
   const ItemOfMainScreen({
     super.key,
     required this.colors,
     required this.backImg,
     required this.icon,
     required this.title,
-    required this.subTitle,
+    // required this.subTitle,
   });
 
   @override
@@ -69,14 +69,15 @@ class ItemOfMainScreen extends StatelessWidget {
                     TextWidget(
                       title: title,
                       fontWeight: FontWeight.w500,
+                      fontSize: 18.sp,
                       color: Colors.white,
                     ),
-                    SizedBox(height: 8.w),
-                    TextWidget(
-                      title: subTitle,
-                      fontSize: 10.sp,
-                      color: Colors.white,
-                    )
+                    // SizedBox(height: 8.w),
+                    // TextWidget(
+                    //   title: subTitle,
+                    //   fontSize: 10.sp,
+                    //   color: Colors.white,
+                    // )
                   ]),
             ),
             Icon(

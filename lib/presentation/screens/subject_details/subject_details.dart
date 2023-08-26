@@ -71,7 +71,7 @@ class SubjectDetails extends StatelessWidget {
                   ),
                   title: TextFormField(
                     decoration: const InputDecoration(
-                        hintText: 'اكتب بحثك هنا', border: InputBorder.none),
+                        hintText: 'البحث', border: InputBorder.none),
                     // onChanged: onSearchTextChanged,
                   ),
                   trailing: IconButton(

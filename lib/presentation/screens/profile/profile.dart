@@ -125,7 +125,7 @@ class Profile extends StatelessWidget {
                           SizedBox(height: 16.w),
                           CustomEditText(
                             icon: Icons.phone_outlined,
-                            label: "الهاتف الجوال",
+                            label: "رقم الهاتف",
                             controller: cubit.phoneControler,
                             type: TextInputType.phone,
                           ),
@@ -186,7 +186,7 @@ class Profile extends StatelessWidget {
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/lock.png",
-                            label: "رقم المرور",
+                            label: "كلمة المرور",
                             controller: cubit.passwordController,
                             type: TextInputType.visiblePassword,
                           ),
