@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
+import 'package:tawjihi_quiz/presentation/components/dropdown_widget.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/profile/cubit/profile_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/sign_up/widgets/custom_drop_down.dart';
@@ -57,52 +58,63 @@ class Profile extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          Stack(
-                              alignment: AlignmentDirectional.topEnd,
-                              children: [
-                                CircleAvatar(
-                                  radius: 50.r,
-                                  backgroundColor: Colors.transparent,
-                                  backgroundImage: const AssetImage(
-                                      'assets/images/gradient_circle.png'),
-                                  child: CircleAvatar(
-                                    radius: 45.r,
-                                    child: Container(
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Image.network(
-                                        Utils.userModel.user?.image ?? '',
-                                        width: 100.w,
-                                        height: 100.w,
-                                        fit: BoxFit.fill,
-                                        errorBuilder:
-                                            (context, error, stackTrace) =>
-                                                Image.asset(
-                                          'assets/images/teacher.png',
+                          GestureDetector(
+                            onTap: () async {
+                              final source =
+                                  await Utils.showImageSource(context);
+                              if (source == null) return;
+                              cubit.pickImage(source);
+                            },
+                            child: Stack(
+                                alignment: AlignmentDirectional.topEnd,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 50.r,
+                                    backgroundColor: Colors.transparent,
+                                    backgroundImage: const AssetImage(
+                                        'assets/images/gradient_circle.png'),
+                                    child: CircleAvatar(
+                                      radius: 45.r,
+                                      child: Container(
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Image.network(
+                                          Utils.userModel.user?.image ?? '',
                                           width: 100.w,
                                           height: 100.w,
                                           fit: BoxFit.fill,
+                                          errorBuilder:
+                                              (context, error, stackTrace) =>
+                                                  Image.asset(
+                                            'assets/images/teacher.png',
+                                            width: 100.w,
+                                            height: 100.w,
+                                            fit: BoxFit.fill,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8.w),
-                                  decoration: const BoxDecoration(
-                                    gradient:
-                                        LinearGradient(colors: gradientButton),
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Icon(
-                                    Icons.camera_alt_rounded,
-                                    color: Colors.white,
-                                    size: 16.w,
-                                  ),
-                                )
-                              ]),
+                                  Container(
+                                    padding: EdgeInsets.all(8.w),
+                                    decoration: const BoxDecoration(
+                                      gradient: LinearGradient(
+                                          colors: gradientButton),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Icon(
+                                      Icons.camera_alt_rounded,
+                                      color: Colors.white,
+                                      size: 16.w,
+                                    ),
+                                  )
+                                ]),
+                          ),
+                          state is LoadingImageState
+                              ? const LinearProgressIndicator()
+                              : const SizedBox(),
                           SizedBox(height: 16.h),
                           CustomEditText(
                             img: "assets/icons/profile-circle.png",
@@ -136,53 +148,149 @@ class Profile extends StatelessWidget {
                             controller: cubit.nationalityControler,
                           ),
                           SizedBox(height: 16.w),
-                          CustomDropDown(
-                            title: "اختر البد",
-                            icon: Icons.flag_outlined,
-                            onItemSelected: (value) {
-                              cubit.changeSelectedItemDropDown(
-                                  value: value, numer: 1);
-                            },
-                            dropdownItems:
-                                Utils.countries.map((e) => e.name!).toList(),
-                            dropdownValue: cubit.country,
-                          ),
+                          DropdownWidget(
+                              buttonTexthint: "اختر البلد",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.country?.name ?? "اختر البلد",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.countries
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                        value: item,
+                                        child: Text(
+                                          item.name ?? "",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryColor,
+                                          ),
+                                          // overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 1);
+                              }),
                           SizedBox(height: 16.w),
-                          CustomDropDown(
-                            title: "المنهج",
-                            icon: Icons.school,
-                            onItemSelected: (value) {
-                              cubit.changeSelectedItemDropDown(
-                                  value: value, numer: 2);
-                            },
-                            dropdownItems:
-                                Utils.manhags.map((e) => e.title!).toList(),
-                            dropdownValue: cubit.manhag,
-                          ),
+                          DropdownWidget(
+                              buttonTexthint: "اختر المنهج",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.manhag?.title ?? "اختر المنهج",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.manhags
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                        value: item,
+                                        child: Text(
+                                          item.title ?? "",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryColor,
+                                          ),
+                                          // overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 2);
+                              }),
                           SizedBox(height: 16.w),
-                          CustomDropDown(
-                            title: "الصف",
-                            icon: Icons.school,
-                            onItemSelected: (value) {
-                              cubit.changeSelectedItemDropDown(
-                                  value: value, numer: 3);
-                            },
-                            dropdownItems:
-                                Utils.terms.map((e) => e.title!).toList(),
-                            dropdownValue: cubit.term,
-                          ),
+                          DropdownWidget(
+                              buttonTexthint: "اختر الصف",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.term?.title ?? "اختر الصف",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.terms
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                        value: item,
+                                        child: Text(
+                                          item.title ?? "",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryColor,
+                                          ),
+                                          // overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 3);
+                              }),
                           SizedBox(height: 16.w),
-                          CustomDropDown(
-                            title: "القسم",
-                            icon: Icons.school,
-                            onItemSelected: (value) {
-                              cubit.changeSelectedItemDropDown(
-                                  value: value, numer: 4);
-                            },
-                            dropdownItems:
-                                Utils.subjectType.map((e) => e.title!).toList(),
-                            dropdownValue: cubit.subjectType,
-                          ),
+                          DropdownWidget(
+                              buttonTexthint: "اختر القسم",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.subjectType?.title ?? "اختر القسم",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.subjectType
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                        value: item,
+                                        child: Text(
+                                          item.title ?? "",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryColor,
+                                          ),
+                                          // overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 4);
+                              }),
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/lock.png",

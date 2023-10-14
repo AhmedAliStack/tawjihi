@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:tawjihi_quiz/core/utils/statics.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/data/local/local_hive.dart';
@@ -140,10 +144,48 @@ class Utils {
       final jsonUser = await locator<DataManager>().getData(Statics.user);
       final user = UserModel.fromJson(jsonUser);
       userModel = user;
+      token = user.token ?? '';
       return user;
     } catch (e) {
       debugPrint(e.toString());
       return null;
+    }
+  }
+
+  static Future<ImageSource?> showImageSource(BuildContext context) async {
+    if (Platform.isIOS) {
+      return showCupertinoModalPopup<ImageSource>(
+          context: context,
+          builder: (context) => CupertinoActionSheet(
+                actions: [
+                  CupertinoActionSheetAction(
+                    child: const Text('Camera'),
+                    onPressed: () =>
+                        Navigator.of(context).pop(ImageSource.camera),
+                  ), // CupertinoActionSheetAction
+                  CupertinoActionSheetAction(
+                    child: const Text('Gallery'),
+                    onPressed: () =>
+                        Navigator.of(context).pop(ImageSource.gallery),
+                  ), // CupertinoActionSheetAction
+                ],
+              ));
+    } else {
+      return showModalBottomSheet(
+          context: context,
+          builder: (context) =>
+              Column(mainAxisSize: MainAxisSize.min, children: [
+                ListTile(
+                  leading: const Icon(Icons.camera_alt),
+                  title: const Text('Camera'),
+                  onTap: () => Navigator.of(context).pop(ImageSource.camera),
+                ), // ListTile
+                ListTile(
+                  leading: const Icon(Icons.image),
+                  title: const Text('Gallery'),
+                  onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+                ) // ListTile
+              ]));
     }
   }
 }

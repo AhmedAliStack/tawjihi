@@ -1,11 +1,17 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:tawjihi_quiz/core/utils/statics.dart';
 import 'package:tawjihi_quiz/core/utils/utils.dart';
 import 'package:tawjihi_quiz/data/api/my_api.dart';
 import 'package:tawjihi_quiz/data/local/local_hive.dart';
+import 'package:tawjihi_quiz/domain/models/all_lists_model.dart';
 import 'package:tawjihi_quiz/domain/models/user_model.dart';
 import 'package:tawjihi_quiz/domain/repositry/auth_repo/auth_repo.dart';
+import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
 
 part 'profile_state.dart';
@@ -13,39 +19,29 @@ part 'profile_state.dart';
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitial());
   static ProfileCubit get(context) => BlocProvider.of(context);
-  String? country;
-  String? manhag;
-  String? term;
-  String? subjectType;
+  Countries? country;
+  Manhags? manhag;
+  Terms? term;
+  Types? subjectType;
 
   getAll() async {
     emit(LoadingProfileState());
     final respose = await AuthRepo.getAllLists();
     if (respose != null) {
       await Utils.getAllListModel();
-      country = Utils
-          .countries[Utils.countries.indexWhere((element) =>
-              element.id.toString() ==
-              Utils.userModel.user?.countryId.toString())]
-          .name
-          .toString();
-      manhag = Utils
-          .manhags[Utils.manhags.indexWhere((element) =>
-              element.id.toString() ==
-              Utils.userModel.user?.manhagId.toString())]
-          .title
-          .toString();
-      term = Utils
-          .terms[Utils.terms.indexWhere((element) =>
-              element.id.toString() == Utils.userModel.user?.termId.toString())]
-          .title
-          .toString();
-      subjectType = Utils
-          .subjectType[Utils.subjectType.indexWhere((element) =>
-              element.id.toString() ==
-              Utils.userModel.user?.subjectTypeId.toString())]
-          .title
-          .toString();
+      country = Utils.countries[Utils.countries.indexWhere((element) =>
+          element.id.toString() == Utils.userModel.user?.countryId.toString())];
+
+      manhag = Utils.manhags[Utils.manhags.indexWhere((element) =>
+          element.id.toString() == Utils.userModel.user?.manhagId.toString())];
+
+      term = Utils.terms[Utils.terms.indexWhere((element) =>
+          element.id.toString() == Utils.userModel.user?.termId.toString())];
+
+      subjectType = Utils.subjectType[Utils.subjectType.indexWhere((element) =>
+          element.id.toString() ==
+          Utils.userModel.user?.subjectTypeId.toString())];
+
       emit(SuccessGetAllLists());
     } else {
       emit(ErrorProfileState(error: respose.data['message']));
@@ -89,24 +85,10 @@ class ProfileCubit extends Cubit<ProfileState> {
       "email": emailControler.text.trim(),
       "phone": phoneControler.text.trim(),
       "nationality": nationalityControler.text.trim(),
-      "country_id": Utils
-          .countries[
-              Utils.countries.indexWhere((element) => element.name == country)]
-          .id
-          .toString(),
-      "manhag_id": Utils
-          .manhags[
-              Utils.manhags.indexWhere((element) => element.title == manhag)]
-          .id
-          .toString(),
-      "term_id": Utils
-          .terms[Utils.terms.indexWhere((element) => element.title == term)].id
-          .toString(),
-      "subject_type_id": Utils
-          .subjectType[Utils.subjectType
-              .indexWhere((element) => element.title == subjectType)]
-          .id
-          .toString(),
+      "country_id": country?.id.toString() ?? "",
+      "manhag_id": manhag?.id.toString() ?? "",
+      "term_id": term?.id.toString() ?? "",
+      "subject_type_id": subjectType?.id.toString() ?? "",
     };
     passwordController.text.isNotEmpty
         ? requestBody.addAll({"password": passwordController.text})
@@ -128,6 +110,59 @@ class ProfileCubit extends Cubit<ProfileState> {
       await locator<DataManager>().saveData(Statics.user, user);
       Utils.userModel = UserModel.fromJson(user);
       emit(SuccessProfileState());
+    } else {
+      emit(ErrorProfileState(error: respose?.data.toString()));
+    }
+  }
+
+  File? profileImage;
+
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
+      final imageTemporary = File(image.path);
+      profileImage = imageTemporary;
+      updateImage();
+    } catch (e) {
+      debugPrint('Failed to pick image: $e');
+    }
+  }
+
+  updateImage() async {
+    emit(LoadingImageState());
+    final respose = await locator<DioHelper>().postData(
+        url: "user/photo-update",
+        loading: false,
+        token: Utils.token,
+        isFile: true,
+        isForm: true,
+        body: {
+          'image': await MultipartFile.fromFile(profileImage!.path,
+              filename: profileImage?.path.split(Platform.pathSeparator).last),
+        });
+    if (respose?.statusCode == 200) {
+      await getProfile();
+      OverLays.toast(text: respose?.data['data']) ?? "تم تعديل الصورة بنجاح";
+    } else {
+      emit(ErrorProfileState(error: respose?.data.toString()));
+    }
+  }
+
+  getProfile() async {
+    final respose = await locator<DioHelper>().getData(
+      url: "user/profile",
+      loading: false,
+      token: Utils.token,
+    );
+    if (respose?.statusCode == 200) {
+      Map<String, dynamic> user = {
+        "token": Utils.token,
+        "user": respose?.data["data"],
+      };
+      await locator<DataManager>().saveData(Statics.user, user);
+      Utils.userModel = UserModel.fromJson(user);
+      emit(SuccessUpdateImage());
     } else {
       emit(ErrorProfileState(error: respose?.data.toString()));
     }

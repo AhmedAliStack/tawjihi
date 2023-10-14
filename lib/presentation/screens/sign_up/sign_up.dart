@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/core/utils/validation.dart';
 import 'package:tawjihi_quiz/presentation/components/alerts.dart';
+import 'package:tawjihi_quiz/presentation/components/dropdown_widget.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/sign_up/widgets/custom_drop_down.dart';
 import 'package:tawjihi_quiz/presentation/screens/sign_up/widgets/custom_edit_text.dart';
@@ -100,77 +101,150 @@ class SignUp extends StatelessWidget {
                             controller: cubit.nationalityControler,
                           ),
                           SizedBox(height: 16.w),
-                          CustomDropDown(
-                            title: "اختر البد",
-                            icon: Icons.flag_outlined,
-                            onItemSelected: (value) {
-                              cubit.changeSelectedItemDropDown(
-                                  value: value, numer: 1);
-                            },
-                            dropdownItems:
-                                Utils.countries.map((e) => e.name!).toList(),
-                            dropdownValue: cubit.country,
-                            validator: (value) {
-                              if (value == null) {
-                                return 'الرجاء اختيار البد';
-                              }
-                              return null;
-                            },
-                          ),
+                          DropdownWidget(
+                              buttonTexthint: "اختر البلد",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.country?.name ?? "اختر البلد",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.countries
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                        value: item,
+                                        child: Text(
+                                          item.name ?? "",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryColor,
+                                          ),
+                                          // overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 1);
+                              }),
                           SizedBox(height: 16.w),
-                          CustomDropDown(
-                            title: "المنهج",
-                            icon: Icons.school,
-                            onItemSelected: (value) {
-                              cubit.changeSelectedItemDropDown(
-                                  value: value, numer: 2);
-                            },
-                            dropdownItems:
-                                Utils.manhags.map((e) => e.title!).toList(),
-                            dropdownValue: cubit.manhag,
-                            validator: (value) {
-                              if (value == null) {
-                                return 'الرجاء اختيار المنهج';
-                              }
-                              return null;
-                            },
-                          ),
+                          DropdownWidget(
+                              buttonTexthint: "اختر المنهج",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.manhag?.title ?? "اختر المنهج",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.manhags
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                        value: item,
+                                        child: Text(
+                                          item.title ?? "",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryColor,
+                                          ),
+                                          // overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 2);
+                              }),
                           SizedBox(height: 16.w),
-                          CustomDropDown(
-                            title: "الصف",
-                            icon: Icons.school,
-                            onItemSelected: (value) {
-                              cubit.changeSelectedItemDropDown(
-                                  value: value, numer: 3);
-                            },
-                            dropdownItems:
-                                Utils.terms.map((e) => e.title!).toList(),
-                            dropdownValue: cubit.term,
-                            validator: (value) {
-                              if (value == null) {
-                                return 'الرجاء اختيار الصف';
-                              }
-                              return null;
-                            },
-                          ),
+                          DropdownWidget(
+                              buttonTexthint: "اختر الصف",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.term?.title ?? "اختر الصف",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.terms
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                        value: item,
+                                        child: Text(
+                                          item.title ?? "",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryColor,
+                                          ),
+                                          // overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 3);
+                              }),
                           SizedBox(height: 16.w),
-                          CustomDropDown(
-                            title: "الفرع",
-                            icon: Icons.school,
-                            onItemSelected: (value) {
-                              cubit.changeSelectedItemDropDown(
-                                  value: value, numer: 4);
-                            },
-                            dropdownItems:
-                                Utils.subjectType.map((e) => e.title!).toList(),
-                            dropdownValue: cubit.subjectType,
-                            validator: (value) {
-                              if (value == null) {
-                                return 'الرجاء اختيار الفرع';
-                              }
-                              return null;
-                            },
-                          ),
+                          DropdownWidget(
+                              buttonTexthint: "اختر القسم",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.subjectType?.title ?? "اختر القسم",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              buttonHeight: 60.h,
+                              customeItems: Utils.subjectType
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                        value: item,
+                                        child: Text(
+                                          item.title ?? "",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryColor,
+                                          ),
+                                          // overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 4);
+                              }),
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/lock.png",
@@ -182,7 +256,7 @@ class SignUp extends StatelessWidget {
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/lock.png",
-                            label: "تأكيد كلمة0100 المرور",
+                            label: "تأكيد كلمة المرور",
                             controller: cubit.passwordConfirmation,
                             type: TextInputType.visiblePassword,
                             validator: (p) {

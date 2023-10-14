@@ -42,7 +42,7 @@ class DropdownWidget extends StatelessWidget {
     this.dropdownButtonTextStyle,
     this.buttonBorderRaduis,
     this.buttonElevation = true,
-    this.buttonHeight = 50,
+    this.buttonHeight = 60,
     this.buttonWidth = 160,
     required this.buttonTexthint,
     this.buttonTexthintColor,
@@ -129,7 +129,7 @@ class DropdownWidget extends StatelessWidget {
       iconSize: 24.w,
       iconEnabledColor: primaryColor,
       iconDisabledColor: Colors.grey,
-      buttonHeight: buttonHeight,
+      buttonHeight: buttonHeight.h,
       buttonWidth: buttonWidth,
       buttonPadding:
           buttonPadding ?? const EdgeInsetsDirectional.only(start: 14, end: 14),

@@ -113,6 +113,16 @@ class QuestionsScreen extends StatelessWidget {
                                   debugPrint('Countdown Started');
                                 },
                                 onComplete: () {
+                                  Utils.openScreen(
+                                      context,
+                                      TestResult(
+                                        resultID: QuestionsCubit.get(context)
+                                                .questionsModel
+                                                ?.resultId ??
+                                            0,
+                                        title: examTitle,
+                                      ),
+                                      replacment: true);
                                   debugPrint('Countdown Ended');
                                 },
                                 onChange: (String timeStamp) {

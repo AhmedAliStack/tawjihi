@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tawjihi_quiz/domain/models/all_lists_model.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../domain/repositry/auth_repo/auth_repo.dart';
 
@@ -28,10 +29,10 @@ class SignUpCubit extends Cubit<SignUpState> {
       passwordController = TextEditingController(),
       passwordConfirmation = TextEditingController();
 
-  String? country;
-  String? manhag;
-  String? term;
-  String? subjectType;
+  Countries? country;
+  Manhags? manhag;
+  Terms? term;
+  Types? subjectType;
   changeSelectedItemDropDown({required value, required int numer}) {
     switch (numer) {
       case 1:
@@ -67,24 +68,10 @@ class SignUpCubit extends Cubit<SignUpState> {
       "nationality": nationalityControler.text.trim(),
       "password": passwordController.text,
       "password_confirmation": passwordConfirmation.text,
-      "country_id": Utils
-          .countries[
-              Utils.countries.indexWhere((element) => element.name == country)]
-          .id
-          .toString(),
-      "manhag_id": Utils
-          .manhags[
-              Utils.manhags.indexWhere((element) => element.title == manhag)]
-          .id
-          .toString(),
-      "term_id": Utils
-          .terms[Utils.terms.indexWhere((element) => element.title == term)].id
-          .toString(),
-      "subject_type_id": Utils
-          .subjectType[Utils.subjectType
-              .indexWhere((element) => element.title == subjectType)]
-          .id
-          .toString(),
+      "country_id": country?.id.toString() ?? "",
+      "manhag_id": manhag?.id.toString() ?? "",
+      "term_id": term?.id.toString() ?? "",
+      "subject_type_id": subjectType?.id.toString() ?? "",
     });
     if (respose != null) {
       emit(SuccessSignUpState());

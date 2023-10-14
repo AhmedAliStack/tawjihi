@@ -49,44 +49,47 @@ class SubjectDetails extends StatelessWidget {
         ),
         Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(bottom: 8.h, left: 16.w, right: 16.w),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.r)),
-                margin: EdgeInsets.only(top: 0.20.sh),
-                child: ListTile(
-                  leading: Container(
-                    padding: EdgeInsets.all(8.w),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13.r),
-                      color: borderMainColor,
-                    ),
-                    child: Image.asset(
-                      'assets/icons/fillter.png',
-                      width: 24.w,
-                      height: 24.w,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  title: TextFormField(
-                    decoration: const InputDecoration(
-                        hintText: 'البحث', border: InputBorder.none),
-                    // onChanged: onSearchTextChanged,
-                  ),
-                  trailing: IconButton(
-                    icon: Icon(
-                      Icons.search,
-                      color: const Color(0xffD4D4D4),
-                      size: 30.w,
-                    ),
-                    onPressed: () {
-                      // onSearchTextChanged('');
-                      // controller.clear();
-                    },
-                  ),
-                ),
-              ),
+            // Padding(
+            //   padding: EdgeInsets.only(bottom: 8.h, left: 16.w, right: 16.w),
+            //   child: Card(
+            //     shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(15.r)),
+            //     margin: EdgeInsets.only(top: 0.20.sh),
+            //     child: ListTile(
+            //       leading: Container(
+            //         padding: EdgeInsets.all(8.w),
+            //         decoration: BoxDecoration(
+            //           borderRadius: BorderRadius.circular(13.r),
+            //           color: borderMainColor,
+            //         ),
+            //         child: Image.asset(
+            //           'assets/icons/fillter.png',
+            //           width: 24.w,
+            //           height: 24.w,
+            //           fit: BoxFit.contain,
+            //         ),
+            //       ),
+            //       title: TextFormField(
+            //         decoration: const InputDecoration(
+            //             hintText: 'البحث', border: InputBorder.none),
+            //         // onChanged: onSearchTextChanged,
+            //       ),
+            //       trailing: IconButton(
+            //         icon: Icon(
+            //           Icons.search,
+            //           color: const Color(0xffD4D4D4),
+            //           size: 30.w,
+            //         ),
+            //         onPressed: () {
+            //           // onSearchTextChanged('');
+            //           // controller.clear();
+            //         },
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            SizedBox(
+              height: 0.25.sh,
             ),
             Expanded(
               child: BlocProvider(

@@ -71,11 +71,18 @@ class Settings extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: Row(
                           children: [
-                            Image.asset(
-                              "assets/images/teacher.png",
+                            Image.network(
+                              Utils.userModel.user?.image ?? '',
                               width: 50.w,
                               height: 50.w,
-                              fit: BoxFit.contain,
+                              fit: BoxFit.fill,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Image.asset(
+                                'assets/images/teacher.png',
+                                width: 50.w,
+                                height: 50.w,
+                                fit: BoxFit.fill,
+                              ),
                             ),
                             SizedBox(width: 12.w),
                             Expanded(
@@ -83,13 +90,19 @@ class Settings extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     TextWidget(
-                                      title: "محمد ابراهيم",
+                                      title: Utils.userModel.user?.name,
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black,
                                     ),
                                     TextWidget(
-                                      title: "الصف الاول الاعدادى",
+                                      title: Utils.terms
+                                          .map((e) => e.id.toString() ==
+                                                  Utils.userModel.user?.termId
+                                                      .toString()
+                                              ? e.title
+                                              : "")
+                                          .toString(),
                                       fontSize: 12.sp,
                                       color: const Color(0xff585858),
                                       maxLines: 1,
