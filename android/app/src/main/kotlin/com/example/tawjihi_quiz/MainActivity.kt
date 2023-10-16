@@ -1,4 +1,4 @@
-package com.example.tawjihi_quiz
+package com.tawjihi.tawjihi
 
 import io.flutter.embedding.android.FlutterActivity
 
