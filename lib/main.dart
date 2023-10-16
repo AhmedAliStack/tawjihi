@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
-                title: 'Tawjihi Quiz',
+                title: 'Tawjihi',
                 theme: ThemeData(
                     primaryColor: primaryColor,
                     fontFamily: 'Bahij',

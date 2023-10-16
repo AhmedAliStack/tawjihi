@@ -5,7 +5,6 @@ import 'package:tawjihi_quiz/core/utils/validation.dart';
 import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 import 'package:tawjihi_quiz/presentation/components/dropdown_widget.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
-import 'package:tawjihi_quiz/presentation/screens/sign_up/widgets/custom_drop_down.dart';
 import 'package:tawjihi_quiz/presentation/screens/sign_up/widgets/custom_edit_text.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
 import '../../../core/utils/utils.dart';

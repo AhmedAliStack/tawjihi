@@ -5,7 +5,6 @@ import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/dropdown_widget.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/profile/cubit/profile_cubit.dart';
-import 'package:tawjihi_quiz/presentation/screens/sign_up/widgets/custom_drop_down.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/button_widget.dart';
 import '../../components/text_widget.dart';
