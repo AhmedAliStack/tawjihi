@@ -152,11 +152,11 @@ class Settings extends StatelessWidget {
                         title: "عن التطبيق",
                       ),
                     ),
-                    SizedBox(height: 16.w),
-                    const ItemOfSettings(
-                      img: 'assets/icons/share_app.png',
-                      title: "مشاركة التطبيق",
-                    ),
+                    // SizedBox(height: 16.w),
+                    // const ItemOfSettings(
+                    //   img: 'assets/icons/share_app.png',
+                    //   title: "مشاركة التطبيق",
+                    // ),
                     SizedBox(height: 16.w),
                     GestureDetector(
                       onTap: () => Utils.openScreen(context, Support()),
