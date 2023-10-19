@@ -42,7 +42,7 @@ class ItemOfConverstions extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Image.network(
-                "",
+                data.teacher?.image ?? "",
                 width: 60.w,
                 height: 60.w,
                 fit: BoxFit.contain,
