@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:tawjihi_quiz/core/utils/statics.dart';
 import 'package:tawjihi_quiz/data/api/my_api.dart';
 import 'package:tawjihi_quiz/data/local/local_hive.dart';
@@ -22,9 +23,10 @@ class AuthRepo {
   }
 
   static loginRequest({required String phone, required String password}) async {
+    String? fcmToken = await FirebaseMessaging.instance.getToken();
     final respose = await locator<DioHelper>().postData(
       url: "user/login",
-      body: {'phone': phone, 'password': password},
+      body: {'phone': phone, 'password': password, 'fcm_token': fcmToken},
       loading: true,
     );
     if (respose != null) {
@@ -42,6 +44,8 @@ class AuthRepo {
   static signUpRequest({
     required Map<String, String> requestBody,
   }) async {
+    String? fcmToken = await FirebaseMessaging.instance.getToken();
+    requestBody.addAll({"fcm_token": fcmToken.toString()});
     final respose = await locator<DioHelper>().postData(
       url: "user/register",
       body: requestBody,

@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:tawjihi_quiz/presentation/screens/achievements/cubit/achievement
 import 'package:tawjihi_quiz/presentation/screens/notifications/cubit/notifications_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/splash/splash.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
+import 'package:tawjihi_quiz/push_notification_service.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
 import 'presentation/screens/converstions/cubit/converstions_cubit.dart';
 import 'presentation/screens/exams_by_teacher/cubit/exams_by_teacher_cubit.dart';
@@ -24,6 +26,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   WidgetsFlutterBinding.ensureInitialized();
+  await PushNotificationService().setupInteractedMessage();
   await EasyLocalization.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
@@ -36,6 +39,12 @@ void main() async {
       path: 'assets/translations',
       fallbackLocale: const Locale('ar'),
       child: const MyApp()));
+
+  RemoteMessage? initialMessage =
+      await FirebaseMessaging.instance.getInitialMessage();
+  if (initialMessage != null) {
+    // App received a notification when it was killed
+  }
 }
 
 class MyApp extends StatelessWidget {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "293665904856",
+    "project_id": "tawjihi-44045",
+    "storage_bucket": "tawjihi-44045.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293665904856:android:816bbc68597b1ccef8dfad",
+        "android_client_info": {
+          "package_name": "com.tawjihi.tawjihi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy_p-gM04E1IalAhqX9lQUAG8uEV3WSJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
