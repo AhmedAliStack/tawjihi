@@ -231,7 +231,7 @@ class Settings extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(13.r),
                                       color: borderMainColor,
                                     ),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.delete_rounded,
                                       color: Colors.grey,
                                     ),
@@ -241,7 +241,7 @@ class Settings extends StatelessWidget {
                                     color: const Color.fromRGBO(0, 0, 0, 1),
                                     fontSize: 16.sp,
                                   ),
-                                  trailing: Icon(
+                                  trailing: const Icon(
                                     Icons.arrow_forward_ios,
                                     size: 16,
                                     color: mauveColor,

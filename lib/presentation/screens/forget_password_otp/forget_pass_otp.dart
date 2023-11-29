@@ -105,7 +105,6 @@ class ForgetPassOtp extends StatelessWidget {
                               onCompleted: (v) {},
                               onChanged: (v) {
                                 cubit.otp = v;
-                                print(cubit.otp);
                               },
                             ),
                           ),

@@ -166,7 +166,7 @@ class _ChatState extends State<Chat> {
                                           TextWidget(
                                             title: timeString,
                                             fontSize: 12.sp,
-                                            color: Color(0xff505050),
+                                            color: const Color(0xff505050),
                                           ),
                                         ]),
                                       )
@@ -174,7 +174,7 @@ class _ChatState extends State<Chat> {
                                         TextWidget(
                                           title: timeString,
                                           fontSize: 12.sp,
-                                          color: Color(0xff505050),
+                                          color: const Color(0xff505050),
                                         ),
                                         SizedBox(width: 16.w),
                                         Expanded(
@@ -232,7 +232,7 @@ class _ChatState extends State<Chat> {
                                           // onChanged: (value) {
                                           //   msg = value;
                                           // },
-                                          decoration: new InputDecoration(
+                                          decoration: const InputDecoration(
                                               hintText: 'الرساله',
                                               border: InputBorder.none),
                                           // onChanged: onSearchTextChanged,
@@ -269,7 +269,7 @@ class _ChatState extends State<Chat> {
                                               msg: msg.text);
                                           msg.text = "";
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.send,
                                           color: Colors.white,
                                         ))),

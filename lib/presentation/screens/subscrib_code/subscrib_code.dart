@@ -184,7 +184,7 @@ class SubscribCode extends StatelessWidget {
                                                     size: 25.w,
                                                   ),
                                                   SizedBox(width: 4.w),
-                                                  TextWidget(
+                                                  const TextWidget(
                                                     title: "تفعيل الكود",
                                                     fontWeight: FontWeight.w500,
                                                     color: Colors.white,
@@ -207,10 +207,10 @@ class SubscribCode extends StatelessWidget {
                                               size: 25.w,
                                             ),
                                             SizedBox(width: 4.w),
-                                            TextWidget(
+                                            const TextWidget(
                                               title: "الغاء",
                                               fontWeight: FontWeight.w500,
-                                              color: const Color(0xff6D6D6D),
+                                              color: Color(0xff6D6D6D),
                                             )
                                           ]),
                                     ),

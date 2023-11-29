@@ -89,11 +89,7 @@ class HtmlWidget extends StatelessWidget {
       //   print(exception);
       // },
       onCssParseError: (css, messages) {
-        print("css that errored: $css");
-        print("error messages:");
-        for (var element in messages) {
-          print(element);
-        }
+        for (var element in messages) {}
         return null;
       },
     );

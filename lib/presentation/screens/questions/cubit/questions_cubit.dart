@@ -108,7 +108,6 @@ class QuestionsCubit extends Cubit<QuestionsState> {
         },
         token: Utils.token);
     if (respose?.statusCode == 200) {
-      print("send answer response : ${respose?.data}");
       if (questionsModel!.questions!.length - 1 == questionNumber) {
         emit(FinishExam());
         return;

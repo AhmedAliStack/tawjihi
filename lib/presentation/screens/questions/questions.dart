@@ -201,7 +201,7 @@ class QuestionsScreen extends StatelessWidget {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 16.0.w, vertical: 32.h),
                                         child: Row(children: [
-                                          Expanded(
+                                          const Expanded(
                                             child: SizedBox(),
                                           ),
                                           // Expanded(

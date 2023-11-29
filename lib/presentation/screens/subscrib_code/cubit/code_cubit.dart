@@ -16,7 +16,6 @@ class CodeCubit extends Cubit<CodeState> {
       "code": code,
     });
     if (respose?.statusCode == 200) {
-      print("sucess");
       emit(SuccessCodeState());
     } else {
       emit(ErrorCodeState(error: respose?.statusMessage));
@@ -30,8 +29,6 @@ class CodeCubit extends Cubit<CodeState> {
     final respose = await locator<DioHelper>()
         .postData(url: "user/request-code", loading: false, token: Utils.token);
     if (respose?.statusCode == 200) {
-      print(respose?.data);
-      print("sucess request");
       emit(SuccessRequestCode());
     } else {
       emit(ErrorCodeState(error: respose?.statusMessage));

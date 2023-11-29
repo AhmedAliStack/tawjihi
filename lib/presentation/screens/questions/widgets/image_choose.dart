@@ -30,8 +30,6 @@ class ImageChoose extends StatelessWidget {
           ),
           itemCount: answers.length,
           itemBuilder: (BuildContext context, int index) {
-            print(answers[index].key);
-
             return GestureDetector(
               onTap: () {
                 cubit.click

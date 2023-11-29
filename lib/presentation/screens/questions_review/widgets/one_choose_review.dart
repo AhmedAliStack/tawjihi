@@ -30,7 +30,6 @@ class OneChooseReview extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            print(answers[index].key);
             return ItemOfQuestions(
               title: answers[index].value.toString(),
 
