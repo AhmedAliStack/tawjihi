@@ -76,10 +76,10 @@ class Forgetpassword extends StatelessWidget {
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 16.0.w),
-                                child: TextWidget(
+                                child: const TextWidget(
                                   title:
                                       "رجاء، قم بإدخال البريد الالكتروني الخاص بك وسيتم إرسال رسالة بكود التفعيل",
-                                  color: const Color(0xff36476A),
+                                  color: Color(0xff36476A),
                                   fontWeight: FontWeight.w500,
                                   textAlign: TextAlign.center,
                                 ),

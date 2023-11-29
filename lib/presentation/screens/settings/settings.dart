@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/about_us/about_us.dart';
 import 'package:tawjihi_quiz/presentation/screens/settings/widgets/item_of_settings.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
@@ -166,6 +167,90 @@ class Settings extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16.w),
+                    Utils.token == ''
+                        ? const SizedBox()
+                        : Padding(
+                            padding: EdgeInsets.only(bottom: 16.w),
+                            child: Column(children: [
+                              GestureDetector(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => Dialog(
+                                            backgroundColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        15.0)),
+                                            alignment: Alignment.center,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(16.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  const TextWidget(
+                                                    title:
+                                                        "سيتم حذف الحساب خلال ٣٠ يوم من الان ومن الممكن استعاده الحساب والدخول من خلاله  قبل انتهاء المدة",
+                                                    maxLines: 6,
+                                                  ),
+                                                  SizedBox(
+                                                    height: 8.h,
+                                                  ),
+                                                  Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        ButtonWidget(
+                                                          title: "حذف",
+                                                          onTap: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                            cubit.logout();
+                                                          },
+                                                        ),
+                                                        SizedBox(
+                                                          width: 8.w,
+                                                        ),
+                                                        ButtonWidget(
+                                                          title: "إلغاء",
+                                                          onTap: () =>
+                                                              Navigator.pop(
+                                                                  context),
+                                                        )
+                                                      ])
+                                                ],
+                                              ),
+                                            ),
+                                          ));
+                                },
+                                child: ListTile(
+                                  leading: Container(
+                                    padding: EdgeInsets.all(8.w),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(13.r),
+                                      color: borderMainColor,
+                                    ),
+                                    child: const Icon(
+                                      Icons.delete_rounded,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  title: TextWidget(
+                                    title: "حذف الحساب",
+                                    color: const Color.fromRGBO(0, 0, 0, 1),
+                                    fontSize: 16.sp,
+                                  ),
+                                  trailing: const Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 16,
+                                    color: mauveColor,
+                                  ),
+                                ),
+                              ),
+                            ]),
+                          ),
+
                     // const ItemOfSettings(
                     //   img: 'assets/icons/lang.png',
                     //   title: "اللغة",

@@ -59,10 +59,10 @@ class Utils {
                   color: borderMainColor,
                   borderRadius: BorderRadius.circular(12.r),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.arrow_back_outlined,
                   color: mauveColor,
-                  size: 20,
+                  size: 20.w,
                 ),
               )
             : Image.asset(

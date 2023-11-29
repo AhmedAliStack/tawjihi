@@ -13,11 +13,11 @@ class HomeCubit extends Cubit<HomeState> {
   static HomeCubit get(context) => BlocProvider.of(context);
   int currentIndex = 2;
   List<Widget> screens = [
-    Converstions(),
-    Notifications(),
-    MainScreen(),
-    MyTeachers(),
-    Settings()
+    const Converstions(),
+    const Notifications(),
+    const MainScreen(),
+    const MyTeachers(),
+    const Settings()
   ];
   void changeIndex(int index) {
     currentIndex = index;

@@ -7,7 +7,7 @@ import '../../../components/dropdown_widget.dart';
 import '../../../components/text_widget.dart';
 
 class CustomDropDown extends StatelessWidget {
-  CustomDropDown(
+  const CustomDropDown(
       {Key? key,
       required this.title,
       required this.dropdownItems,

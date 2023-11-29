@@ -92,7 +92,7 @@ class Teacherinfo extends StatelessWidget {
                             },
                             child: Container(
                               padding: EdgeInsets.all(16.w),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: Color(0xff53D575),
                                   shape: BoxShape.circle),
                               child: Image.asset(
@@ -121,7 +121,7 @@ class Teacherinfo extends StatelessWidget {
                             },
                             child: Container(
                               padding: EdgeInsets.all(16.w),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: Color(0xff6B5AED),
                                   shape: BoxShape.circle),
                               child: Image.asset(
@@ -140,7 +140,7 @@ class Teacherinfo extends StatelessWidget {
                           ),
                           Container(
                             padding: EdgeInsets.all(16.w),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color(0xff048FFB),
                                 shape: BoxShape.circle),
                             child: Image.asset(

@@ -95,7 +95,7 @@ class TestResult extends StatelessWidget {
                                             "اجابابات صحيحة : ${cubit.resultModel?.data?.answerCount}",
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w500,
-                                        color: Color(0xff93D774),
+                                        color: const Color(0xff93D774),
                                       ),
                                       SizedBox(height: 8.h),
                                       TextWidget(
@@ -138,7 +138,7 @@ class TestResult extends StatelessWidget {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: TextWidget(
+                child: const TextWidget(
                   title: "اختبارات المادة",
                   fontWeight: FontWeight.w500,
                   color: Colors.white,

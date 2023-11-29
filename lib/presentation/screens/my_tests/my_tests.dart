@@ -25,7 +25,7 @@ class MyTests extends StatelessWidget {
                   bottomLeft: Radius.circular(10.r),
                   bottomRight: Radius.circular(10.r),
                 ),
-                gradient: LinearGradient(colors: gradientButton)),
+                gradient: const LinearGradient(colors: gradientButton)),
             child: Padding(
               padding: EdgeInsetsDirectional.only(start: 16.w, top: 16.h),
               child: Row(

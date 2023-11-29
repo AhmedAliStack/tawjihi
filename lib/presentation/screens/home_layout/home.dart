@@ -26,7 +26,7 @@ class Home extends StatelessWidget {
                   color: const Color(0xffDED6DE),
                   activeColor: secondaryColor,
                   initialActiveIndex: 2,
-                  height: 64.w,
+                  height: 68.w,
                   items: [
                     TabItem(
                       icon: Image.asset(
