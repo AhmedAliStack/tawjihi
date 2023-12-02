@@ -96,8 +96,11 @@ class SignUp extends StatelessWidget {
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/building.png",
-                            label: "الجنسية",
+                            label: "الجنسية(اختياري)",
                             controller: cubit.nationalityControler,
+                            validator: (p) {
+                              return;
+                            },
                           ),
                           SizedBox(height: 16.w),
                           DropdownWidget(

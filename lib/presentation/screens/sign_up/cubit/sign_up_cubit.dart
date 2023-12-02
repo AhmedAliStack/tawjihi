@@ -65,7 +65,9 @@ class SignUpCubit extends Cubit<SignUpState> {
           "${firstNameControler.text.trim()} ${lastNameControler.text.trim()}",
       "email": emailControler.text.trim(),
       "phone": phoneControler.text.trim(),
-      "nationality": nationalityControler.text.trim(),
+      "nationality": nationalityControler.text.trim().isEmpty
+          ? "empty"
+          : nationalityControler.text.trim(),
       "password": passwordController.text,
       "password_confirmation": passwordConfirmation.text,
       "country_id": country?.id.toString() ?? "",
