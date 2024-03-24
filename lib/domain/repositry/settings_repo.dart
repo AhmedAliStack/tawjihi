@@ -13,6 +13,7 @@ class SettingsRepo {
     );
     if (respose != null) {
       await locator<DataManager>().deleteData(Statics.user);
+      await locator<DataManager>().deleteData(Statics.token);
       Utils.token = "";
       return respose.data;
     } else {

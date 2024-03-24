@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,6 +35,6 @@ class TextWidget extends StatelessWidget {
         color: color ?? Theme.of(context).textTheme.bodyLarge!.color,
       ),
       textAlign: textAlign,
-    );
+    ).tr();
   }
 }

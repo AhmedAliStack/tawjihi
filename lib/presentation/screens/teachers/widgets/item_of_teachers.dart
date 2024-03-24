@@ -26,17 +26,20 @@ class ItemOfTeachers extends StatelessWidget {
       ),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
-        leading: Image.network(
-          "",
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(180.r),
+          child: Image.network(
+          cardData.image ?? "",
           width: 70.w,
           height: 70.w,
-          fit: BoxFit.contain,
+          fit: BoxFit.fill,
           errorBuilder: (context, error, stackTrace) => Image.asset(
             'assets/images/teacher.png',
             width: 70.w,
             height: 70.w,
             fit: BoxFit.contain,
           ),
+        ),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

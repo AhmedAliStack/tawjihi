@@ -6,6 +6,7 @@ import 'package:tawjihi_quiz/presentation/screens/about_us/about_us.dart';
 import 'package:tawjihi_quiz/presentation/screens/settings/widgets/item_of_settings.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/screens/support/support.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/alerts.dart';
 import '../../components/text_widget.dart';
@@ -136,7 +137,7 @@ class Settings extends StatelessWidget {
                       onTap: () => Utils.openScreen(context, const Profile()),
                       child: const ItemOfSettings(
                         img: 'assets/icons/profile.png',
-                        title: "الملف الشخصي",
+                        title: LocaleKeys.profile,
                       ),
                     ),
                     // SizedBox(height: 16.w),
@@ -150,7 +151,7 @@ class Settings extends StatelessWidget {
                       onTap: () => Utils.openScreen(context, const AboutUs()),
                       child: const ItemOfSettings(
                         img: 'assets/icons/about.png',
-                        title: "عن التطبيق",
+                        title: LocaleKeys.about,
                       ),
                     ),
                     // SizedBox(height: 16.w),
@@ -163,7 +164,7 @@ class Settings extends StatelessWidget {
                       onTap: () => Utils.openScreen(context, Support()),
                       child: const ItemOfSettings(
                         img: 'assets/icons/support.png',
-                        title: "الدعم الفنى",
+                        title: LocaleKeys.support,
                       ),
                     ),
                     SizedBox(height: 16.w),
@@ -191,7 +192,7 @@ class Settings extends StatelessWidget {
                                                 children: [
                                                   const TextWidget(
                                                     title:
-                                                        "سيتم حذف الحساب خلال ٣٠ يوم من الان ومن الممكن استعاده الحساب والدخول من خلاله  قبل انتهاء المدة",
+                                                        LocaleKeys.delete_msg,
                                                     maxLines: 6,
                                                   ),
                                                   SizedBox(
@@ -202,7 +203,7 @@ class Settings extends StatelessWidget {
                                                           MainAxisSize.min,
                                                       children: [
                                                         ButtonWidget(
-                                                          title: "حذف",
+                                                          title: LocaleKeys.delete,
                                                           onTap: () {
                                                             Navigator.pop(
                                                                 context);
@@ -213,7 +214,7 @@ class Settings extends StatelessWidget {
                                                           width: 8.w,
                                                         ),
                                                         ButtonWidget(
-                                                          title: "إلغاء",
+                                                          title: LocaleKeys.cancel,
                                                           onTap: () =>
                                                               Navigator.pop(
                                                                   context),
@@ -237,7 +238,7 @@ class Settings extends StatelessWidget {
                                     ),
                                   ),
                                   title: TextWidget(
-                                    title: "حذف الحساب",
+                                    title: LocaleKeys.delete_acc,
                                     color: const Color.fromRGBO(0, 0, 0, 1),
                                     fontSize: 16.sp,
                                   ),

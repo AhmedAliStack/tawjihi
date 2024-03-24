@@ -8,6 +8,7 @@ import 'package:tawjihi_quiz/domain/models/chat_model.dart';
 
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/chat/cubit/chat_cubit.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
@@ -232,8 +233,8 @@ class _ChatState extends State<Chat> {
                                           // onChanged: (value) {
                                           //   msg = value;
                                           // },
-                                          decoration: const InputDecoration(
-                                              hintText: 'الرساله',
+                                          decoration: InputDecoration(
+                                              hintText: LocaleKeys.message.tr(),
                                               border: InputBorder.none),
                                           // onChanged: onSearchTextChanged,
                                         ),

@@ -8,6 +8,7 @@ import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/exams_by_teacher/exams_by_teacher.dart';
 import 'package:tawjihi_quiz/presentation/screens/subscrib_code/cubit/code_cubit.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
@@ -39,10 +40,10 @@ class SubscribCode extends StatelessWidget {
             child: BlocConsumer<CodeCubit, CodeState>(
               listener: (context, state) {
                 if (state is ErrorCodeState) {
-                  OverLays.toast(text: state.error ?? "حدث خطأ حاول مرة اخرى");
+                  OverLays.toast(text: state.error ?? LocaleKeys.wrong_msg);
                 }
                 if (state is SuccessCodeState) {
-                  OverLays.toast(text: "تم الاشتراك بنجاح");
+                  OverLays.toast(text: LocaleKeys.success_sub);
 
                   Utils.openScreen(
                       context,
@@ -71,14 +72,14 @@ class SubscribCode extends StatelessWidget {
                                     ),
                                     SizedBox(height: 32.h),
                                     TextWidget(
-                                      title: "كود الاشتراك",
+                                      title: LocaleKeys.sub_code,
                                       fontSize: 18.sp,
                                       fontWeight: FontWeight.w500,
                                     ),
                                     SizedBox(height: 8.h),
                                     const TextWidget(
                                       title:
-                                          "قم بادخال كود الاشتراك المكون من اربعة ارقام",
+                                          LocaleKeys.enter_sub_code,
                                       textAlign: TextAlign.center,
                                     ),
                                     Padding(
@@ -135,7 +136,7 @@ class SubscribCode extends StatelessWidget {
                                             child: RichText(
                                               text: TextSpan(
                                                 text:
-                                                    "لم يتم ارسال الكود ؟    ",
+                                                    LocaleKeys.code_not_send,
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 16.sp,
@@ -143,7 +144,7 @@ class SubscribCode extends StatelessWidget {
                                                 ),
                                                 children: [
                                                   TextSpan(
-                                                      text: "إرسال مرة أخرى",
+                                                      text: LocaleKeys.resend_again,
                                                       style: TextStyle(
                                                           color: secondaryColor,
                                                           fontSize: 16.sp,
@@ -168,7 +169,7 @@ class SubscribCode extends StatelessWidget {
                                         : ButtonWidget(
                                             onTap: () => OverLays.toast(
                                                 text:
-                                                    " من فضلك ادخل كود التفعيل الصحيح"),
+                                                    LocaleKeys.enter_correct_code),
 
                                             // Utils.successDialog(
                                             //   context: context,
@@ -185,7 +186,7 @@ class SubscribCode extends StatelessWidget {
                                                   ),
                                                   SizedBox(width: 4.w),
                                                   const TextWidget(
-                                                    title: "تفعيل الكود",
+                                                    title: LocaleKeys.activate_code,
                                                     fontWeight: FontWeight.w500,
                                                     color: Colors.white,
                                                   )
@@ -208,7 +209,7 @@ class SubscribCode extends StatelessWidget {
                                             ),
                                             SizedBox(width: 4.w),
                                             const TextWidget(
-                                              title: "الغاء",
+                                              title: LocaleKeys.cancel,
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xff6D6D6D),
                                             )

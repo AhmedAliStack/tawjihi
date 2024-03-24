@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:tawjihi_quiz/presentation/screens/exam_description/exam_description.dart';
 import 'package:tawjihi_quiz/presentation/screens/exams_by_teacher/cubit/exams_by_teacher_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/subscrib_code/subscrib_code.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/text_widget.dart';
@@ -127,11 +129,11 @@ class _ExamsByTeacherState extends State<ExamsByTeacher> {
                         EdgeInsets.only(bottom: 16.h, right: 8.w, left: 8.w),
                     pagingController: cubit.pagingController,
                     builderDelegate: PagedChildBuilderDelegate<exams.Data>(
-                        noItemsFoundIndicatorBuilder: (context) => const Column(
+                        noItemsFoundIndicatorBuilder: (context) => Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 TextWidget(
-                                  title: "لا يوجد اختبارات متاحه ",
+                                  title: LocaleKeys.no_available_tests.tr(),
                                   color: secondaryColor,
                                   fontWeight: FontWeight.bold,
                                 )

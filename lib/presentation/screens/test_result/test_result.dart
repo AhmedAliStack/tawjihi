@@ -7,6 +7,7 @@ import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/questions_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/test_result/cubit/test_result_cubit.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
@@ -29,7 +30,7 @@ class TestResult extends StatelessWidget {
               children: [
                 Utils.backWidget(context, authScreensBack: true),
                 TextWidget(
-                  title: "نتيجة الاختبار",
+                  title: LocaleKeys.test_result,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
@@ -92,7 +93,7 @@ class TestResult extends StatelessWidget {
                                     children: [
                                       TextWidget(
                                         title:
-                                            "اجابابات صحيحة : ${cubit.resultModel?.data?.answerCount}",
+                                            "${LocaleKeys.correct_answers} ${cubit.resultModel?.data?.answerCount}",
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff93D774),
@@ -100,7 +101,7 @@ class TestResult extends StatelessWidget {
                                       SizedBox(height: 8.h),
                                       TextWidget(
                                         title:
-                                            "اجابة خاطئة : ${cubit.resultModel?.data?.wrongCount}",
+                                            "${LocaleKeys.wrong_answer} ${cubit.resultModel?.data?.wrongCount}",
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xffD40E0E),
@@ -118,7 +119,7 @@ class TestResult extends StatelessWidget {
                         ),
                         SizedBox(height: 32.w),
                         TextWidget(
-                          title: "تم انهاء الاختبار بنجاح",
+                          title: LocaleKeys.test_end_success,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w500,
                         ),
@@ -139,7 +140,7 @@ class TestResult extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 child: const TextWidget(
-                  title: "اختبارات المادة",
+                  title: LocaleKeys.material_tests,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
                 ),
@@ -157,7 +158,7 @@ class TestResult extends StatelessWidget {
                   },
                   backgroundButtonColor: borderMainColor,
                   child: const TextWidget(
-                    title: "مراجعة الاختبار",
+                    title: LocaleKeys.review_test,
                     fontWeight: FontWeight.w500,
                     color: Color(0xff6D6D6D),
                   ),

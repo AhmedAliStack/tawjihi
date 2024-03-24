@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:tawjihi_quiz/domain/models/achievements_model.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements/cubit/achievements_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements_details/achievements_details.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/text_widget.dart';
@@ -35,7 +37,7 @@ class MyTests extends StatelessWidget {
                     width: 32.w,
                   ),
                   TextWidget(
-                    title: "اختباراتى",
+                    title: LocaleKeys.my_tests.tr(),
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
@@ -65,8 +67,8 @@ class MyTests extends StatelessWidget {
                                 physics: const AlwaysScrollableScrollPhysics(),
                                 child: Padding(
                                   padding: EdgeInsets.only(top: 0.2.sh),
-                                  child: const TextWidget(
-                                      title: "لا يوجد اختبارات"),
+                                  child: TextWidget(
+                                      title: LocaleKeys.no_tests.tr()),
                                 )),
                           )
                         : RefreshIndicator(
@@ -85,7 +87,7 @@ class MyTests extends StatelessWidget {
                                         AchievementsDetails(
                                           id: subjects.subjectId!,
                                           myTestTitle:
-                                              "اختبار ${subjects.subject}",
+                                              "${LocaleKeys.test.tr()} ${subjects.subject}",
                                         ));
                                   },
                                   child: Container(
@@ -111,7 +113,7 @@ class MyTests extends StatelessWidget {
                                         ),
                                       ),
                                       title: TextWidget(
-                                        title: "اختبار ${subjects.subject}",
+                                        title: "${LocaleKeys.test.tr()} ${subjects.subject}",
                                         fontSize: 16.sp,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.black,

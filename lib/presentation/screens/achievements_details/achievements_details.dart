@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements_details/cubit/achievements_details_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements_details/widgets/item_of_details.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/questions_review.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
@@ -61,7 +63,7 @@ class AchievementsDetails extends StatelessWidget {
                           Expanded(
                             child: TextWidget(
                               title: myTestTitle ??
-                                  " الانجاز فى اختبارات ${cubit.achievementsDetailsModel?.data?.subject}",
+                                  "${LocaleKeys.achiv_tests.tr()} ${cubit.achievementsDetailsModel?.data?.subject}",
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
@@ -79,7 +81,7 @@ class AchievementsDetails extends StatelessWidget {
                           ? const SizedBox()
                           : AchievementsCard(
                               headerCard: true,
-                              subject: "نسبة الانجاز العامة",
+                              subject: LocaleKeys.achiv_percentage.tr(),
                               teacherName:
                                   cubit.achievementsDetailsModel?.data?.level ??
                                       "",
@@ -132,8 +134,8 @@ class AchievementsDetails extends StatelessWidget {
                                 itemCount: cubit.achievementsDetailsModel!.data!
                                     .exams!.length,
                               )
-                            : const Center(
-                                child: TextWidget(title: "لا يوجد اختبارات"),
+                            : Center(
+                                child: TextWidget(title: LocaleKeys.no_tests.tr()),
                               ),
                       ))
                     ]),

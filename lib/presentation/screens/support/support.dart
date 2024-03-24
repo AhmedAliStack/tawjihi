@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,7 @@ import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/sign_up/widgets/custom_edit_text.dart';
 import 'package:tawjihi_quiz/presentation/screens/support/cubit/support_cubit.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 
 class Support extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -25,7 +27,7 @@ class Support extends StatelessWidget {
         child: BlocConsumer<SupportCubit, SupportState>(
           listener: (context, state) {
             if (state is SuccessSupportState) {
-              OverLays.toast(text: "تم الارسال بنجاح");
+              OverLays.toast(text: LocaleKeys.success_send.tr());
               Navigator.pop(context);
             }
           },
@@ -70,7 +72,7 @@ class Support extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const TextWidget(
-                            title: "الدعم الفنى",
+                            title: LocaleKeys.support,
                             color: Colors.black,
                           ),
                           SizedBox(height: 8.h),
@@ -95,13 +97,13 @@ class Support extends StatelessWidget {
                       SizedBox(height: 16.h),
                       CustomEditText(
                         img: "assets/icons/support_field.png",
-                        label: "عنوان الرسالة",
+                        label: LocaleKeys.msg_address,
                         controller: cubit.titleControler,
                         validator: locator<Validation>().defaultValidation,
                       ),
                       SizedBox(height: 16.w),
                       EditTextWidget(
-                        label: "وصف المشكلة",
+                        label: LocaleKeys.problem_desc,
                         controller: cubit.megControler,
                         type: TextInputType.text,
                         validator: locator<Validation>().defaultValidation,
@@ -131,7 +133,7 @@ class Support extends StatelessWidget {
                         ),
                         SizedBox(width: 8.w),
                         TextWidget(
-                          title: "ارسال رسالة",
+                          title: LocaleKeys.msg_send,
                           fontSize: 16.sp,
                           color: Colors.white,
                         )

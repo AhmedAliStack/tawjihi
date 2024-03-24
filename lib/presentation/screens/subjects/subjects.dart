@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/subjects/cubit/subject_cubit.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
@@ -35,7 +36,7 @@ class Subjects extends StatelessWidget {
                     width: 32.w,
                   ),
                   TextWidget(
-                    title: "المواد الدراسية",
+                    title: LocaleKeys.materials,
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
@@ -126,7 +127,7 @@ class Subjects extends StatelessWidget {
                           ),
                         )
                       : const Center(
-                          child: TextWidget(title: "لا يوجد مواد متاحه"),
+                          child: TextWidget(title: LocaleKeys.no_materials),
                         ),
                 );
               },

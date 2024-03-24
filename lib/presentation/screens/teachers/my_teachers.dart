@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/teachers/cubit/my_teacher_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/teachers/widgets/item_of_teachers.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../teacher_info/teacher_info.dart';
@@ -41,7 +42,7 @@ class _MyTeachersState extends State<MyTeachers>
                     start: 16.w, top: 16.h, end: 16.w),
                 child: Center(
                   child: TextWidget(
-                    title: "مدرسيني",
+                    title: LocaleKeys.my_teachers,
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.black,
@@ -87,7 +88,7 @@ class _MyTeachersState extends State<MyTeachers>
                           )
                         : const Center(
                             child: TextWidget(
-                            title: "لا يوجد مدرسين",
+                            title: LocaleKeys.no_teachers,
                           )),
                   );
                 },

@@ -9,6 +9,7 @@ import 'package:tawjihi_quiz/presentation/screens/questions/widgets/image_choose
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/more_choose.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/one_choose.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/true_and_false.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/button_widget.dart';
@@ -82,7 +83,7 @@ class QuestionsScreen extends StatelessWidget {
                     child: cubit.questionsModel?.questions == null ||
                             cubit.questionsModel!.questions!.isEmpty
                         ? const Center(
-                            child: TextWidget(title: "لا يوجداسئلة حتى الاّن"))
+                            child: TextWidget(title: LocaleKeys.no_questions))
                         : Column(
                             children: [
                               CircularCountDownTimer(
@@ -158,8 +159,8 @@ class QuestionsScreen extends StatelessWidget {
                                           ? const SizedBox()
                                           : TextWidget(
                                               title: cubit.correctOrWrong!
-                                                  ? "اجابة صحيحة"
-                                                  : "اجابة خاطئة",
+                                                  ? LocaleKeys.correct_ans
+                                                  : LocaleKeys.wrong_ans,
                                               fontSize: 18.sp,
                                               fontWeight: FontWeight.w500,
                                               color: cubit.correctOrWrong!
@@ -172,7 +173,7 @@ class QuestionsScreen extends StatelessWidget {
                                               cubit.questionsModel!.questions!
                                                   .isEmpty
                                           ? const TextWidget(
-                                              title: "لا يوجداسئلة حتى الاّن")
+                                              title: LocaleKeys.no_questions)
                                           : QuestionWidget(cubit: cubit),
                                       SizedBox(height: 16.h),
                                       Row(
@@ -180,7 +181,7 @@ class QuestionsScreen extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           TextWidget(
-                                            title: "السؤال",
+                                            title: LocaleKeys.question,
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xffA647A4),
@@ -263,7 +264,7 @@ class QuestionsScreen extends StatelessWidget {
                                                                 .center,
                                                         children: [
                                                           const TextWidget(
-                                                            title: "التالى",
+                                                            title: LocaleKeys.next,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             color: Color(
@@ -319,7 +320,7 @@ class QuestionWidget extends StatelessWidget {
                     ? const MoreChoose()
                     : type == "3"
                         ? const ImageChoose()
-                        : const TextWidget(title: "لا يوجد اجابات"),
+                        : const TextWidget(title: LocaleKeys.no_ans),
       ],
     );
   }
