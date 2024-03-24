@@ -9,13 +9,13 @@ import 'package:tawjihi_quiz/bloc_observer.dart';
 import 'package:tawjihi_quiz/presentation/screens/about_us/cubit/about_us_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements/cubit/achievements_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/notifications/cubit/notifications_cubit.dart';
+import 'package:tawjihi_quiz/presentation/screens/settings/cubit/settings_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/splash/splash.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/push_notification_service.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
 import 'presentation/screens/converstions/cubit/converstions_cubit.dart';
 import 'presentation/screens/exams_by_teacher/cubit/exams_by_teacher_cubit.dart';
-import 'presentation/screens/subjects/cubit/subject_cubit.dart';
 import 'presentation/screens/teachers/cubit/my_teacher_cubit.dart';
 import 'presentation/screens/the_best/cubit/the_best_cubit.dart';
 
@@ -61,12 +61,14 @@ class MyApp extends StatelessWidget {
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: MultiBlocProvider(
               providers: [
+
+                BlocProvider(
+                    create: (context) => SettingsCubit()),
                 BlocProvider(
                     create: (context) => MyTeacherCubit()..getMyTeachers()),
                 BlocProvider(
                     create: (context) =>
                         NotificationsCubit()..getNotifications()),
-                BlocProvider(create: (context) => SubjectCubit()..getSubject()),
                 BlocProvider(
                     create: (context) =>
                         AchievementsCubit()..getAchievements()),

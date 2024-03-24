@@ -176,6 +176,42 @@ class SignUp extends StatelessWidget {
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
+                              buttonTexthint: "اختر المرحلة",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.country?.name ?? "اختر المرحلة",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.countries
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                value: item,
+                                child: Text(
+                                  item.name ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: primaryColor,
+                                  ),
+                                  // overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 1);
+                              }),
+                          SizedBox(height: 16.w),
+                          DropdownWidget(
                               buttonTexthint: "اختر الصف",
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
@@ -253,12 +289,14 @@ class SignUp extends StatelessWidget {
                             label: "كلمة المرور",
                             controller: cubit.passwordController,
                             type: TextInputType.visiblePassword,
+                            isPassword: true,
                             validator: locator<Validation>().validatePassword,
                           ),
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/lock.png",
                             label: "تأكيد كلمة المرور",
+                            isPassword: true,
                             controller: cubit.passwordConfirmation,
                             type: TextInputType.visiblePassword,
                             validator: (p) {

@@ -61,8 +61,8 @@ class EditTextWidget extends StatelessWidget {
     return TextFormField(
       maxLength: maxLengh,
       controller: controller,
-      maxLines: maxLines,
-      minLines: minLines,
+      maxLines: password ? 1 : maxLines,
+      minLines: password ? 1 : minLines,
       autofocus: !floatingHint,
       expands: expanded,
       textAlign: textalign,

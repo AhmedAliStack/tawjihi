@@ -139,9 +139,6 @@ class _ExamsByTeacherState extends State<ExamsByTeacher> {
                             ),
                         itemBuilder: (context, item, index) {
                           return GestureDetector(
-                            // onTap: () => BlocProvider.of<HomeCubit>(context)
-                            //     .changeCurrentIndex(2,
-                            //         chanceId: item.id as int),
                             onTap: () => cubit.activeExam == 0
                                 ? Utils.openScreen(
                                     context,

@@ -11,7 +11,7 @@ class SubjectModel {
     status = json['status'];
     if (json['data'] != null) {
       data = [];
-      json['data'].forEach((v) {
+      json['data']['data'].forEach((v) {
         data?.add(Data.fromJson(v));
       });
     }

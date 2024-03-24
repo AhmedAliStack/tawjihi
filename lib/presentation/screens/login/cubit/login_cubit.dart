@@ -20,6 +20,7 @@ class LoginCubit extends Cubit<LoginState> {
     final respose = await AuthRepo.loginRequest(
         phone: phoneControler.text.trim(), password: passwordController.text);
     if (respose != null) {
+      AuthRepo.getAllLists();
       emit(SuccessLoginState());
     } else {
       emit(ErrorLoginState(respose.data['message']));

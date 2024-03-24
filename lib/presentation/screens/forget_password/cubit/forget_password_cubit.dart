@@ -15,8 +15,12 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     final respose = await ForgetRepo.requiredMsgForgetpassword(
         email: emailControler.text.trim());
     if (respose != null) {
-      emit(SuccessForgetPasswordState(respose));
-      onSuccess?.call();
+      if (respose.toString().contains("The given data was invalid.")) {
+        emit(ErrorForgetPasswordState());
+      } else {
+        emit(SuccessForgetPasswordState(respose));
+        onSuccess?.call();
+      }
     } else {
       emit(ErrorForgetPasswordState());
     }

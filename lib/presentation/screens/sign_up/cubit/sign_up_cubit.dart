@@ -33,6 +33,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   Manhags? manhag;
   Terms? term;
   Types? subjectType;
+
   changeSelectedItemDropDown({required value, required int numer}) {
     switch (numer) {
       case 1:

@@ -77,6 +77,8 @@ class LoginScreen extends StatelessWidget {
                         label: "كلمة المرور",
                         controller: cubit.passwordController,
                         type: TextInputType.visiblePassword,
+                        isPassword: true,
+
                         // validator: locator<Validation>().validatePassword,
                       ),
                       SizedBox(height: 32.h),

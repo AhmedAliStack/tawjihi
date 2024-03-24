@@ -188,4 +188,13 @@ class Utils {
               ]));
     }
   }
+
+  static String getUserTerms() {
+    if (userModel.user == null) {
+      return "";
+    }
+    int userTermIndex = terms.indexWhere((element) =>
+        element.id.toString() == userModel.user!.termId.toString());
+    return userTermIndex == -1 ? "()" : (terms[userTermIndex].title ?? "");
+  }
 }
