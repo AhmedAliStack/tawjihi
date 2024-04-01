@@ -175,42 +175,42 @@ class SignUp extends StatelessWidget {
                                     value: value, numer: 2);
                               }),
                           SizedBox(height: 16.w),
-                          DropdownWidget(
-                              buttonTexthint: "اختر المرحلة",
-                              buttonWidth: double.infinity,
-                              customSelectedItem: Text(
-                                cubit.country?.name ?? "اختر المرحلة",
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: primaryColor,
-                                ),
-                                //overflow: TextOverflow.ellipsis,
-                              ),
-                              buttonElevation: false,
-                              customeItems: Utils.countries
-                                  .map((item) => DropdownMenuItem<dynamic>(
-                                value: item,
-                                child: Text(
-                                  item.name ?? "",
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: primaryColor,
-                                  ),
-                                  // overflow: TextOverflow.ellipsis,
-                                ),
-                              ))
-                                  .toList(),
-                              dropdownButtonTextStyle: TextStyle(
-                                fontSize: 14.sp,
-                              ),
-                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
-                              onItemSelected: (value) {
-                                cubit.changeSelectedItemDropDown(
-                                    value: value, numer: 1);
-                              }),
-                          SizedBox(height: 16.w),
+                          // DropdownWidget(
+                          //     buttonTexthint: "اختر المرحلة",
+                          //     buttonWidth: double.infinity,
+                          //     customSelectedItem: Text(
+                          //       cubit.country?.name ?? "اختر المرحلة",
+                          //       style: const TextStyle(
+                          //         fontSize: 14,
+                          //         fontWeight: FontWeight.bold,
+                          //         color: primaryColor,
+                          //       ),
+                          //       //overflow: TextOverflow.ellipsis,
+                          //     ),
+                          //     buttonElevation: false,
+                          //     customeItems: Utils.countries
+                          //         .map((item) => DropdownMenuItem<dynamic>(
+                          //       value: item,
+                          //       child: Text(
+                          //         item.name ?? "",
+                          //         style: const TextStyle(
+                          //           fontSize: 14,
+                          //           fontWeight: FontWeight.bold,
+                          //           color: primaryColor,
+                          //         ),
+                          //         // overflow: TextOverflow.ellipsis,
+                          //       ),
+                          //     ))
+                          //         .toList(),
+                          //     dropdownButtonTextStyle: TextStyle(
+                          //       fontSize: 14.sp,
+                          //     ),
+                          //     dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                          //     onItemSelected: (value) {
+                          //       cubit.changeSelectedItemDropDown(
+                          //           value: value, numer: 1);
+                          //     }),
+                          // SizedBox(height: 16.w),
                           DropdownWidget(
                               buttonTexthint: "اختر الصف",
                               buttonWidth: double.infinity,
