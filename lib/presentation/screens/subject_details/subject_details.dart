@@ -95,12 +95,12 @@ class SubjectDetails extends StatelessWidget {
             Expanded(
               child: BlocProvider(
                 create: (context) =>
-                    SubjectDetailsCubit()..getDetailsSubject(id),
+                SubjectDetailsCubit()..getDetailsSubject(id),
                 child: BlocConsumer<SubjectDetailsCubit, SubjectDetailsState>(
                   listener: (context, state) {},
                   builder: (context, state) {
                     SubjectDetailsCubit cubit =
-                        SubjectDetailsCubit.get(context);
+                    SubjectDetailsCubit.get(context);
                     return LoadingAndError(
                       isError: state is ErrorSubjectDetailsState,
                       errorMessage: state is ErrorSubjectDetailsState
@@ -109,37 +109,37 @@ class SubjectDetails extends StatelessWidget {
                       isLoading: state is LoadingSubjectDetailsState,
                       function: () async => cubit.getDetailsSubject(id),
                       child: cubit.subjectDetails != null &&
-                              cubit.subjectDetails!.isNotEmpty
+                          cubit.subjectDetails!.isNotEmpty
                           ? RefreshIndicator(
-                              onRefresh: () async =>
-                                  cubit.getDetailsSubject(id),
-                              child: ListView.separated(
-                                padding: EdgeInsets.all(16.w),
-                                separatorBuilder: (context, index) =>
-                                    SizedBox(height: 16.w),
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () => Utils.openScreen(
-                                        context,
-                                        ExamsByTeacher(
-                                          id: cubit.subjectDetails![index].id!,
-                                          rate: cubit
-                                              .subjectDetails![index].rate
-                                              .toString(),
-                                          teacherName: cubit
-                                                  .subjectDetails![index]
-                                                  .name ??
-                                              "",
-                                        )),
-                                    child: ItemOfTeachers(
-                                      cardColor: Colors.white,
-                                      cardData: cubit.subjectDetails![index],
-                                    ),
-                                  );
-                                },
-                                itemCount: cubit.subjectDetails!.length,
+                        onRefresh: () async =>
+                            cubit.getDetailsSubject(id),
+                        child: ListView.separated(
+                          padding: EdgeInsets.all(16.w),
+                          separatorBuilder: (context, index) =>
+                              SizedBox(height: 16.w),
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () => Utils.openScreen(
+                                  context,
+                                  ExamsByTeacher(
+                                    id: cubit.subjectDetails![index].id!,
+                                    rate: cubit
+                                        .subjectDetails![index].rate
+                                        .toString(),
+                                    teacherName: cubit
+                                        .subjectDetails![index]
+                                        .name ??
+                                        "",
+                                  )),
+                              child: ItemOfTeachers(
+                                cardColor: Colors.white,
+                                cardData: cubit.subjectDetails![index],
                               ),
-                            )
+                            );
+                          },
+                          itemCount: cubit.subjectDetails!.length,
+                        ),
+                      )
                           : const Center(
                               child: TextWidget(title: LocaleKeys.no_techers),
                             ),

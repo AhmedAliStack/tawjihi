@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/utils/utils.dart';
 import '../../main_screen/main_screen.dart';
 import '../../converstions/converstions.dart';
 import '../../notifications/notifications.dart';
@@ -22,5 +23,8 @@ class HomeCubit extends Cubit<HomeState> {
   void changeIndex(int index) {
     currentIndex = index;
     emit(ChangeScreensIndex());
+  }
+  void initData(){
+    Utils.getAllListModel();
   }
 }

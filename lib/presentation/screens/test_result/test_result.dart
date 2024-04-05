@@ -75,7 +75,7 @@ class TestResult extends StatelessWidget {
                                         0),
                                 backgroundWidth: 4.0,
                                 center: Text(
-                                  "${(cubit.resultModel?.data?.answerCount ?? 0) / (cubit.resultModel?.data?.totalQuestions ?? 0)}%",
+                                  "${((cubit.resultModel?.data?.answerCount ?? 0) / (cubit.resultModel?.data?.totalQuestions ?? 0)).toStringAsFixed(2)}%",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w500),
                                 ),

@@ -59,12 +59,17 @@ class TheBest extends StatelessWidget {
                 isLoading: state is LoadingTheBestState,
                 function: () async => cubit.getBestStudents(),
                 child: Padding(
-                  padding:
-                      EdgeInsets.only(top: 0.2.sh, left: 16.w, right: 16.w),
+                  padding: EdgeInsets.only(
+                    top: 0.2.sh,
+                    left: 16.w,
+                    right: 16.w,
+                  ),
                   child: Column(children: [
                     Container(
                       padding: EdgeInsets.symmetric(
-                          vertical: 32.w, horizontal: 16.w),
+                        vertical: 32.w,
+                        horizontal: 8.w
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25.r),
                         color: Colors.white,

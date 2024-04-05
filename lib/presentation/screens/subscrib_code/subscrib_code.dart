@@ -113,7 +113,7 @@ class SubscribCode extends StatelessWidget {
                                           animationDuration:
                                               const Duration(milliseconds: 300),
                                           enableActiveFill: true,
-                                          keyboardType: TextInputType.number,
+                                          keyboardType: TextInputType.text,
                                           textStyle: TextStyle(
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w500,

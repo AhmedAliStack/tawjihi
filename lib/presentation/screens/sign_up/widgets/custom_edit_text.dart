@@ -17,7 +17,7 @@ class CustomEditText extends StatelessWidget {
   final int? miniLine;
   final int? maxLines;
   final String? Function(String?)? validator;
-
+  final bool? isPassword;
   const CustomEditText({
     Key? key,
     this.img,
@@ -28,6 +28,7 @@ class CustomEditText extends StatelessWidget {
     this.validator,
     this.miniLine,
     this.maxLines,
+    this.isPassword,
   }) : super(key: key);
 
   @override
@@ -36,6 +37,7 @@ class CustomEditText extends StatelessWidget {
       label: label,
       controller: controller,
       type: type ?? TextInputType.text,
+      password: isPassword ?? false,
       prefixIcon: Row(mainAxisSize: MainAxisSize.min, children: [
         SizedBox(width: 8.w),
         icon != null
@@ -60,7 +62,7 @@ class CustomEditText extends StatelessWidget {
       ]),
       validator: validator ?? locator<Validation>().defaultValidation,
       minLines: miniLine,
-      maxLines: miniLine,
+      maxLines: maxLines,
     );
   }
 }

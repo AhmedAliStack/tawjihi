@@ -28,6 +28,7 @@ class Forgetpassword extends StatelessWidget {
           if (state is SuccessForgetPasswordState) {
             OverLays.toast(text: state.msg);
           }
+
         },
         builder: (context, state) {
           final cubit = ForgetPasswordCubit.get(context);

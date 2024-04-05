@@ -26,26 +26,28 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   getAll() async {
     emit(LoadingProfileState());
-    final respose = await AuthRepo.getAllLists();
-    if (respose != null) {
-      await Utils.getAllListModel();
-      country = Utils.countries[Utils.countries.indexWhere((element) =>
-          element.id.toString() == Utils.userModel.user?.countryId.toString())];
+    //final respose = await AuthRepo.getAllLists();
+    //if (true) {
+    await Utils.getAllListModel();
+    country = Utils.countries[Utils.countries.indexWhere((element) =>
+        element.id.toString() == Utils.userModel.user?.countryId.toString())];
 
-      manhag = Utils.manhags[Utils.manhags.indexWhere((element) =>
-          element.id.toString() == Utils.userModel.user?.manhagId.toString())];
+    manhag = Utils.manhags[Utils.manhags.indexWhere((element) =>
+        element.id.toString() == Utils.userModel.user?.manhagId.toString())];
 
-      term = Utils.terms[Utils.terms.indexWhere((element) =>
-          element.id.toString() == Utils.userModel.user?.termId.toString())];
+    term = Utils.terms[Utils.terms.indexWhere((element) =>
+        element.id.toString() == Utils.userModel.user?.termId.toString())];
 
-      subjectType = Utils.subjectType[Utils.subjectType.indexWhere((element) =>
-          element.id.toString() ==
-          Utils.userModel.user?.subjectTypeId.toString())];
+    subjectType = Utils.subjectType[Utils.subjectType.indexWhere((element) =>
+        element.id.toString() ==
+        Utils.userModel.user?.subjectTypeId.toString())];
 
-      emit(SuccessGetAllLists());
-    } else {
-      emit(ErrorProfileState(error: respose.data['message']));
-    }
+    emit(SuccessGetAllLists());
+    // } else {
+    //   emit(ErrorProfileState(error: "A"
+    //respose.data['message']
+    //   ));
+    // }
   }
 
   final firstNameControler =

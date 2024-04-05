@@ -13,7 +13,7 @@ class SubjectCubit extends Cubit<SubjectState> {
   getSubject() async {
     emit(LoadingSubjectState());
     final respose = await locator<DioHelper>()
-        .getData(url: "subjects", loading: false, token: Utils.token);
+        .getData(url: "subjects/${Utils.userModel.user!.termId}", loading: false, token: Utils.token);
     if (respose?.statusCode == 200) {
       subjectModel = SubjectModel.fromJson(respose?.data);
       emit(SuccessSubjectState());

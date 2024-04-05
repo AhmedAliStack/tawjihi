@@ -10,7 +10,9 @@ import '../../../core/utils/utils.dart';
 import '../../components/button_widget.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
+import '../settings/cubit/settings_cubit.dart';
 import '../sign_up/widgets/custom_edit_text.dart';
+import '../teachers/cubit/my_teacher_cubit.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -41,6 +43,9 @@ class Profile extends StatelessWidget {
               child: BlocConsumer<ProfileCubit, ProfileState>(
                 listener: (context, state) {
                   if (state is SuccessProfileState) {
+                    MyTeacherCubit.get(context).getMyTeachers();
+                    SettingsCubit.get(context)
+                        .emit(UpdateSuccessUserDataState());
                     Utils.successDialog(
                       context: context,
                       title: LocaleKeys.saved,
