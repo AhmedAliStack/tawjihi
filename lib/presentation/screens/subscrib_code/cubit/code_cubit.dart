@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tawjihi_quiz/core/utils/utils.dart';
 import 'package:tawjihi_quiz/data/api/my_api.dart';
@@ -8,17 +9,17 @@ part 'code_state.dart';
 class CodeCubit extends Cubit<CodeState> {
   CodeCubit() : super(CodeInitial());
   static CodeCubit get(context) => BlocProvider.of(context);
-
+  TextEditingController textEditingController = TextEditingController();
   sendCode(String code) async {
     emit(LoadingCodeState());
     final respose = await locator<DioHelper>()
         .postData(url: "user/code", loading: false, token: Utils.token, body: {
       "code": code,
     });
-    if (respose?.statusCode == 200) {
+    if (respose?.statusCode == 200 && respose?.data['status'] == 200) {
       emit(SuccessCodeState());
     } else {
-      emit(ErrorCodeState(error: respose?.statusMessage));
+      emit(ErrorCodeState(error: "خطا في الكود"));
     }
   }
 

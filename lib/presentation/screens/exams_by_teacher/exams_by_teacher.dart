@@ -146,6 +146,7 @@ class _ExamsByTeacherState extends State<ExamsByTeacher> {
                                       teacherName: widget.teacherName,
                                       rate: widget.rate,
                                       id: widget.id,
+                                      data: item,
                                     ),
                                     replacment: true)
                                 : Utils.openScreen(

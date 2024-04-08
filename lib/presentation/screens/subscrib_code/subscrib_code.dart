@@ -6,21 +6,25 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
-import 'package:tawjihi_quiz/presentation/screens/exams_by_teacher/exams_by_teacher.dart';
+import 'package:tawjihi_quiz/domain/models/exams_by_teacher_model.dart'
+    as exams;
 import 'package:tawjihi_quiz/presentation/screens/subscrib_code/cubit/code_cubit.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
+import '../exam_description/exam_description.dart';
 
 class SubscribCode extends StatelessWidget {
   final String teacherName;
   final String rate;
   final int id;
+  final exams.Data? data;
   const SubscribCode(
       {super.key,
       required this.teacherName,
       required this.rate,
-      required this.id});
+      required this.id,
+      this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +47,15 @@ class SubscribCode extends StatelessWidget {
                 }
                 if (state is SuccessCodeState) {
                   OverLays.toast(text: "تم الاشتراك بنجاح");
-
-                  Utils.openScreen(
-                      context,
-                      ExamsByTeacher(
-                          teacherName: teacherName, rate: rate, id: id),
-                      replacment: true);
+                  if (data != null) {
+                    Utils.openScreen(
+                        context,
+                        ExamDescription(
+                          examId: data!.id!,
+                          examTitle: data!.title ?? "",
+                          time: int.tryParse(data!.time ?? "0") ?? 0,
+                        ));
+                  }
                 }
               },
               builder: (context, state) {
@@ -87,6 +94,8 @@ class SubscribCode extends StatelessWidget {
                                       child: Directionality(
                                         textDirection: TextDirection.ltr,
                                         child: PinCodeTextField(
+                                          controller:
+                                              cubit.textEditingController,
                                           backgroundColor: Colors.white,
                                           appContext: context,
                                           length: 4,
@@ -166,14 +175,8 @@ class SubscribCode extends StatelessWidget {
                                         ? const Center(
                                             child: CircularProgressIndicator())
                                         : ButtonWidget(
-                                            onTap: () => OverLays.toast(
-                                                text:
-                                                    " من فضلك ادخل كود التفعيل الصحيح"),
-
-                                            // Utils.successDialog(
-                                            //   context: context,
-                                            //   title: "تم التفعيل بنجاح",
-                                            // ).then((value) => Navigator.pop(context)),
+                                            onTap: () => cubit.sendCode(cubit
+                                                .textEditingController.text),
                                             child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
