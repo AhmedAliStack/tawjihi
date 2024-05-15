@@ -84,7 +84,7 @@ class ImageWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Image.network(
-          "https://tawjihiquiz.com/uploaded/questions/$imageUrl",
+          "http://tawjihiquiz.com/uploaded/questions/$imageUrl",
           width: 50.w,
           height: 50.w,
           fit: BoxFit.contain,

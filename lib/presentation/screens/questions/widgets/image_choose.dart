@@ -66,37 +66,35 @@ class ImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(8.w),
-        width: 100.w,
-        height: 100.h,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: correct == null
-                ? 0.5
-                : correct!
-                    ? 3
-                    : 3,
-            color: correct == null
-                ? Colors.grey
-                : correct!
-                    ? const Color(0xff93D774)
-                    : const Color(0xffD40E0E),
-          ),
-          borderRadius: BorderRadius.circular(10),
+    return Container(
+      padding: EdgeInsets.all(8.w),
+      width: 100.w,
+      height: 100.h,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: correct == null
+              ? 0.5
+              : correct!
+                  ? 3
+                  : 3,
+          color: correct == null
+              ? Colors.grey
+              : correct!
+                  ? const Color(0xff93D774)
+                  : const Color(0xffD40E0E),
         ),
-        child: Image.network(
-          "https://tawjihiquiz.com/uploaded/questions/$imageUrl",
-          width: 50.w,
-          height: 50.w,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Image.network(
+        "http://tawjihiquiz.com/uploaded/questions/$imageUrl",
+        width: 50.w,
+        height: 50.w,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) => Image.asset(
+          'assets/images/teacher.png',
+          width: 30.w,
+          height: 30.w,
           fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) => Image.asset(
-            'assets/images/teacher.png',
-            width: 30.w,
-            height: 30.w,
-            fit: BoxFit.contain,
-          ),
         ),
       ),
     );

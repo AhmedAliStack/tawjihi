@@ -3,6 +3,7 @@ import 'package:tawjihi_quiz/core/utils/utils.dart';
 import 'package:tawjihi_quiz/data/api/my_api.dart';
 import 'package:tawjihi_quiz/domain/models/questions_model.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
+import 'package:collection/collection.dart';
 
 part 'questions_state.dart';
 
@@ -11,16 +12,27 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   static QuestionsCubit get(context) => BlocProvider.of(context);
   QuestionsModel? questionsModel;
   int questionNumber = 0;
+  List<String> reOrderAnswers = [];
+  List<String> correctAnswers = [];
   getQuestions(int examId) async {
     emit(LoadingQuestionsState());
-    final respose = await locator<DioHelper>()
-        .getData(url: "questions/exam/1", loading: false, token: Utils.token);
+    final respose = await locator<DioHelper>().getData(
+        url: "questions/exam/$examId", loading: false, token: Utils.token);
     if (respose?.statusCode == 200) {
       questionsModel = QuestionsModel.fromJson(respose?.data);
       emit(SuccessQuestionsState());
     } else {
       emit(ErrorQuestionsState(error: respose?.statusMessage));
     }
+  }
+
+  reorderAnswer(int newIndex, int oldIndex) {
+    if (newIndex > oldIndex) {
+      newIndex -= 1;
+    }
+    final String question = reOrderAnswers.removeAt(oldIndex);
+    reOrderAnswers.insert(newIndex, question);
+    emit(ReOrderAnswerDoneState());
   }
 
   bool? correctOrWrong;
@@ -45,6 +57,17 @@ class QuestionsCubit extends Cubit<QuestionsState> {
       click = true;
     } else {
       correctOrWrong = true;
+      click = true;
+    }
+    emit(AnswerDone());
+  }
+
+  reOrder() async {
+    if (const ListEquality().equals(reOrderAnswers, correctAnswers)) {
+      correctOrWrong = true;
+      click = true;
+    } else {
+      correctOrWrong = false;
       click = true;
     }
     emit(AnswerDone());
@@ -93,6 +116,8 @@ class QuestionsCubit extends Cubit<QuestionsState> {
       more = [];
       mainValue = [];
       mainKey = [];
+      correctAnswers = [];
+      reOrderAnswers = [];
       emit(SuccessSendAnswer());
       return;
     }
@@ -103,7 +128,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
           "user_id": Utils.userModel.user?.id,
           "question_id": questionId,
           "exam_id": questionsModel?.questions?[0].examId,
-          "answer": postAnswer,
+          "answer":reOrderAnswers.isNotEmpty? reOrderAnswers:postAnswer,
           "result_id": questionsModel?.resultId,
         },
         token: Utils.token);
@@ -118,6 +143,8 @@ class QuestionsCubit extends Cubit<QuestionsState> {
       more = [];
       mainValue = [];
       mainKey = [];
+      correctAnswers = [];
+      reOrderAnswers = [];
       emit(SuccessSendAnswer());
     } else {
       emit(ErrorSendAnswerState(error: respose?.statusMessage));

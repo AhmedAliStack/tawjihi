@@ -8,6 +8,7 @@ import 'package:tawjihi_quiz/presentation/screens/questions/widgets/html.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/image_choose.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/more_choose.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/one_choose.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions/widgets/reorder_answer.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/true_and_false.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
@@ -146,11 +147,26 @@ class QuestionsScreen extends StatelessWidget {
                                   physics: const BouncingScrollPhysics(),
                                   child: Column(
                                     children: [
-                                      HtmlWidget(
-                                          htmlData: cubit
-                                              .questionsModel!
-                                              .questions![cubit.questionNumber]
-                                              .question!),
+                                      cubit
+                                                  .questionsModel!
+                                                  .questions![
+                                                      cubit.questionNumber]
+                                                  .questionType ==
+                                              "3"
+                                          ? ImageWidget(
+                                              imageUrl: cubit
+                                                  .questionsModel!
+                                                  .questions![
+                                                      cubit.questionNumber]
+                                                  .question!,
+                                              correct: false,
+                                            )
+                                          : HtmlWidget(
+                                              htmlData: cubit
+                                                  .questionsModel!
+                                                  .questions![
+                                                      cubit.questionNumber]
+                                                  .question!),
                                       SizedBox(
                                         height: 16.h,
                                       ),
@@ -204,39 +220,6 @@ class QuestionsScreen extends StatelessWidget {
                                           const Expanded(
                                             child: SizedBox(),
                                           ),
-                                          // Expanded(
-                                          //   child: ButtonWidget(
-                                          //     onTap: () {
-                                          //       cubit.questionNumber == 0
-                                          //           ? null
-                                          //           : cubit.sendAnswer(
-                                          //               back: true,
-                                          //               questionId: cubit
-                                          //                   .questionsModel!
-                                          //                   .questions![cubit
-                                          //                       .questionNumber]
-                                          //                   .id!);
-                                          //     },
-                                          //     height: 50.w,
-                                          //     child: Row(
-                                          //         mainAxisAlignment:
-                                          //             MainAxisAlignment.center,
-                                          //         children: [
-                                          //           Icon(
-                                          //             Icons.arrow_back,
-                                          //             color: Colors.white,
-                                          //             size: 25.w,
-                                          //           ),
-                                          //           SizedBox(width: 4.w),
-                                          //           const TextWidget(
-                                          //             title: "السابق",
-                                          //             fontWeight:
-                                          //                 FontWeight.w500,
-                                          //             color: Colors.white,
-                                          //           )
-                                          //         ]),
-                                          //   ),
-                                          // ),
                                           SizedBox(width: 16.w),
                                           Expanded(
                                             child: state is LoadingSendAnswer
@@ -313,13 +296,24 @@ class QuestionWidget extends StatelessWidget {
       children: [
         type == "0"
             ? const TrueAndFalse()
-            : type == "1"
+            : type == "1" || type == "3"
                 ? const OneChoose()
                 : type == "2"
                     ? const MoreChoose()
-                    : type == "3"
+                    : type == "4"
                         ? const ImageChoose()
-                        : const TextWidget(title: "لا يوجد اجابات"),
+                        : type == "5"
+                            ? const ReorderAnswer()
+                            : const TextWidget(title: "لا يوجد اجابات"),
+        type == "5"
+            ? ButtonWidget(
+                title: "تاكيد الترتيب",
+                fontSize: 16.sp,
+                onTap: () {
+                  cubit.click ? null : cubit.reOrder();
+                },
+              )
+            : const SizedBox.shrink(),
       ],
     );
   }

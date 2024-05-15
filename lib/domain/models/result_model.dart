@@ -90,8 +90,8 @@ class Answers {
   }
   Question? question;
   Exam? exam;
-  String? answer;
-  String? correctAnswer;
+  dynamic answer;
+  dynamic correctAnswer;
   int? resultId;
 
   Map<String, dynamic> toJson() {
