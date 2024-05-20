@@ -16,10 +16,13 @@ class ImageChoose extends StatelessWidget {
       builder: (context, state) {
         QuestionsCubit cubit = QuestionsCubit.get(context);
         List<AnswerModel>? answers = [];
-        cubit.questionsModel!.questions![cubit.questionNumber].answer
-            .forEach((element) {
-          answers.add(AnswerModel.fromJson(element));
-        });
+        if (cubit.questionsModel!.questions![cubit.questionNumber].questionType ==
+            "4") {
+          cubit.questionsModel!.questions![cubit.questionNumber].answer
+              .forEach((element) {
+            answers.add(AnswerModel.fromJson(element));
+          });
+        }
         return GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

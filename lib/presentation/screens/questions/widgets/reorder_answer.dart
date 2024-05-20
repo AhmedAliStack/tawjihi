@@ -16,17 +16,20 @@ class ReorderAnswer extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         QuestionsCubit cubit = QuestionsCubit.get(context);
-        if (cubit.reOrderAnswers.isEmpty) {
-          cubit
-              .questionsModel!.questions![cubit.questionNumber].answer['answer']
-              .forEach((element) {
-            cubit.reOrderAnswers.add(element);
-          });
-          cubit.questionsModel!.questions![cubit.questionNumber]
-              .answer['correct_answer']
-              .forEach((element) {
-            cubit.correctAnswers.add(element);
-          });
+        if (cubit.questionsModel!.questions![cubit.questionNumber].questionType ==
+            "5") {
+          if (cubit.reOrderAnswers.isEmpty) {
+            cubit.questionsModel!.questions![cubit.questionNumber]
+                .answer['answer']
+                .forEach((element) {
+              cubit.reOrderAnswers.add(element);
+            });
+            cubit.questionsModel!.questions![cubit.questionNumber]
+                .answer['correct_answer']
+                .forEach((element) {
+              cubit.correctAnswers.add(element);
+            });
+          }
         }
 
         return ReorderableListView(
