@@ -87,7 +87,7 @@ class QuestionsScreen extends StatelessWidget {
                         : Column(
                             children: [
                               CircularCountDownTimer(
-                                duration: time,
+                                duration: time * 60,
                                 initialDuration: 0,
                                 controller: CountDownController(),
                                 width: 90.w,
@@ -141,6 +141,20 @@ class QuestionsScreen extends StatelessWidget {
                               ),
                               SizedBox(
                                 height: 32.h,
+                              ),
+                              Text(
+                                cubit
+                                        .questionsModel!
+                                        .questions![cubit.questionNumber]
+                                        .type ??
+                                    "",
+                                style: const TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                height: 8.h,
                               ),
                               Expanded(
                                 child: SingleChildScrollView(

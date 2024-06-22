@@ -39,6 +39,7 @@ class QuestionsReviewCubit extends Cubit<QuestionsReviewState> {
   }
 
   getQuestionsReview(int resultId) async {
+    print("XXXXXXXX $resultId");
     emit(LoadingQuestionsReviewState());
     final respose = await locator<DioHelper>()
         .getData(url: "answers/$resultId", loading: false, token: Utils.token);
