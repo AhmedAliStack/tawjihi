@@ -97,6 +97,7 @@ class QuestionsReview extends StatelessWidget {
                                                     .question!
                                                     .question!,
                                                 correct: false,
+                                                isQuestion: "question",
                                               ),
                                             )
                                           : HtmlWidget(

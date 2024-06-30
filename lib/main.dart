@@ -8,6 +8,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:tawjihi_quiz/bloc_observer.dart';
 import 'package:tawjihi_quiz/presentation/screens/about_us/cubit/about_us_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements/cubit/achievements_cubit.dart';
+import 'package:tawjihi_quiz/presentation/screens/chat/cubit/chat_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/notifications/cubit/notifications_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/settings/cubit/settings_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/splash/splash.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
 
                 BlocProvider(
                     create: (context) => SettingsCubit()),
+
                 BlocProvider(
                     create: (context) => MyTeacherCubit()..getMyTeachers()),
                 BlocProvider(
@@ -79,6 +81,8 @@ class MyApp extends StatelessWidget {
                 BlocProvider(
                     create: (context) =>
                         ConverstionsCubit()..getConverstions()),
+                BlocProvider(
+                    create: (context) => ChatCubit()),
               ],
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,

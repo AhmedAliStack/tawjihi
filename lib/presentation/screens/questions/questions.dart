@@ -174,6 +174,7 @@ class QuestionsScreen extends StatelessWidget {
                                                       cubit.questionNumber]
                                                   .question!,
                                               correct: false,
+                                              isQuestion: "question",
                                             )
                                           : HtmlWidget(
                                               htmlData: cubit

@@ -16,7 +16,8 @@ class ImageChoose extends StatelessWidget {
       builder: (context, state) {
         QuestionsCubit cubit = QuestionsCubit.get(context);
         List<AnswerModel>? answers = [];
-        if (cubit.questionsModel!.questions![cubit.questionNumber].questionType ==
+        if (cubit.questionsModel!.questions![cubit.questionNumber]
+                .questionType ==
             "4") {
           cubit.questionsModel!.questions![cubit.questionNumber].answer
               .forEach((element) {
@@ -60,11 +61,12 @@ class ImageChoose extends StatelessWidget {
 class ImageWidget extends StatelessWidget {
   final String? imageUrl;
   final bool? correct;
-
+  final String? isQuestion;
   const ImageWidget({
     Key? key,
     required this.imageUrl,
     this.correct,
+    this.isQuestion,
   }) : super(key: key);
 
   @override
@@ -89,7 +91,7 @@ class ImageWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Image.network(
-        "http://tawjihiquiz.com/uploaded/questions/$imageUrl",
+        "http://tawjihiquiz.com/uploaded/${isQuestion=="question" ? 'questions' : 'answers'}/$imageUrl",
         width: 50.w,
         height: 50.w,
         fit: BoxFit.contain,
