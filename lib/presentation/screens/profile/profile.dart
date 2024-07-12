@@ -225,10 +225,10 @@ class Profile extends StatelessWidget {
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: "اختر الصف",
+                              buttonTexthint: "اختر السنه",
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.term?.title ?? "اختر الصف",
+                                cubit.years?.title ?? "اختر السنه",
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -237,19 +237,19 @@ class Profile extends StatelessWidget {
                                 //overflow: TextOverflow.ellipsis,
                               ),
                               buttonElevation: false,
-                              customeItems: Utils.terms
+                              customeItems: Utils.years
                                   .map((item) => DropdownMenuItem<dynamic>(
-                                        value: item,
-                                        child: Text(
-                                          item.title ?? "",
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: primaryColor,
-                                          ),
-                                          // overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ))
+                                value: item,
+                                child: Text(
+                                  item.title ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: primaryColor,
+                                  ),
+                                  // overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                                   .toList(),
                               dropdownButtonTextStyle: TextStyle(
                                 fontSize: 14.sp,
@@ -257,8 +257,79 @@ class Profile extends StatelessWidget {
                               dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
                               onItemSelected: (value) {
                                 cubit.changeSelectedItemDropDown(
-                                    value: value, numer: 3);
+                                    value: value, numer: 5);
                               }),
+                          SizedBox(height: 16.w),
+                          DropdownWidget(
+                              buttonTexthint: "اختر المرحلة",
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.term?.title ?? "اختر المرحلة",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.termsByYearId
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                value: item,
+                                child: Text(
+                                  item.title ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: primaryColor,
+                                  ),
+                                  // overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
+                                  .toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 6);
+                              }),
+                          // DropdownWidget(
+                          //     buttonTexthint: "اختر الصف",
+                          //     buttonWidth: double.infinity,
+                          //     customSelectedItem: Text(
+                          //       cubit.term?.title ?? "اختر الصف",
+                          //       style: const TextStyle(
+                          //         fontSize: 14,
+                          //         fontWeight: FontWeight.bold,
+                          //         color: primaryColor,
+                          //       ),
+                          //       //overflow: TextOverflow.ellipsis,
+                          //     ),
+                          //     buttonElevation: false,
+                          //     customeItems: Utils.terms
+                          //         .map((item) => DropdownMenuItem<dynamic>(
+                          //               value: item,
+                          //               child: Text(
+                          //                 item.title ?? "",
+                          //                 style: const TextStyle(
+                          //                   fontSize: 14,
+                          //                   fontWeight: FontWeight.bold,
+                          //                   color: primaryColor,
+                          //                 ),
+                          //                 // overflow: TextOverflow.ellipsis,
+                          //               ),
+                          //             ))
+                          //         .toList(),
+                          //     dropdownButtonTextStyle: TextStyle(
+                          //       fontSize: 14.sp,
+                          //     ),
+                          //     dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                          //     onItemSelected: (value) {
+                          //       cubit.changeSelectedItemDropDown(
+                          //           value: value, numer: 3);
+                          //     }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
                               buttonTexthint: "اختر القسم",

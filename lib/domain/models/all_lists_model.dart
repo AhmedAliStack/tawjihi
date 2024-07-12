@@ -62,11 +62,18 @@ class ListData {
         types?.add(Types.fromJson(v));
       });
     }
+    if (json['years'] != null) {
+      years = [];
+      json['years'].forEach((v) {
+        years?.add(Years.fromJson(v));
+      });
+    }
   }
   List<Countries>? countries;
   List<Manhags>? manhags;
   List<Terms>? terms;
   List<Types>? types;
+  List<Years>? years;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -81,6 +88,9 @@ class ListData {
     }
     if (types != null) {
       map['types'] = types?.map((v) => v.toJson()).toList();
+    }
+    if (types != null) {
+      map['years'] = years?.map((v) => v.toJson()).toList();
     }
     return map;
   }
@@ -246,6 +256,80 @@ class Countries {
     map['name'] = name;
     map['flag'] = flag;
     map['deleted_at'] = deletedAt;
+    map['created_at'] = createdAt;
+    map['updated_at'] = updatedAt;
+    return map;
+  }
+}
+
+/// id : 1
+/// title : "المرحلة الثانوية"
+/// created_at : "2023-01-07T16:46:31.000000Z"
+/// updated_at : "2023-01-07T16:46:31.000000Z"
+
+class Years {
+  Years({
+    this.id,
+    this.title,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  Years.fromJson(dynamic json) {
+    id = json['id'];
+    title = json['title'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+  int? id;
+  String? title;
+  String? createdAt;
+  String? updatedAt;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['title'] = title;
+    map['created_at'] = createdAt;
+    map['updated_at'] = updatedAt;
+    return map;
+  }
+}
+// {
+// "id": 2,
+// "title": "الصف الثاني عشر",
+// "year_id": 1,
+// "created_at": "2023-05-14T11:56:14.000000Z",
+// "updated_at": "2023-05-14T11:56:14.000000Z",
+// "deleted_at": null
+// },
+
+class TermsById {
+  TermsById({
+    this.id,
+    this.title,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  TermsById.fromJson(dynamic json) {
+    id = json['id'];
+    title = json['title'];
+    yearId = json['year_id'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+  int? id;
+  int? yearId;
+  String? title;
+  String? createdAt;
+  String? updatedAt;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['title'] = title;
+    map['year_id'] = yearId;
     map['created_at'] = createdAt;
     map['updated_at'] = updatedAt;
     return map;

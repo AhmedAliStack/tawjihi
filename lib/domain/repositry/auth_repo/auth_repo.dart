@@ -22,6 +22,19 @@ class AuthRepo {
     }
   }
 
+  static getTermsIdLists({required int id}) async {
+    final respose = await locator<DioHelper>().getData(
+      url: "getters/terms/$id",
+      loading: false,
+      token: "893|QmSAcM4uz3yI1fWaQLp5mj1SiaqLVmY61Z97b8v6"
+    );
+    if (respose != null) {
+      return respose.data['data'];
+    } else {
+      return null;
+    }
+  }
+
   static loginRequest({required String phone, required String password}) async {
     String? fcmToken = await FirebaseMessaging.instance.getToken();
     final respose = await locator<DioHelper>().postData(

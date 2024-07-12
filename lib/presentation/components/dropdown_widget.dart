@@ -122,6 +122,7 @@ class DropdownWidget extends StatelessWidget {
       value: selectedItem,
       onChanged: onItemSelected,
       validator: validator,
+
       icon: Icon(
         Icons.keyboard_arrow_down,
         color: iconEnabledColor ?? mauveColor,
@@ -183,7 +184,7 @@ class DropdownWidget extends StatelessWidget {
       searchMatchFn: (item, searchValue) {
         return (item.value.toString().contains(searchValue));
       },
-      //This to clear the search value when you close the menu
+      //  This to clear the search value when you close the menu
       onMenuStateChange: (isOpen) {
         if (!isOpen) {
           textEditingController?.clear();
