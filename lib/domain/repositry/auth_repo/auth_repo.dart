@@ -26,7 +26,7 @@ class AuthRepo {
     final respose = await locator<DioHelper>().getData(
       url: "getters/terms/$id",
       loading: false,
-      token: "893|QmSAcM4uz3yI1fWaQLp5mj1SiaqLVmY61Z97b8v6"
+      token: "934|AwdPac99XEnsFZrHfSBmNmpta86o8XpIxini5sra"
     );
     if (respose != null) {
       return respose.data['data'];
