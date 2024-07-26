@@ -33,6 +33,8 @@ class SignUpCubit extends Cubit<SignUpState> {
   Manhags? manhag;
   Terms? term;
   Types? subjectType;
+  Years? years;
+  TermsById? termsById;
 
   changeSelectedItemDropDown({required value, required int numer}) {
     switch (numer) {
@@ -48,8 +50,27 @@ class SignUpCubit extends Cubit<SignUpState> {
       case 4:
         subjectType = value;
         break;
+      case 5:
+        years = value;
+        getTermsIdLists(id: value.id);
+        break;
+      case 6:
+        termsById = value;
+        break;
     }
     emit(ChangeSelectedItemDropDown());
+  }
+
+getTermsIdLists({required int id}) async {
+    final respose = await AuthRepo.getTermsIdLists(id: id);
+    if (respose != null) {
+      respose.forEach((v) {
+        Utils.termsByYearId.add(TermsById.fromJson(v));
+      });
+      emit(GetTermsByYearIdSuccess());
+    } else {
+      return null;
+    }
   }
 
   bool checkBox = false;
@@ -73,7 +94,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       "password_confirmation": passwordConfirmation.text,
       "country_id": country?.id.toString() ?? "",
       "manhag_id": manhag?.id.toString() ?? "",
-      "term_id": term?.id.toString() ?? "",
+      "term_id": termsById?.id.toString() ?? "",
       "subject_type_id": subjectType?.id.toString() ?? "",
     });
     if (respose != null) {

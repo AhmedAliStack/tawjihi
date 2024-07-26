@@ -8,6 +8,7 @@ import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/image
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/more_choose_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/one_choose_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/true_and_false_review.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/reorder_review.dart';
 import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
@@ -53,11 +54,7 @@ class QuestionsReview extends StatelessWidget {
               create: (context) =>
                   QuestionsReviewCubit()..getQuestionsReview(resultId),
               child: BlocConsumer<QuestionsReviewCubit, QuestionsReviewState>(
-                listener: (context, state) {
-                  // if (state is FinishExamReview) {
-                  //   Utils.openScreen(context, const Home(), remove: true);
-                  // }
-                },
+                listener: (context, state) {},
                 builder: (context, state) {
                   QuestionsReviewCubit cubit =
                       QuestionsReviewCubit.get(context);
@@ -73,18 +70,44 @@ class QuestionsReview extends StatelessWidget {
                             child: TextWidget(title: LocaleKeys.no_questions))
                         : Column(
                             children: [
+                              SizedBox(
+                                height: 32.h,
+                              ),
                               Expanded(
                                 child: SingleChildScrollView(
                                   physics: const BouncingScrollPhysics(),
                                   child: Column(
                                     children: [
-                                      HtmlWidget(
-                                          htmlData: cubit
-                                              .resultModel!
-                                              .data!
-                                              .answers![cubit.questionNumber]
-                                              .question!
-                                              .question!),
+                                      cubit
+                                                  .resultModel!
+                                                  .data!
+                                                  .answers![
+                                                      cubit.questionNumber]
+                                                  .question!
+                                                  .questionType ==
+                                              "3"
+                                          ? SizedBox(
+                                              width: 100.w,
+                                              height: 100.h,
+                                              child: ImageWidget(
+                                                imageUrl: cubit
+                                                    .resultModel!
+                                                    .data!
+                                                    .answers![
+                                                        cubit.questionNumber]
+                                                    .question!
+                                                    .question!,
+                                                correct: false,
+                                              ),
+                                            )
+                                          : HtmlWidget(
+                                              htmlData: cubit
+                                                  .resultModel!
+                                                  .data!
+                                                  .answers![
+                                                      cubit.questionNumber]
+                                                  .question!
+                                                  .question!),
                                       SizedBox(
                                         height: 16.h,
                                       ),
@@ -262,13 +285,15 @@ class QuestionWidget extends StatelessWidget {
       children: [
         type == "0"
             ? const TrueAndFalseReview()
-            : type == "1"
+            : type == "1" || type == "3"
                 ? const OneChooseReview()
                 : type == "2"
                     ? const MoreChooseReview()
-                    : type == "3"
+                    : type == "4"
                         ? const ImageChooseReview()
-                        : const TextWidget(title: LocaleKeys.no_ans),
+                        : type == "5"
+                            ? const ReOrderReview()
+                            : const TextWidget(title: LocaleKeys.no_ans),
       ],
     );
   }

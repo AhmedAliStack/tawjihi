@@ -48,6 +48,8 @@ abstract class  LocaleKeys {
   static const choose_material = 'choose_material';
   static const choose_class = 'choose_class';
   static const choose_section = 'choose_section';
+  static const choose_year = 'choose_year';
+  static const choose_term = 'choose_term';
   static const save = 'save';
   static const no_questions = 'no_questions';
   static const correct_ans = 'correct_ans';

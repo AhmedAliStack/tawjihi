@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: prefer_single_quotes
+// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters
 
 import 'dart:ui';
 
@@ -137,7 +137,7 @@ static const Map<String,dynamic> ar = {
   "test_instructions": "تعليمات الاختبار",
   "start_now": "ابدأ الاختبار الان",
   "no_available_tests": "لا يوجد اختبارات متاحه ",
-  "retrive": "استعادة",
+  "retrieve": "استعادة",
   "password": "كلمة المرور",
   "pass_instr": "رجاء، قم بإدخال البريد الالكتروني الخاص بك وسيتم إرسال رسالة بكود التفعيل",
   "email": "البريد الالكتروني",

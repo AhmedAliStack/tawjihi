@@ -86,11 +86,12 @@ class Teacherinfo extends StatelessWidget {
                             onTap: () async {
                               int phoneNumber = teacherData?.phone ?? 0;
                               final url = 'tel:$phoneNumber';
-                              if (await canLaunchUrl(Uri.parse(url))) {
-                                await launchUrl(Uri.parse(url));
-                              } else {
-                                throw 'Unable to open phone number';
-                              }
+                              await launchUrl(Uri.parse(url));
+                              // if (await canLaunchUrl(Uri.parse(url))) {
+                              //   await launchUrl(Uri.parse(url));
+                              // } else {
+                              //   throw 'Unable to open phone number';
+                              // }
                             },
                             child: Container(
                               padding: EdgeInsets.all(16.w),
@@ -115,11 +116,12 @@ class Teacherinfo extends StatelessWidget {
                             onTap: () async {
                               int phoneNumber = teacherData?.phone ?? 0;
                               final url = 'sms:$phoneNumber';
-                              if (await canLaunchUrl(Uri.parse(url))) {
-                                await launchUrl(Uri.parse(url));
-                              } else {
-                                throw 'Unable to open sms';
-                              }
+                              launchUrl(Uri.parse(url));
+                              // if (await canLaunchUrl(Uri.parse(url))) {
+                              //   await launchUrl(Uri.parse(url));
+                              // } else {
+                              //   throw 'Unable to open sms';
+                              // }
                             },
                             child: Container(
                               padding: EdgeInsets.all(16.w),
@@ -140,16 +142,23 @@ class Teacherinfo extends StatelessWidget {
                             endIndent: 8.h,
                             indent: 8.h,
                           ),
-                          Container(
-                            padding: EdgeInsets.all(16.w),
-                            decoration: const BoxDecoration(
-                                color: Color(0xff048FFB),
-                                shape: BoxShape.circle),
-                            child: Image.asset(
-                              "assets/icons/website.png",
-                              width: 30.w,
-                              height: 30.w,
-                              fit: BoxFit.contain,
+                          GestureDetector(
+                            onTap: (){
+                              String email = teacherData?.email ?? "";
+                              final url = 'mailto:$email';
+                              launchUrl(Uri.parse(url));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(16.w),
+                              decoration: const BoxDecoration(
+                                  color: Color(0xff048FFB),
+                                  shape: BoxShape.circle),
+                              child: Image.asset(
+                                "assets/icons/website.png",
+                                width: 30.w,
+                                height: 30.w,
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           ),
                         ]),

@@ -1,4 +1,5 @@
 // because Directionality of otp ltr agnoire with tr() method i use as tr
+import 'package:easy_localization/easy_localization.dart' as local;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,22 +7,26 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
-import 'package:tawjihi_quiz/presentation/screens/exams_by_teacher/exams_by_teacher.dart';
+import 'package:tawjihi_quiz/domain/models/exams_by_teacher_model.dart'
+as exams;
 import 'package:tawjihi_quiz/presentation/screens/subscrib_code/cubit/code_cubit.dart';
 import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
+import '../exam_description/exam_description.dart';
 
 class SubscribCode extends StatelessWidget {
   final String teacherName;
   final String rate;
   final int id;
+  final exams.Data? data;
   const SubscribCode(
       {super.key,
       required this.teacherName,
       required this.rate,
-      required this.id});
+      required this.id,
+        this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +50,15 @@ class SubscribCode extends StatelessWidget {
                 if (state is SuccessCodeState) {
                   OverLays.toast(text: LocaleKeys.success_sub);
 
-                  Utils.openScreen(
-                      context,
-                      ExamsByTeacher(
-                          teacherName: teacherName, rate: rate, id: id),
-                      replacment: true);
+                  if (data != null) {
+                    Utils.openScreen(
+                        context,
+                        ExamDescription(
+                          examId: data!.id!,
+                          examTitle: data!.title ?? "",
+                          time: int.tryParse(data!.time ?? "0") ?? 0,
+                        ));
+                  }
                 }
               },
               builder: (context, state) {
@@ -88,6 +97,8 @@ class SubscribCode extends StatelessWidget {
                                       child: Directionality(
                                         textDirection: TextDirection.ltr,
                                         child: PinCodeTextField(
+                                          controller:
+                                          cubit.textEditingController,
                                           backgroundColor: Colors.white,
                                           appContext: context,
                                           length: 4,
@@ -136,7 +147,7 @@ class SubscribCode extends StatelessWidget {
                                             child: RichText(
                                               text: TextSpan(
                                                 text:
-                                                    LocaleKeys.code_not_send,
+                                                    LocaleKeys.code_not_send.tr(),
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 16.sp,
@@ -144,7 +155,7 @@ class SubscribCode extends StatelessWidget {
                                                 ),
                                                 children: [
                                                   TextSpan(
-                                                      text: LocaleKeys.resend_again,
+                                                      text: LocaleKeys.resend_again.tr(),
                                                       style: TextStyle(
                                                           color: secondaryColor,
                                                           fontSize: 16.sp,
@@ -167,9 +178,8 @@ class SubscribCode extends StatelessWidget {
                                         ? const Center(
                                             child: CircularProgressIndicator())
                                         : ButtonWidget(
-                                            onTap: () => OverLays.toast(
-                                                text:
-                                                    LocaleKeys.enter_correct_code),
+                                            onTap: () => cubit.sendCode(cubit
+                                                .textEditingController.text),
 
                                             // Utils.successDialog(
                                             //   context: context,

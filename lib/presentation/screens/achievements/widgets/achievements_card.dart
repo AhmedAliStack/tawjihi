@@ -85,13 +85,13 @@ class AchievementsCard extends StatelessWidget {
             lineWidth: 6.0,
             animation: true,
             percent: percentHeaderCard != null
-                ? percentHeaderCard! / 100
+                ? double.parse((percentHeaderCard! / 100).toStringAsFixed(2))
                 : percentCard != null
-                    ? percentCard! / 100
+                    ? double.parse((percentCard! / 100).toStringAsFixed(2))
                     : 0,
             backgroundWidth: 4.0,
             center: Text(
-                "${percentHeaderCard != null ? percentHeaderCard.toString() : percentCard} %"),
+                "${percentHeaderCard != null ? percentHeaderCard?.toStringAsFixed(2) : percentCard?.toStringAsFixed(2)} %"),
             circularStrokeCap: CircularStrokeCap.round,
             backgroundColor: borderMainColor,
             rotateLinearGradient: true,

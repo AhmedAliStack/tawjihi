@@ -20,7 +20,8 @@ class Utils {
   static List<Manhags> manhags = [];
   static List<Terms> terms = [];
   static List<Types> subjectType = [];
-
+  static List<Years> years = [];
+  static List<TermsById> termsByYearId = [];
   static void openScreen(BuildContext? context, Widget screen,
       {bool replacment = false, bool remove = false}) {
     if (context == null) {
@@ -132,6 +133,7 @@ class Utils {
       manhags = lists.data?.manhags ?? [];
       terms = lists.data?.terms ?? [];
       subjectType = lists.data?.types ?? [];
+      years = lists.data?.years ?? [];
       return lists;
     } catch (e) {
       debugPrint(e.toString());

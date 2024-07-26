@@ -8,6 +8,8 @@ class LoadingQuestionsState extends QuestionsState {}
 
 class SuccessQuestionsState extends QuestionsState {}
 
+class ReOrderAnswerDoneState extends QuestionsState {}
+
 class ErrorQuestionsState extends QuestionsState {
   final String? error;
   ErrorQuestionsState({this.error});

@@ -18,3 +18,4 @@ class ErrorSignUpState extends SignUpState {
 class ChangeSelectedItemDropDown extends SignUpState {}
 
 class ChangeCheckBox extends SignUpState {}
+class GetTermsByYearIdSuccess extends SignUpState {}

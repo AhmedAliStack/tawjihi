@@ -42,81 +42,78 @@ class ExamDescription extends StatelessWidget {
               SizedBox(width: 32.w),
             ],
           ),
-          SizedBox(height: 16.h),
-          Expanded(
-            child: BlocProvider(
-              create: (context) => QuestionsCubit()..getQuestions(examId),
-              child: BlocConsumer<QuestionsCubit, QuestionsState>(
-                listener: (context, state) {},
-                builder: (context, state) {
-                  QuestionsCubit cubit = QuestionsCubit.get(context);
-                  return Expanded(
-                    child: LoadingAndError(
-                      isError: state is ErrorQuestionsState,
-                      isLoading: state is LoadingQuestionsState,
-                      errorMessage:
-                          state is ErrorQuestionsState ? state.error : null,
-                      function: () async => cubit.getQuestions(examId),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  top: 16.h, left: 16.w, right: 16.w),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                  color: containerColor),
-                              child: Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/exam_description.png",
-                                    width: 200.w,
-                                    height: 200.h,
-                                    fit: BoxFit.fill,
-                                  ),
-                                  SizedBox(height: 16.h),
-                                  Expanded(
-                                    child: SingleChildScrollView(
-                                      child: Text(
-                                        cubit.questionsModel?.examDescription ??
-                                            "",
-                                        style: TextStyle(
-                                          fontSize: 14.sp,
-                                          color: secondaryColor,
-                                          height: 1.9,
-                                        ),
+          BlocProvider(
+            create: (context) => QuestionsCubit()..getQuestions(examId),
+            child: BlocConsumer<QuestionsCubit, QuestionsState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                QuestionsCubit cubit = QuestionsCubit.get(context);
+                return Expanded(
+                  child: LoadingAndError(
+                    isError: state is ErrorQuestionsState,
+                    isLoading: state is LoadingQuestionsState,
+                    errorMessage:
+                        state is ErrorQuestionsState ? state.error : null,
+                    function: () async => cubit.getQuestions(examId),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                top: 16.h, left: 16.w, right: 16.w),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.r),
+                                color: containerColor),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  "assets/images/exam_description.png",
+                                  width: 200.w,
+                                  height: 200.h,
+                                  fit: BoxFit.fill,
+                                ),
+                                SizedBox(height: 16.h),
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    child: Text(
+                                      cubit.questionsModel?.examDescription ??
+                                          "",
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                        color: secondaryColor,
+                                        height: 1.9,
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(height: 16.h),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            child: ButtonWidget(
-                              title: LocaleKeys.start_now.tr(),
-                              fontSize: 16.sp,
-                              onTap: () {
-                                Utils.openScreen(
-                                  context,
-                                  QuestionsScreen(
-                                    examTitle: examTitle,
-                                    time: time,
-                                    examId: examId,
-                                  ),
-                                  replacment: true,
-                                );
-                              },
-                            ),
+                        ),
+                        SizedBox(height: 16.h),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          child: ButtonWidget(
+                            title: LocaleKeys.start_now.tr(),
+                            fontSize: 16.sp,
+                            onTap: () {
+                              Utils.openScreen(
+                                context,
+                                QuestionsScreen(
+                                  examTitle: examTitle,
+                                  time: time,
+                                  examId: examId,
+                                ),
+                                replacment: true,
+                              );
+                            },
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
           )
         ]),

@@ -75,7 +75,7 @@ class User {
     id = json['id'];
     name = json['name'];
     image = json['image'];
-    code = json['code'];
+    code = json['code'].toString();
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     deletedAt = json['deleted_at'];
@@ -87,6 +87,7 @@ class User {
     countryId = json['country_id'];
     manhagId = json['manhag_id'];
     termId = json['term_id'];
+    yearId = json['year']['id'];
     subjectTypeId = json['subject_type_id'];
     deviceToken = json['device_token'];
     score = json['score'];
@@ -109,6 +110,7 @@ class User {
   dynamic countryId;
   dynamic manhagId;
   dynamic termId;
+  dynamic yearId;
   dynamic subjectTypeId;
   dynamic deviceToken;
   num? score;

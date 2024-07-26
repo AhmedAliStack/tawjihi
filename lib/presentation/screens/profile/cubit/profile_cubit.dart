@@ -23,11 +23,26 @@ class ProfileCubit extends Cubit<ProfileState> {
   Manhags? manhag;
   Terms? term;
   Types? subjectType;
+  Years? years;
+  TermsById? termsById;
+  getTermsIdLists({required int id, required bool changeState}) async {
+    final respose = await AuthRepo.getTermsIdLists(id: id);
+    if (respose != null) {
+      respose.forEach((v) {
+        Utils.termsByYearId.add(TermsById.fromJson(v));
+      });
+      if (changeState) {
+        emit(GetTermsByYearIdSuccess());
+      }
+    } else {
+      return null;
+    }
+  }
 
   getAll() async {
     emit(LoadingProfileState());
-    //final respose = await AuthRepo.getAllLists();
-    //if (true) {
+    await getTermsIdLists(id: Utils.userModel.user!.yearId, changeState: false);
+
     await Utils.getAllListModel();
     country = Utils.countries[Utils.countries.indexWhere((element) =>
         element.id.toString() == Utils.userModel.user?.countryId.toString())];
@@ -41,7 +56,11 @@ class ProfileCubit extends Cubit<ProfileState> {
     subjectType = Utils.subjectType[Utils.subjectType.indexWhere((element) =>
         element.id.toString() ==
         Utils.userModel.user?.subjectTypeId.toString())];
+    years = Utils.years[Utils.years.indexWhere((element) =>
+        element.id.toString() == Utils.userModel.user?.yearId.toString())];
 
+    termsById = Utils.termsByYearId[Utils.termsByYearId.indexWhere((element) =>
+        element.id.toString() == Utils.userModel.user?.termId.toString())];
     emit(SuccessGetAllLists());
     // } else {
     //   emit(ErrorProfileState(error: "A"
@@ -59,7 +78,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       nationalityControler =
           TextEditingController(text: Utils.userModel.user?.nationality),
       passwordController = TextEditingController();
-
   changeSelectedItemDropDown({required value, required int numer}) {
     switch (numer) {
       case 1:
@@ -73,6 +91,14 @@ class ProfileCubit extends Cubit<ProfileState> {
         break;
       case 4:
         subjectType = value;
+        break;
+      case 5:
+        years = value;
+         getTermsIdLists(id: value.id, changeState: true);
+
+        break;
+      case 6:
+        termsById = value;
         break;
     }
     emit(ChangeSelectedItemDropDown());
@@ -89,7 +115,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       "nationality": nationalityControler.text.trim(),
       "country_id": country?.id.toString() ?? "",
       "manhag_id": manhag?.id.toString() ?? "",
-      "term_id": term?.id.toString() ?? "",
+      "term_id": termsById?.id.toString() ?? "",
       "subject_type_id": subjectType?.id.toString() ?? "",
     };
     passwordController.text.isNotEmpty

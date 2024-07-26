@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -190,10 +191,10 @@ class Profile extends StatelessWidget {
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: LocaleKeys.choose_material,
+                              buttonTexthint: LocaleKeys.choose_material.tr(),
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.manhag?.title ?? LocaleKeys.choose_material,
+                                cubit.manhag?.title ?? LocaleKeys.choose_material.tr(),
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -226,10 +227,10 @@ class Profile extends StatelessWidget {
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: LocaleKeys.choose_class,
+                              buttonTexthint: LocaleKeys.choose_year.tr(),
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.term?.title ?? LocaleKeys.choose_class,
+                                cubit.years?.title ?? LocaleKeys.choose_year.tr(),
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -238,19 +239,19 @@ class Profile extends StatelessWidget {
                                 //overflow: TextOverflow.ellipsis,
                               ),
                               buttonElevation: false,
-                              customeItems: Utils.terms
+                              customeItems: Utils.years
                                   .map((item) => DropdownMenuItem<dynamic>(
                                         value: item,
-                                        child: Text(
-                                          item.title ?? "",
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: primaryColor,
-                                          ),
-                                          // overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ))
+                                child: Text(
+                                  item.title ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: primaryColor,
+                                  ),
+                                  // overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                                   .toList(),
                               dropdownButtonTextStyle: TextStyle(
                                 fontSize: 14.sp,
@@ -258,7 +259,42 @@ class Profile extends StatelessWidget {
                               dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
                               onItemSelected: (value) {
                                 cubit.changeSelectedItemDropDown(
-                                    value: value, numer: 3);
+                                    value: value, numer: 5);
+                              }),
+                          SizedBox(height: 16.w),
+                          DropdownWidget(
+                              buttonTexthint: LocaleKeys.choose_term.tr(),
+                              buttonWidth: double.infinity,
+                              customSelectedItem: Text(
+                                cubit.term?.title ?? LocaleKeys.choose_term.tr(),
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: primaryColor,
+                                ),
+                                //overflow: TextOverflow.ellipsis,
+                              ),
+                              buttonElevation: false,
+                              customeItems: Utils.termsByYearId
+                                  .map((item) => DropdownMenuItem<dynamic>(
+                                value: item,
+                                child: Text(
+                                  item.title ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: primaryColor,
+                                  ),
+                                  // overflow: TextOverflow.ellipsis,
+                                ),
+                              )).toList(),
+                              dropdownButtonTextStyle: TextStyle(
+                                fontSize: 14.sp,
+                              ),
+                              dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
+                              onItemSelected: (value) {
+                                cubit.changeSelectedItemDropDown(
+                                    value: value, numer: 6);
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(

@@ -214,10 +214,10 @@ class SignUp extends StatelessWidget {
                           //     }),
                           // SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: LocaleKeys.choose_class.tr(),
+                              buttonTexthint: LocaleKeys.choose_year.tr(),
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.term?.title ?? LocaleKeys.choose_class.tr(),
+                                cubit.years?.title ?? LocaleKeys.choose_year.tr(),
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -226,19 +226,19 @@ class SignUp extends StatelessWidget {
                                 //overflow: TextOverflow.ellipsis,
                               ),
                               buttonElevation: false,
-                              customeItems: Utils.terms
+                              customeItems: Utils.years
                                   .map((item) => DropdownMenuItem<dynamic>(
                                         value: item,
-                                        child: Text(
-                                          item.title ?? "",
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: primaryColor,
-                                          ),
-                                          // overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ))
+                                child: Text(
+                                  item.title ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: primaryColor,
+                                  ),
+                                  // overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                                   .toList(),
                               dropdownButtonTextStyle: TextStyle(
                                 fontSize: 14.sp,
@@ -246,14 +246,14 @@ class SignUp extends StatelessWidget {
                               dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
                               onItemSelected: (value) {
                                 cubit.changeSelectedItemDropDown(
-                                    value: value, numer: 3);
+                                    value: value, numer: 5);
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: LocaleKeys.choose_section.tr(),
+                              buttonTexthint: LocaleKeys.choose_term.tr(),
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.subjectType?.title ?? LocaleKeys.choose_section.tr(),
+                                cubit.term?.title ?? LocaleKeys.choose_term.tr(),
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -262,20 +262,19 @@ class SignUp extends StatelessWidget {
                                 //overflow: TextOverflow.ellipsis,
                               ),
                               buttonElevation: false,
-                              buttonHeight: 60.h,
-                              customeItems: Utils.subjectType
+                              customeItems: Utils.termsByYearId
                                   .map((item) => DropdownMenuItem<dynamic>(
-                                        value: item,
-                                        child: Text(
-                                          item.title ?? "",
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: primaryColor,
-                                          ),
-                                          // overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ))
+                                value: item,
+                                child: Text(
+                                  item.title ?? "",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: primaryColor,
+                                  ),
+                                  // overflow: TextOverflow.ellipsis,
+                                ),
+                              ))
                                   .toList(),
                               dropdownButtonTextStyle: TextStyle(
                                 fontSize: 14.sp,
@@ -283,7 +282,7 @@ class SignUp extends StatelessWidget {
                               dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
                               onItemSelected: (value) {
                                 cubit.changeSelectedItemDropDown(
-                                    value: value, numer: 4);
+                                    value: value, numer: 6);
                               }),
                           SizedBox(height: 16.w),
                           CustomEditText(
@@ -363,7 +362,7 @@ class SignUp extends StatelessWidget {
                                   Utils.openScreen(context, LoginScreen()),
                               child: RichText(
                                   text: TextSpan(
-                                      text: LocaleKeys.has_acc,
+                                      text: LocaleKeys.has_acc.tr(),
                                       style: TextStyle(
                                           fontFamily: 'Bahij',
                                           fontSize: 14.sp,
@@ -371,7 +370,7 @@ class SignUp extends StatelessWidget {
                                           color: secondaryColor),
                                       children: [
                                     TextSpan(
-                                      text: LocaleKeys.login,
+                                      text: LocaleKeys.login.tr(),
                                       style: TextStyle(
                                           fontSize: 14.sp,
                                           fontWeight: FontWeight.w500,

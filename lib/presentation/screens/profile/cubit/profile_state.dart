@@ -20,3 +20,4 @@ class ErrorProfileState extends ProfileState {
 }
 
 class ChangeSelectedItemDropDown extends ProfileState {}
+class GetTermsByYearIdSuccess extends ProfileState {}

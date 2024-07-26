@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -93,7 +94,7 @@ class TestResult extends StatelessWidget {
                                     children: [
                                       TextWidget(
                                         title:
-                                            "${LocaleKeys.correct_answers} ${cubit.resultModel?.data?.answerCount}",
+                                            "${LocaleKeys.correct_answers.tr()} ${cubit.resultModel?.data?.answerCount}",
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff93D774),
@@ -101,7 +102,7 @@ class TestResult extends StatelessWidget {
                                       SizedBox(height: 8.h),
                                       TextWidget(
                                         title:
-                                            "${LocaleKeys.wrong_answer} ${cubit.resultModel?.data?.wrongCount}",
+                                            "${LocaleKeys.wrong_answer.tr()} ${cubit.resultModel?.data?.wrongCount}",
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xffD40E0E),
