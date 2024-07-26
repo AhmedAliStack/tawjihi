@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/subject_details/cubit/subject_details_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/teachers/widgets/item_of_teachers.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/text_widget.dart';
@@ -140,8 +141,8 @@ class SubjectDetails extends StatelessWidget {
                         ),
                       )
                           : const Center(
-                        child: TextWidget(title: "لا يوجد مدرسين "),
-                      ),
+                              child: TextWidget(title: LocaleKeys.no_techers),
+                            ),
                     );
                   },
                 ),

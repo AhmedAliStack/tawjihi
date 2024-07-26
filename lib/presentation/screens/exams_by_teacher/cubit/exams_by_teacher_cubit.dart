@@ -17,17 +17,18 @@ class ExamsByTeacherCubit extends Cubit<ExamsByTeacherState> {
 
   getExams({required int id, required int page}) async {
     final response = await locator<DioHelper>()
-        .getData(url: "exams/teacher/$id", loading: false, token: Utils.token);
+        .getData(url: "exams/teacher/$id?page=$page", loading: false, token: Utils.token);
     if (response?.statusCode == 200) {
       exams.ExamsByTeacherModel examsByTeacher =
           exams.ExamsByTeacherModel.fromJson(response?.data);
       activeExam = examsByTeacher.activeExam ?? 0;
       final isLastPage = examsByTeacher.meta?.total == page;
+      List<exams.Data>? examsData = examsByTeacher.data!.isEmpty ? [] : examsByTeacher.data;
       if (isLastPage) {
-        pagingController.appendLastPage(examsByTeacher.data ?? []);
+        pagingController.appendLastPage(examsData ?? []);
       } else {
         final nextPageKey = page + 1;
-        pagingController.appendPage(examsByTeacher.data ?? [], nextPageKey);
+        pagingController.appendPage(examsData ?? [], nextPageKey);
       }
       emit(SuccessExamsByTeacherState());
     } else {

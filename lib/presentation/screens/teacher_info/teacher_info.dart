@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tawjihi_quiz/domain/models/my_teachers_model.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/utils/utils.dart';
@@ -39,7 +40,7 @@ class Teacherinfo extends StatelessWidget {
               children: [
                 Utils.backWidget(context),
                 TextWidget(
-                  title: "معلومات المدرس",
+                  title: LocaleKeys.teacher_info,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
@@ -172,14 +173,14 @@ class Teacherinfo extends StatelessWidget {
                 ),
                 SizedBox(height: 32.h),
                 TextWidget(
-                  title: "عدد الطلاب : ${teacherData?.studentCount}",
+                  title: "${LocaleKeys.students_count.tr()} ${teacherData?.studentCount}",
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
                 ),
                 SizedBox(height: 16.h),
                 TextWidget(
-                  title: "نسبة التفاعل مع الطلاب : ${teacherData?.average}%",
+                  title: "${LocaleKeys.active_percent.tr()} ${teacherData?.average}%",
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
@@ -207,7 +208,7 @@ class Teacherinfo extends StatelessWidget {
                           ),
                           SizedBox(width: 8.w),
                           TextWidget(
-                            title: "ارسال رسالة",
+                            title: LocaleKeys.msg_send,
                             fontSize: 16.sp,
                             color: Colors.white,
                           )

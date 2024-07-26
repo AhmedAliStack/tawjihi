@@ -6,6 +6,7 @@ import 'package:tawjihi_quiz/core/utils/validation.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/forget_password/cubit/forget_password_cubit.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../services_locator.dart';
 import '../../components/edit_text_widget.dart';
@@ -25,7 +26,7 @@ class ResetPassword extends StatelessWidget {
         if (state is SuccessSendpasswordState) {
           Utils.successDialog(
                   context: context,
-                  title: "تم تغير كلمة المرور بنجاح",
+                  title: LocaleKeys.pass_saved,
                   screen: LoginScreen())
               .then((value) => Utils.openScreen(context, LoginScreen()));
         }
@@ -54,19 +55,19 @@ class ResetPassword extends StatelessWidget {
                     ),
                     SizedBox(height: 16.h),
                     TextWidget(
-                      title: "تغير كلمة المرور",
+                      title: LocaleKeys.change_pass,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     SizedBox(height: 8.h),
                     const TextWidget(
-                      title: "قم بكتابة الرقم السري الجديد مرتين واضغط تأكيد ",
+                      title: LocaleKeys.confirm_pass_msg,
                       color: secondaryColor,
                     ),
                     SizedBox(height: 32.h),
                     EditTextWidget(
                       controller: cubit.password,
-                      label: "الرقم السري الجديد",
+                      label: LocaleKeys.new_pass,
                       password: true,
                       prefixIcon:
                           Row(mainAxisSize: MainAxisSize.min, children: [
@@ -90,7 +91,7 @@ class ResetPassword extends StatelessWidget {
                     SizedBox(height: 16.h),
                     EditTextWidget(
                       controller: cubit.confirmPassword,
-                      label: "الرقم السري مرة اخرى",
+                      label: LocaleKeys.again_new_pass,
                       password: true,
                       prefixIcon:
                           Row(mainAxisSize: MainAxisSize.min, children: [
@@ -129,7 +130,7 @@ class ResetPassword extends StatelessWidget {
                               ),
                               SizedBox(width: 4.w),
                               const TextWidget(
-                                title: "تأكيد",
+                                title: LocaleKeys.confirm,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               )

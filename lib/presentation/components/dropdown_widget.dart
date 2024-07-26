@@ -122,69 +122,79 @@ class DropdownWidget extends StatelessWidget {
       value: selectedItem,
       onChanged: onItemSelected,
       validator: validator,
-
-      icon: Icon(
-        Icons.keyboard_arrow_down,
-        color: iconEnabledColor ?? mauveColor,
+      iconStyleData: IconStyleData(
+        icon: Icon(
+          Icons.keyboard_arrow_down,
+          color: iconEnabledColor ?? mauveColor,
+        ),
+        iconSize: 24.w,
+        iconEnabledColor: primaryColor,
+        iconDisabledColor: Colors.grey,
       ),
-      iconSize: 24.w,
-      iconEnabledColor: primaryColor,
-      iconDisabledColor: Colors.grey,
-      buttonHeight: buttonHeight.h,
-      buttonWidth: buttonWidth,
-      buttonPadding:
-          buttonPadding ?? const EdgeInsetsDirectional.only(start: 14, end: 14),
-      buttonDecoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: borderMainColor),
-        color: Colors.white,
+      buttonStyleData: ButtonStyleData(
+        height: buttonHeight.h,
+        width: buttonWidth,
+        padding: buttonPadding ??
+            const EdgeInsetsDirectional.only(start: 14, end: 14),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: borderMainColor),
+          color: Colors.white,
+        ),
+        elevation: buttonElevation ? 1 : 0,
       ),
-      buttonElevation: buttonElevation ? 1 : 0,
-      itemHeight: 40,
-      itemPadding: const EdgeInsets.only(left: 16, right: 16),
-      dropdownMaxHeight: 200,
-      dropdownWidth: 0.9.sw,
-      dropdownPadding: null,
-      dropdownDecoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(buttonBorderRaduis ?? 8.r),
-        color: Colors.white,
+      menuItemStyleData: MenuItemStyleData(
+        height: 40,
+        padding: const EdgeInsets.only(left: 16, right: 16),
       ),
-      dropdownElevation: 1,
-      scrollbarRadius: const Radius.circular(40),
-      scrollbarThickness: 6,
-      scrollbarAlwaysShow: true,
-      offset: const Offset(0, 0),
-      searchController: textEditingController,
-      searchInnerWidgetHeight: 50,
-      searchInnerWidget: enableSearch
-          ? Padding(
-              padding: const EdgeInsets.only(
-                top: 8,
-                bottom: 4,
-                right: 8,
-                left: 8,
+      dropdownStyleData: DropdownStyleData(
+          maxHeight: 200,
+          width: 0.9.sw,
+          padding: null,
+          offset: const Offset(0, 0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(buttonBorderRaduis ?? 8.r),
+            color: Colors.white,
+          ),
+          elevation: 1,
+          scrollbarTheme: ScrollbarThemeData(
+            radius: const Radius.circular(40),
+            thickness: MaterialStateProperty.all(6),
+            thumbVisibility: MaterialStateProperty.all(true),
+          )),
+      dropdownSearchData: DropdownSearchData(
+        searchController: textEditingController,
+        searchInnerWidgetHeight: 50,
+        searchInnerWidget: enableSearch
+            ? Padding(
+          padding: const EdgeInsets.only(
+            top: 8,
+            bottom: 4,
+            right: 8,
+            left: 8,
+          ),
+          child: TextFormField(
+            controller: textEditingController,
+            decoration: InputDecoration(
+              isDense: true,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 8,
               ),
-              child: TextFormField(
-                controller: textEditingController,
-                decoration: InputDecoration(
-                  isDense: true,
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 8,
-                  ),
-                  hintText: 'بحث',
-                  hintStyle: const TextStyle(fontSize: 12),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
+              hintText: 'بحث',
+              hintStyle: const TextStyle(fontSize: 12),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
               ),
-            )
-          : const SizedBox(),
-      searchMatchFn: (item, searchValue) {
-        return (item.value.toString().contains(searchValue));
-      },
-      //  This to clear the search value when you close the menu
+            ),
+          ),
+        )
+            : const SizedBox(),
+        searchMatchFn: (item, searchValue) {
+          return (item.value.toString().contains(searchValue));
+        },
+      ),
+      //This to clear the search value when you close the menu
       onMenuStateChange: (isOpen) {
         if (!isOpen) {
           textEditingController?.clear();
@@ -193,3 +203,4 @@ class DropdownWidget extends StatelessWidget {
     );
   }
 }
+

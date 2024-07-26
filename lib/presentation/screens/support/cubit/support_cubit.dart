@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tawjihi_quiz/core/utils/utils.dart';
@@ -21,6 +23,7 @@ class SupportCubit extends Cubit<SupportState> {
     };
     final respose = await locator<DioHelper>().postData(
         url: "contact", loading: true, token: Utils.token, body: requestBody);
+        print("Response ${respose?.statusCode} - ${respose?.data}}");
     if (respose?.statusCode == 200) {
       emit(SuccessSupportState());
     } else {

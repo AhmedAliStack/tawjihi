@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/notifications/cubit/notifications_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/notifications/widgets/item_of_notifications.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
 
@@ -31,7 +33,7 @@ class _NotificationsState extends State<Notifications>
                 start: 16.w, top: 32.h, end: 16.w, bottom: 16.h),
             child: Center(
               child: TextWidget(
-                title: "التنبيهات",
+                title: LocaleKeys.notifications.tr(),
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
@@ -80,8 +82,8 @@ class _NotificationsState extends State<Notifications>
                             physics: const AlwaysScrollableScrollPhysics(),
                             child: Padding(
                               padding: EdgeInsets.only(top: 0.3.sh),
-                              child: const TextWidget(
-                                title: "لا يوجد إشعارات",
+                              child: TextWidget(
+                                title: LocaleKeys.no_noti.tr(),
                               ),
                             ),
                           ),

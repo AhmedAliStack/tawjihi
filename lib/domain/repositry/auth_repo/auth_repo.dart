@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:tawjihi_quiz/core/utils/statics.dart';
 import 'package:tawjihi_quiz/data/api/my_api.dart';
@@ -26,7 +27,7 @@ class AuthRepo {
     final respose = await locator<DioHelper>().getData(
       url: "getters/terms/$id",
       loading: false,
-      token: "934|AwdPac99XEnsFZrHfSBmNmpta86o8XpIxini5sra"
+      token: "893|QmSAcM4uz3yI1fWaQLp5mj1SiaqLVmY61Z97b8v6"
     );
     if (respose != null) {
       return respose.data['data'];
@@ -37,21 +38,12 @@ class AuthRepo {
 
   static loginRequest({required String phone, required String password}) async {
     String? fcmToken = await FirebaseMessaging.instance.getToken();
-    final respose = await locator<DioHelper>().postData(
+    Response? respose = await locator<DioHelper>().postData(
       url: "user/login",
       body: {'phone': phone, 'password': password, 'fcm_token': fcmToken},
       loading: true,
     );
-    if (respose != null) {
-      await locator<DataManager>().saveData(Statics.user, respose.data['data']);
-      await locator<DataManager>()
-          .saveData(Statics.token, respose.data['data']['token']);
-      Utils.token = respose.data['data']['token'];
-      Utils.userModel = UserModel.fromJson(respose.data['data']);
-      return respose.data['data'];
-    } else {
-      return null;
-    }
+    return respose;
   }
 
   static signUpRequest({

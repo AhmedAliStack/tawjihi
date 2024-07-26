@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/home_layout/home.dart';
 import 'package:tawjihi_quiz/presentation/screens/login/cubit/login_cubit.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/utils/validation.dart';
 import '../../../services_locator.dart';
@@ -53,20 +55,20 @@ class LoginScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 32.h),
                       TextWidget(
-                        title: "مرحبا , بعودتك",
+                        title: LocaleKeys.welcome.tr(),
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(height: 8.h),
                       TextWidget(
-                        title: "قم بتسجيل الدخول حتي يمكنك تصفح التطبيق",
+                        title: LocaleKeys.login_msg.tr(),
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
                       ),
                       SizedBox(height: 32.h),
                       CustomEditText(
                         icon: Icons.phone_outlined,
-                        label: "رقم الهاتف",
+                        label: LocaleKeys.phone.tr(),
                         controller: cubit.phoneControler,
                         type: TextInputType.phone,
                         validator: locator<Validation>().defaultValidation,
@@ -74,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(height: 8.h),
                       CustomEditText(
                         img: "assets/icons/lock.png",
-                        label: "كلمة المرور",
+                        label: LocaleKeys.password.tr(),
                         controller: cubit.passwordController,
                         type: TextInputType.visiblePassword,
                         isPassword: true,
@@ -107,8 +109,8 @@ class LoginScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () =>
                               Utils.openScreen(context, Forgetpassword()),
-                          child: const TextWidget(
-                            title: "نسيت كلمة المرور ؟",
+                          child: TextWidget(
+                            title: LocaleKeys.forget_pass.tr(),
                             color: mauveColor,
                           ),
                         )
@@ -125,7 +127,7 @@ class LoginScreen extends StatelessWidget {
                             cubit.login();
                           }
                         },
-                        title: "دخول",
+                        title: LocaleKeys.enter.tr(),
                       ),
                       SizedBox(height: 16.h),
                       // Row(
@@ -181,7 +183,7 @@ class LoginScreen extends StatelessWidget {
                           onTap: () => Utils.openScreen(context, SignUp()),
                           child: RichText(
                               text: TextSpan(
-                                  text: "ليس لديك حساب ؟ ",
+                                  text: LocaleKeys.dont_have_acc.tr()+" ",
                                   style: TextStyle(
                                       fontFamily: 'Bahij',
                                       fontSize: 14.sp,
@@ -189,7 +191,7 @@ class LoginScreen extends StatelessWidget {
                                       color: secondaryColor),
                                   children: [
                                 TextSpan(
-                                  text: "تسجيل حساب",
+                                  text: LocaleKeys.register.tr(),
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500,

@@ -1,4 +1,5 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,12 +11,14 @@ import 'package:tawjihi_quiz/presentation/screens/questions/widgets/more_choose.
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/one_choose.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/reorder_answer.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/true_and_false.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/button_widget.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
 import '../test_result/test_result.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions/widgets/reorder_answer.dart';
 
 class QuestionsScreen extends StatelessWidget {
   final String examTitle;
@@ -83,7 +86,7 @@ class QuestionsScreen extends StatelessWidget {
                     child: cubit.questionsModel?.questions == null ||
                             cubit.questionsModel!.questions!.isEmpty
                         ? const Center(
-                            child: TextWidget(title: "لا يوجداسئلة حتى الاّن"))
+                            child: TextWidget(title: LocaleKeys.no_questions))
                         : Column(
                             children: [
                               CircularCountDownTimer(
@@ -174,7 +177,6 @@ class QuestionsScreen extends StatelessWidget {
                                                       cubit.questionNumber]
                                                   .question!,
                                               correct: false,
-                                              isQuestion: "question",
                                             )
                                           : HtmlWidget(
                                               htmlData: cubit
@@ -189,8 +191,8 @@ class QuestionsScreen extends StatelessWidget {
                                           ? const SizedBox()
                                           : TextWidget(
                                               title: cubit.correctOrWrong!
-                                                  ? "اجابة صحيحة"
-                                                  : "اجابة خاطئة",
+                                                  ? LocaleKeys.correct_ans.tr()
+                                                  : LocaleKeys.wrong_ans.tr(),
                                               fontSize: 18.sp,
                                               fontWeight: FontWeight.w500,
                                               color: cubit.correctOrWrong!
@@ -203,7 +205,7 @@ class QuestionsScreen extends StatelessWidget {
                                               cubit.questionsModel!.questions!
                                                   .isEmpty
                                           ? const TextWidget(
-                                              title: "لا يوجداسئلة حتى الاّن")
+                                              title: LocaleKeys.no_questions)
                                           : QuestionWidget(cubit: cubit),
                                       SizedBox(height: 16.h),
                                       Row(
@@ -211,7 +213,7 @@ class QuestionsScreen extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           TextWidget(
-                                            title: "السؤال",
+                                            title: LocaleKeys.question,
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xffA647A4),
@@ -261,7 +263,7 @@ class QuestionsScreen extends StatelessWidget {
                                                                 .center,
                                                         children: [
                                                           const TextWidget(
-                                                            title: "التالى",
+                                                            title: LocaleKeys.next,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             color: Color(
@@ -319,7 +321,7 @@ class QuestionWidget extends StatelessWidget {
                         ? const ImageChoose()
                         : type == "5"
                             ? const ReorderAnswer()
-                            : const TextWidget(title: "لا يوجد اجابات"),
+                            : TextWidget(title: LocaleKeys.no_ans),
         type == "5"
             ? ButtonWidget(
                 title: "تاكيد الترتيب",

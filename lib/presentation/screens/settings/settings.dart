@@ -6,6 +6,7 @@ import 'package:tawjihi_quiz/presentation/screens/about_us/about_us.dart';
 import 'package:tawjihi_quiz/presentation/screens/settings/widgets/item_of_settings.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/screens/support/support.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/alerts.dart';
 import '../../components/text_widget.dart';

@@ -1,4 +1,5 @@
 // because Directionality of otp ltr agnoire with tr() method i use as tr
+import 'package:easy_localization/easy_localization.dart' as local;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,8 +8,9 @@ import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import 'package:tawjihi_quiz/domain/models/exams_by_teacher_model.dart'
-    as exams;
+as exams;
 import 'package:tawjihi_quiz/presentation/screens/subscrib_code/cubit/code_cubit.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
@@ -24,7 +26,7 @@ class SubscribCode extends StatelessWidget {
       required this.teacherName,
       required this.rate,
       required this.id,
-      this.data});
+        this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +45,10 @@ class SubscribCode extends StatelessWidget {
             child: BlocConsumer<CodeCubit, CodeState>(
               listener: (context, state) {
                 if (state is ErrorCodeState) {
-                  OverLays.toast(text: state.error ?? "حدث خطأ حاول مرة اخرى");
+                  OverLays.toast(text: state.error ?? LocaleKeys.wrong_msg);
                 }
                 if (state is SuccessCodeState) {
-                  OverLays.toast(text: "تم الاشتراك بنجاح");
+                  OverLays.toast(text: LocaleKeys.success_sub);
                   if (data != null) {
                     Utils.openScreen(
                         context,
@@ -78,14 +80,14 @@ class SubscribCode extends StatelessWidget {
                                     ),
                                     SizedBox(height: 32.h),
                                     TextWidget(
-                                      title: "كود الاشتراك",
+                                      title: LocaleKeys.sub_code,
                                       fontSize: 18.sp,
                                       fontWeight: FontWeight.w500,
                                     ),
                                     SizedBox(height: 8.h),
                                     const TextWidget(
                                       title:
-                                          "قم بادخال كود الاشتراك المكون من اربعة ارقام",
+                                          LocaleKeys.enter_sub_code,
                                       textAlign: TextAlign.center,
                                     ),
                                     Padding(
@@ -95,7 +97,7 @@ class SubscribCode extends StatelessWidget {
                                         textDirection: TextDirection.ltr,
                                         child: PinCodeTextField(
                                           controller:
-                                              cubit.textEditingController,
+                                          cubit.textEditingController,
                                           backgroundColor: Colors.white,
                                           appContext: context,
                                           length: 4,
@@ -121,7 +123,7 @@ class SubscribCode extends StatelessWidget {
                                           animationDuration:
                                               const Duration(milliseconds: 300),
                                           enableActiveFill: true,
-                                          keyboardType: TextInputType.number,
+                                          keyboardType: TextInputType.text,
                                           textStyle: TextStyle(
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w500,
@@ -144,7 +146,7 @@ class SubscribCode extends StatelessWidget {
                                             child: RichText(
                                               text: TextSpan(
                                                 text:
-                                                    "لم يتم ارسال الكود ؟    ",
+                                                    LocaleKeys.code_not_send.tr(),
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 16.sp,
@@ -152,7 +154,7 @@ class SubscribCode extends StatelessWidget {
                                                 ),
                                                 children: [
                                                   TextSpan(
-                                                      text: "إرسال مرة أخرى",
+                                                      text: LocaleKeys.resend_again.tr(),
                                                       style: TextStyle(
                                                           color: secondaryColor,
                                                           fontSize: 16.sp,
@@ -188,7 +190,7 @@ class SubscribCode extends StatelessWidget {
                                                   ),
                                                   SizedBox(width: 4.w),
                                                   const TextWidget(
-                                                    title: "تفعيل الكود",
+                                                    title: LocaleKeys.activate_code,
                                                     fontWeight: FontWeight.w500,
                                                     color: Colors.white,
                                                   )
@@ -211,7 +213,7 @@ class SubscribCode extends StatelessWidget {
                                             ),
                                             SizedBox(width: 4.w),
                                             const TextWidget(
-                                              title: "الغاء",
+                                              title: LocaleKeys.cancel,
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xff6D6D6D),
                                             )

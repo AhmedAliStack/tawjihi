@@ -8,6 +8,7 @@ import 'package:tawjihi_quiz/presentation/components/alerts.dart';
 import 'package:tawjihi_quiz/presentation/components/button_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/forget_password/cubit/forget_password_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/reset_password/reset_password.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 import '../base/base_stateless.dart';
@@ -56,13 +57,13 @@ class ForgetPassOtp extends StatelessWidget {
                         ),
                         SizedBox(height: 16.h),
                         TextWidget(
-                          title: "كود تغير كلمة المرور",
+                          title: LocaleKeys.pass_code,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w500,
                         ),
                         SizedBox(height: 8.h),
                         const TextWidget(
-                          title: "قم بإدخال الكود المكون من اربع ارقام",
+                          title: LocaleKeys.enter_code,
                           fontWeight: FontWeight.w500,
                           color: secondaryColor,
                         ),
@@ -152,7 +153,7 @@ class ForgetPassOtp extends StatelessWidget {
                                 } else {
                                   OverLays.toast(
                                       text:
-                                          "قم بإدخال الكود المكون من اربع ارقام");
+                                          LocaleKeys.enter_code);
                                 }
                               },
                               child: Row(
@@ -165,7 +166,7 @@ class ForgetPassOtp extends StatelessWidget {
                                     ),
                                     SizedBox(width: 4.w),
                                     const TextWidget(
-                                      title: "تأكيد",
+                                      title: LocaleKeys.confirm,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white,
                                     )
@@ -189,7 +190,7 @@ class ForgetPassOtp extends StatelessWidget {
                                       ),
                                       SizedBox(width: 4.w),
                                       const TextWidget(
-                                        title: "إعادة الإرسال",
+                                        title: LocaleKeys.resend,
                                         fontWeight: FontWeight.w500,
                                         color: Color(0xff6D6D6D),
                                       )

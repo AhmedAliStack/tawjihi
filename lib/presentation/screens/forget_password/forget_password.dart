@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:tawjihi_quiz/core/utils/utils.dart';
 import 'package:tawjihi_quiz/presentation/screens/forget_password/cubit/forget_password_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/forget_password_otp/forget_pass_otp.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/values/colors.dart';
 import '../../components/button_widget.dart';
 import '../../components/edit_text_widget.dart';
@@ -43,12 +45,12 @@ class Forgetpassword extends StatelessWidget {
                               Utils.backWidget(context, authScreensBack: true),
                               SizedBox(height: 32.h),
                               TextWidget(
-                                  title: "استعادة",
+                                  title: LocaleKeys.retrieve.tr(),
                                   fontSize: 24.sp,
                                   fontWeight: FontWeight.w500),
                               SizedBox(height: 8.h),
                               TextWidget(
-                                  title: "كلمة المرور",
+                                  title:LocaleKeys.password.tr(),
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w600),
                               SizedBox(height: 8.h),
@@ -77,10 +79,10 @@ class Forgetpassword extends StatelessWidget {
                               Padding(
                                 padding:
                                     EdgeInsets.symmetric(horizontal: 16.0.w),
-                                child: const TextWidget(
+                                child: TextWidget(
                                   title:
-                                      "رجاء، قم بإدخال البريد الالكتروني الخاص بك وسيتم إرسال رسالة بكود التفعيل",
-                                  color: Color(0xff36476A),
+                                      LocaleKeys.pass_instr.tr(),
+                                  color: const Color(0xff36476A),
                                   fontWeight: FontWeight.w500,
                                   textAlign: TextAlign.center,
                                 ),
@@ -88,7 +90,7 @@ class Forgetpassword extends StatelessWidget {
                               SizedBox(height: 32.w),
                               EditTextWidget(
                                 controller: cubit.emailControler,
-                                label: "البريد الالكتروني",
+                                label: LocaleKeys.email.tr(),
                                 prefixIcon: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -129,7 +131,7 @@ class Forgetpassword extends StatelessWidget {
                                         });
                                       }
                                     },
-                                    title: "ارسال",
+                                    title: LocaleKeys.send.tr(),
                                   ),
                                 ),
                               ),

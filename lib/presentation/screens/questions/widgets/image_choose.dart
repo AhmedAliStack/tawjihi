@@ -16,8 +16,7 @@ class ImageChoose extends StatelessWidget {
       builder: (context, state) {
         QuestionsCubit cubit = QuestionsCubit.get(context);
         List<AnswerModel>? answers = [];
-        if (cubit.questionsModel!.questions![cubit.questionNumber]
-                .questionType ==
+        if (cubit.questionsModel!.questions![cubit.questionNumber].questionType ==
             "4") {
           cubit.questionsModel!.questions![cubit.questionNumber].answer
               .forEach((element) {
@@ -71,6 +70,7 @@ class ImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("ImageUrl : http://tawjihiquiz.com/uploaded/questions/$imageUrl");
     return Container(
       padding: EdgeInsets.all(8.w),
       width: 100.w,
@@ -105,3 +105,4 @@ class ImageWidget extends StatelessWidget {
     );
   }
 }
+

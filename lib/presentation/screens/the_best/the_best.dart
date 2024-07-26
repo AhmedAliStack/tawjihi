@@ -8,6 +8,7 @@ import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/the_best/cubit/the_best_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/the_best/widgets/best_students.dart';
 import 'package:tawjihi_quiz/presentation/screens/the_best/widgets/best_teachers.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
 
@@ -42,7 +43,7 @@ class TheBest extends StatelessWidget {
                       SizedBox(width: 16.w),
                       Expanded(
                         child: TextWidget(
-                          title: "الاكثر تميزا",
+                          title: LocaleKeys.most_dist,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
@@ -99,7 +100,7 @@ class TheBest extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const TextWidget(
-                                    title: "ترتيبى العام",
+                                    title: LocaleKeys.my_rank,
                                     color: Colors.black,
                                   ),
                                   GradientText(
@@ -139,7 +140,7 @@ class TheBest extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const TextWidget(
-                                    title: "نسبة التفاعل",
+                                    title: LocaleKeys.active_percentage,
                                     color: Colors.black,
                                   ),
                                   GradientText(
@@ -168,7 +169,7 @@ class TheBest extends StatelessWidget {
                           child: ButtonWidget(
                             onTap: () => cubit.changeButton(0),
                             height: 45.w,
-                            title: "ترتيب الطلاب",
+                            title: LocaleKeys.students_rank,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
                             textColor:
@@ -183,7 +184,7 @@ class TheBest extends StatelessWidget {
                           child: ButtonWidget(
                             onTap: () => cubit.changeButton(1),
                             height: 45.w,
-                            title: "ترتيب المعلمين",
+                            title: LocaleKeys.teachers_rank,
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
                             textColor:

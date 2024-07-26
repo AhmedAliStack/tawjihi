@@ -61,6 +61,18 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(ChangeSelectedItemDropDown());
   }
 
+getTermsIdLists({required int id}) async {
+    final respose = await AuthRepo.getTermsIdLists(id: id);
+    if (respose != null) {
+      respose.forEach((v) {
+        Utils.termsByYearId.add(TermsById.fromJson(v));
+      });
+      emit(GetTermsByYearIdSuccess());
+    } else {
+      return null;
+    }
+  }
+
   bool checkBox = false;
   changeCheckBox(bool value) {
     checkBox = value;

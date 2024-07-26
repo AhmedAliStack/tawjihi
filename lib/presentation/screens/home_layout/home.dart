@@ -1,8 +1,10 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 
 import 'cubit/home_cubit.dart';
 
@@ -35,7 +37,7 @@ class Home extends StatelessWidget {
                         height: 20.w,
                         fit: BoxFit.contain,
                       ),
-                      title: 'الرسائل',
+                      title: LocaleKeys.messages.tr(),
                       activeIcon: Column(
                         children: [
                           Image.asset(
@@ -47,8 +49,8 @@ class Home extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const TabItem(
-                        icon: Icons.notifications, title: 'التنبيهات'),
+                   TabItem(
+                        icon: Icons.notifications, title: LocaleKeys.notifications.tr()),
                     TabItem(
                       icon: Image.asset(
                         'assets/icons/home.png',
@@ -56,8 +58,8 @@ class Home extends StatelessWidget {
                         height: 40.w,
                       ),
                     ),
-                    const TabItem(icon: Icons.school_rounded, title: 'مدرسينى'),
-                    const TabItem(icon: Icons.settings, title: 'الضبط'),
+                   TabItem(icon: Icons.school_rounded, title: LocaleKeys.my_teachers.tr()),
+                   TabItem(icon: Icons.settings, title: LocaleKeys.edit.tr()),
                   ],
                   onTap: (int i) => cubit.changeIndex(i),
                 ),

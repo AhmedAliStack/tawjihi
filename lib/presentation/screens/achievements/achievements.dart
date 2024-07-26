@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements/cubit/achievements_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements/widgets/achievements_card.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../components/text_widget.dart';
@@ -45,7 +47,7 @@ class _AchievementsState extends State<Achievements>
                 children: [
                   Utils.backWidget(context),
                   TextWidget(
-                    title: "انجازاتى",
+                    title: LocaleKeys.my_achievments.tr(),
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
@@ -64,7 +66,7 @@ class _AchievementsState extends State<Achievements>
                 child: Column(children: [
                   AchievementsCard(
                     headerCard: true,
-                    subject: "نسبة الانجاز العامة",
+                    subject: LocaleKeys.achiv_percentage.tr(),
                     teacherName: cubit.achievementsModel?.data?.level ?? "",
                     percentHeaderCard:
                         cubit.achievementsModel?.data?.total != null
@@ -119,8 +121,8 @@ class _AchievementsState extends State<Achievements>
                                   .achievementsModel!.data!.subjects!.length,
                             ),
                           )
-                        : const Center(
-                            child: TextWidget(title: "لا يوجد بيانات سايقة "),
+                        : Center(
+                            child: TextWidget(title: LocaleKeys.no_previous_data.tr()),
                           ),
                   ))
                 ]),

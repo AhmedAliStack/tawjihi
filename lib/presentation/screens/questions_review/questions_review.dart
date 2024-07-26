@@ -9,6 +9,8 @@ import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/more_
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/one_choose_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/reorder_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/true_and_false_review.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/reorder_review.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/colors.dart';
 import '../../components/button_widget.dart';
@@ -66,7 +68,7 @@ class QuestionsReview extends StatelessWidget {
                     child: cubit.resultModel?.data?.answers == null ||
                             cubit.resultModel!.data!.answers!.isEmpty
                         ? const Center(
-                            child: TextWidget(title: "لا يوجداسئلة حتى الاّن"))
+                            child: TextWidget(title: LocaleKeys.no_questions))
                         : Column(
                             children: [
                               SizedBox(
@@ -114,8 +116,8 @@ class QuestionsReview extends StatelessWidget {
                                       TextWidget(
                                         title: cubit.isSameMoreChoose != null
                                             ? cubit.isSameMoreChoose!
-                                                ? "اجابة صحيحة"
-                                                : "اجابة خاطئة"
+                                                ? LocaleKeys.correct_ans
+                                                : LocaleKeys.wrong_ans
                                             : cubit
                                                         .resultModel!
                                                         .data!
@@ -128,8 +130,8 @@ class QuestionsReview extends StatelessWidget {
                                                         .answers![cubit
                                                             .questionNumber]
                                                         .correctAnswer!
-                                                ? "اجابة صحيحة"
-                                                : "اجابة خاطئة",
+                                                ? LocaleKeys.correct_ans
+                                                : LocaleKeys.wrong_ans,
                                         fontSize: 18.sp,
                                         fontWeight: FontWeight.w500,
                                         color: cubit
@@ -157,7 +159,7 @@ class QuestionsReview extends StatelessWidget {
                                                   .question ==
                                               null
                                           ? const TextWidget(
-                                              title: "لا يوجداسئلة حتى الاّن")
+                                              title: LocaleKeys.no_questions)
                                           : QuestionWidget(cubit: cubit),
                                       SizedBox(height: 8.h),
                                       HtmlWidget(
@@ -173,7 +175,7 @@ class QuestionsReview extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           TextWidget(
-                                            title: "السؤال",
+                                            title: LocaleKeys.question,
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xffA647A4),
@@ -214,7 +216,7 @@ class QuestionsReview extends StatelessWidget {
                                                     ),
                                                     SizedBox(width: 4.w),
                                                     const TextWidget(
-                                                      title: "السابق",
+                                                      title: LocaleKeys.previous,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: Colors.white,
@@ -236,7 +238,7 @@ class QuestionsReview extends StatelessWidget {
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     const TextWidget(
-                                                      title: "التالى",
+                                                      title: LocaleKeys.next,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: Color(0xff6D6D6D),
@@ -293,7 +295,7 @@ class QuestionWidget extends StatelessWidget {
                         ? const ImageChooseReview()
                         : type == "5"
                             ? const ReOrderReview()
-                            : const TextWidget(title: "لا يوجد اجابات"),
+                            : const TextWidget(title: LocaleKeys.no_ans),
       ],
     );
   }

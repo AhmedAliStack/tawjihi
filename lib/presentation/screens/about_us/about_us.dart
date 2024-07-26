@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/about_us/cubit/about_us_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/base/base_stateless.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
@@ -26,7 +28,7 @@ class AboutUs extends StatelessWidget {
                 children: [
                   Utils.backWidget(context, authScreensBack: true),
                   TextWidget(
-                    title: "عن التطبيق",
+                    title: LocaleKeys.about.tr(),
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.black,

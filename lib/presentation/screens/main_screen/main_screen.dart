@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/my_tests/my_tests.dart';
 import 'package:tawjihi_quiz/presentation/screens/the_best/the_best.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../achievements/achievements.dart';
 import '../subjects/subjects.dart';
@@ -69,46 +71,46 @@ class MainScreen extends StatelessWidget {
               SizedBox(height: 32.w),
               GestureDetector(
                 onTap: () => Utils.openScreen(context, const Achievements()),
-                child: const ItemOfMainScreen(
-                  title: "انجازاتك",
+                child: ItemOfMainScreen(
+                  title: LocaleKeys.achievements.tr(),
                   // subTitle: "شرح بسيط يكتب هنا يدل على العبارة",
                   icon: "assets/icons/cup_icon.png",
                   backImg: "assets/images/cup.png",
-                  colors: [Color(0xff2DD9DF), Color(0xff00A6AC)],
+                  colors: const [Color(0xff2DD9DF), Color(0xff00A6AC)],
                 ),
               ),
               SizedBox(height: 16.h),
               GestureDetector(
                 onTap: () => Utils.openScreen(context, const TheBest()),
-                child: const ItemOfMainScreen(
-                  title: "الاكثر تميزا",
+                child: ItemOfMainScreen(
+                  title: LocaleKeys.most_dist.tr(),
                   // subTitle: "شرح بسيط يكتب هنا يدل على العبارة",
                   icon: "assets/icons/crown_icon.png",
                   backImg: "assets/images/crown_img.png",
-                  colors: [Color(0xff7CDE4F), Color(0xff316A16)],
+                  colors: const [Color(0xff7CDE4F), Color(0xff316A16)],
                 ),
               ),
               SizedBox(height: 16.h),
               GestureDetector(
                 onTap: () => Utils.openScreen(context, const Subjects()),
-                child: const ItemOfMainScreen(
-                  title: "المواد الدراسية",
+                child: ItemOfMainScreen(
+                  title: LocaleKeys.materials.tr(),
                   // subTitle: "شرح بسيط يكتب هنا يدل على العبارة",
                   icon: "assets/icons/book_icon.png",
                   backImg: "assets/images/book_img.png",
-                  colors: [Color(0xffA52C00), Color(0xffEA4F16)],
+                  colors: const [Color(0xffA52C00), Color(0xffEA4F16)],
                 ),
               ),
               SizedBox(height: 16.h),
               GestureDetector(
                 onTap: () => Utils.openScreen(context, const MyTests()),
                 // onTap: () => Utils.openScreen(context, const MyTests()),
-                child: const ItemOfMainScreen(
-                  title: "اختباراتى",
+                child: ItemOfMainScreen(
+                  title: LocaleKeys.my_tests.tr(),
                   // subTitle: "شرح بسيط يكتب هنا يدل على العبارة",
                   icon: "assets/icons/question_icon.png",
                   backImg: "assets/images/question_img.png",
-                  colors: [Color(0xffCCA4FA), Color(0xffA647A4)],
+                  colors: const [Color(0xffCCA4FA), Color(0xffA647A4)],
                 ),
               ),
               SizedBox(height: 16.w),

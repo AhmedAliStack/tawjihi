@@ -19,7 +19,7 @@ class CodeCubit extends Cubit<CodeState> {
     if (respose?.statusCode == 200 && respose?.data['status'] == 200) {
       emit(SuccessCodeState());
     } else {
-      emit(ErrorCodeState(error: "خطا في الكود"));
+      emit(ErrorCodeState(error: respose?.data['data']));
     }
   }
 

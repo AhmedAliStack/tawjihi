@@ -15,6 +15,7 @@ import 'package:tawjihi_quiz/presentation/screens/splash/splash.dart';
 import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/push_notification_service.dart';
 import 'package:tawjihi_quiz/services_locator.dart';
+import 'package:tawjihi_quiz/translations/codegen_loader.g.dart';
 import 'presentation/screens/converstions/cubit/converstions_cubit.dart';
 import 'presentation/screens/exams_by_teacher/cubit/exams_by_teacher_cubit.dart';
 import 'presentation/screens/teachers/cubit/my_teacher_cubit.dart';
@@ -39,6 +40,7 @@ void main() async {
       supportedLocales: const [Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: const Locale('ar'),
+      assetLoader: const CodegenLoader(),
       child: const MyApp()));
 
   RemoteMessage? initialMessage =
@@ -65,7 +67,6 @@ class MyApp extends StatelessWidget {
 
                 BlocProvider(
                     create: (context) => SettingsCubit()),
-
                 BlocProvider(
                     create: (context) => MyTeacherCubit()..getMyTeachers()),
                 BlocProvider(
@@ -81,8 +82,6 @@ class MyApp extends StatelessWidget {
                 BlocProvider(
                     create: (context) =>
                         ConverstionsCubit()..getConverstions()),
-                BlocProvider(
-                    create: (context) => ChatCubit()),
               ],
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ import 'package:tawjihi_quiz/presentation/components/text_widget.dart';
 import 'package:tawjihi_quiz/presentation/screens/base/base_stateless.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/cubit/questions_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/questions.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 
 class ExamDescription extends StatelessWidget {
   final int examId;
@@ -32,7 +34,7 @@ class ExamDescription extends StatelessWidget {
               Utils.backWidget(context,
                   authScreensBack: true, onBack: () => Navigator.pop(context)),
               TextWidget(
-                title: "تعليمات الاختبار",
+                title: LocaleKeys.test_instructions.tr(),
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
@@ -92,7 +94,7 @@ class ExamDescription extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16.w),
                           child: ButtonWidget(
-                            title: "ابدأ الاختبار الان",
+                            title: LocaleKeys.start_now.tr(),
                             fontSize: 16.sp,
                             onTap: () {
                               Utils.openScreen(

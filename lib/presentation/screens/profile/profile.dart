@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:tawjihi_quiz/core/values/colors.dart';
 import 'package:tawjihi_quiz/presentation/components/dropdown_widget.dart';
 import 'package:tawjihi_quiz/presentation/components/loadinganderror.dart';
 import 'package:tawjihi_quiz/presentation/screens/profile/cubit/profile_cubit.dart';
+import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';
 import '../../components/button_widget.dart';
 import '../../components/text_widget.dart';
@@ -27,7 +29,7 @@ class Profile extends StatelessWidget {
               Utils.backWidget(context,
                   authScreensBack: true, onBack: () => Navigator.pop(context)),
               TextWidget(
-                title: "تعديل بياناتى",
+                title: LocaleKeys.edit_data,
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
@@ -47,7 +49,7 @@ class Profile extends StatelessWidget {
                         .emit(UpdateSuccessUserDataState());
                     Utils.successDialog(
                       context: context,
-                      title: "تم الحفظ بنجاح",
+                      title: LocaleKeys.saved,
                     ).then((value) => Navigator.pop(context));
                   }
                 },
@@ -122,41 +124,41 @@ class Profile extends StatelessWidget {
                           SizedBox(height: 16.h),
                           CustomEditText(
                             img: "assets/icons/profile-circle.png",
-                            label: "الاسم",
+                            label: LocaleKeys.name,
                             controller: cubit.firstNameControler,
                           ),
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/profile-circle.png",
-                            label: "اسم العائلة",
+                            label: LocaleKeys.family,
                             controller: cubit.lastNameControler,
                           ),
                           SizedBox(height: 16.w),
                           CustomEditText(
                             icon: Icons.email_outlined,
-                            label: "البريد الالكتروني",
+                            label: LocaleKeys.email,
                             controller: cubit.emailControler,
                             type: TextInputType.emailAddress,
                           ),
                           SizedBox(height: 16.w),
                           CustomEditText(
                             icon: Icons.phone_outlined,
-                            label: "رقم الهاتف",
+                            label: LocaleKeys.phone,
                             controller: cubit.phoneControler,
                             type: TextInputType.phone,
                           ),
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/building.png",
-                            label: "الجنسية",
+                            label: LocaleKeys.nationality,
                             controller: cubit.nationalityControler,
                           ),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: "اختر البلد",
+                              buttonTexthint: LocaleKeys.choose_country,
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.country?.name ?? "اختر البلد",
+                                cubit.country?.name ?? LocaleKeys.choose_country,
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -189,10 +191,10 @@ class Profile extends StatelessWidget {
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: "اختر المنهج",
+                              buttonTexthint: LocaleKeys.choose_material.tr(),
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.manhag?.title ?? "اختر المنهج",
+                                cubit.manhag?.title ?? LocaleKeys.choose_material.tr(),
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -225,10 +227,10 @@ class Profile extends StatelessWidget {
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: "اختر السنه",
+                              buttonTexthint: LocaleKeys.choose_year.tr(),
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.years?.title ?? "اختر السنه",
+                                cubit.years?.title ?? LocaleKeys.choose_year.tr(),
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -239,7 +241,7 @@ class Profile extends StatelessWidget {
                               buttonElevation: false,
                               customeItems: Utils.years
                                   .map((item) => DropdownMenuItem<dynamic>(
-                                value: item,
+                                        value: item,
                                 child: Text(
                                   item.title ?? "",
                                   style: const TextStyle(
@@ -261,10 +263,10 @@ class Profile extends StatelessWidget {
                               }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: "اختر المرحلة",
+                              buttonTexthint: LocaleKeys.choose_term.tr(),
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.term?.title ?? "اختر المرحلة",
+                                cubit.term?.title ?? LocaleKeys.choose_term.tr(),
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -285,8 +287,7 @@ class Profile extends StatelessWidget {
                                   ),
                                   // overflow: TextOverflow.ellipsis,
                                 ),
-                              ))
-                                  .toList(),
+                              )).toList(),
                               dropdownButtonTextStyle: TextStyle(
                                 fontSize: 14.sp,
                               ),
@@ -295,47 +296,12 @@ class Profile extends StatelessWidget {
                                 cubit.changeSelectedItemDropDown(
                                     value: value, numer: 6);
                               }),
-                          // DropdownWidget(
-                          //     buttonTexthint: "اختر الصف",
-                          //     buttonWidth: double.infinity,
-                          //     customSelectedItem: Text(
-                          //       cubit.term?.title ?? "اختر الصف",
-                          //       style: const TextStyle(
-                          //         fontSize: 14,
-                          //         fontWeight: FontWeight.bold,
-                          //         color: primaryColor,
-                          //       ),
-                          //       //overflow: TextOverflow.ellipsis,
-                          //     ),
-                          //     buttonElevation: false,
-                          //     customeItems: Utils.terms
-                          //         .map((item) => DropdownMenuItem<dynamic>(
-                          //               value: item,
-                          //               child: Text(
-                          //                 item.title ?? "",
-                          //                 style: const TextStyle(
-                          //                   fontSize: 14,
-                          //                   fontWeight: FontWeight.bold,
-                          //                   color: primaryColor,
-                          //                 ),
-                          //                 // overflow: TextOverflow.ellipsis,
-                          //               ),
-                          //             ))
-                          //         .toList(),
-                          //     dropdownButtonTextStyle: TextStyle(
-                          //       fontSize: 14.sp,
-                          //     ),
-                          //     dropdownMenuTextStyle: TextStyle(fontSize: 14.sp),
-                          //     onItemSelected: (value) {
-                          //       cubit.changeSelectedItemDropDown(
-                          //           value: value, numer: 3);
-                          //     }),
                           SizedBox(height: 16.w),
                           DropdownWidget(
-                              buttonTexthint: "اختر القسم",
+                              buttonTexthint: LocaleKeys.choose_section,
                               buttonWidth: double.infinity,
                               customSelectedItem: Text(
-                                cubit.subjectType?.title ?? "اختر القسم",
+                                cubit.subjectType?.title ?? LocaleKeys.choose_section,
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -369,13 +335,13 @@ class Profile extends StatelessWidget {
                           SizedBox(height: 16.w),
                           CustomEditText(
                             img: "assets/icons/lock.png",
-                            label: "كلمة المرور",
+                            label:LocaleKeys.password,
                             controller: cubit.passwordController,
                             type: TextInputType.visiblePassword,
                           ),
                           SizedBox(height: 64.h),
                           ButtonWidget(
-                              title: "حفظ",
+                              title: LocaleKeys.save,
                               fontSize: 16.sp,
                               onTap: () {
                                 cubit.updateProfile();
@@ -397,3 +363,4 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
