@@ -8,7 +8,7 @@ class AllListsModel {
   });
 
   AllListsModel.fromJson(dynamic json) {
-    status = json['status'];
+    status = json['status'] ?? 200;
     data = json['data'] != null ? ListData.fromJson(json['data']) : null;
   }
   int? status;

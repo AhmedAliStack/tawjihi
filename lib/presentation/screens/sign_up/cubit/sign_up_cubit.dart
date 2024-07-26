@@ -79,6 +79,18 @@ getTermsIdLists({required int id}) async {
     emit(ChangeCheckBox());
   }
 
+  getTermsIdLists({required int id}) async {
+    final respose = await AuthRepo.getTermsIdLists(id: id);
+    if (respose != null) {
+      respose.forEach((v) {
+        Utils.termsByYearId.add(TermsById.fromJson(v));
+      });
+      emit(GetTermsByYearIdSuccess());
+    } else {
+      return null;
+    }
+  }
+
   sendData() async {
     final respose = await AuthRepo.signUpRequest(requestBody: {
       "first_name": firstNameControler.text.trim(),

@@ -9,6 +9,7 @@ import 'package:tawjihi_quiz/presentation/screens/questions/widgets/html.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/image_choose.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/more_choose.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/one_choose.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions/widgets/reorder_answer.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions/widgets/true_and_false.dart';
 import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
 import '../../../core/utils/utils.dart';

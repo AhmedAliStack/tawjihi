@@ -8,6 +8,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:tawjihi_quiz/bloc_observer.dart';
 import 'package:tawjihi_quiz/presentation/screens/about_us/cubit/about_us_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/achievements/cubit/achievements_cubit.dart';
+import 'package:tawjihi_quiz/presentation/screens/chat/cubit/chat_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/notifications/cubit/notifications_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/settings/cubit/settings_cubit.dart';
 import 'package:tawjihi_quiz/presentation/screens/splash/splash.dart';

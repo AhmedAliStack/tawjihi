@@ -10,7 +10,6 @@ class CodeCubit extends Cubit<CodeState> {
   CodeCubit() : super(CodeInitial());
   static CodeCubit get(context) => BlocProvider.of(context);
   TextEditingController textEditingController = TextEditingController();
-
   sendCode(String code) async {
     emit(LoadingCodeState());
     final respose = await locator<DioHelper>()

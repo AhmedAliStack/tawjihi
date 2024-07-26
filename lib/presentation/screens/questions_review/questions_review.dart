@@ -7,6 +7,7 @@ import 'package:tawjihi_quiz/presentation/screens/questions_review/cubit/questio
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/image_choose_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/more_choose_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/one_choose_review.dart';
+import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/reorder_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/true_and_false_review.dart';
 import 'package:tawjihi_quiz/presentation/screens/questions_review/widgets/reorder_review.dart';
 import 'package:tawjihi_quiz/translations/locale_keys.g.dart';
@@ -98,6 +99,7 @@ class QuestionsReview extends StatelessWidget {
                                                     .question!
                                                     .question!,
                                                 correct: false,
+                                                isQuestion: "question",
                                               ),
                                             )
                                           : HtmlWidget(

@@ -49,7 +49,6 @@ class SubscribCode extends StatelessWidget {
                 }
                 if (state is SuccessCodeState) {
                   OverLays.toast(text: LocaleKeys.success_sub);
-
                   if (data != null) {
                     Utils.openScreen(
                         context,
@@ -180,11 +179,6 @@ class SubscribCode extends StatelessWidget {
                                         : ButtonWidget(
                                             onTap: () => cubit.sendCode(cubit
                                                 .textEditingController.text),
-
-                                            // Utils.successDialog(
-                                            //   context: context,
-                                            //   title: "تم التفعيل بنجاح",
-                                            // ).then((value) => Navigator.pop(context)),
                                             child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,

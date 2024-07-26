@@ -54,11 +54,12 @@ class ImageChooseReview extends StatelessWidget {
 class ImageWidget extends StatelessWidget {
   final String? imageUrl;
   final bool? correct;
-
+  final String? isQuestion;
   const ImageWidget({
     Key? key,
     required this.imageUrl,
     this.correct,
+    this.isQuestion
   }) : super(key: key);
 
   @override
@@ -84,7 +85,7 @@ class ImageWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Image.network(
-          "http://tawjihiquiz.com/uploaded/questions/$imageUrl",
+          "http://tawjihiquiz.com/uploaded/${isQuestion=="question" ? 'questions' : 'answers'}/$imageUrl",
           width: 50.w,
           height: 50.w,
           fit: BoxFit.contain,

@@ -58,7 +58,6 @@ class ProfileCubit extends Cubit<ProfileState> {
         Utils.userModel.user?.subjectTypeId.toString())];
     years = Utils.years[Utils.years.indexWhere((element) =>
         element.id.toString() == Utils.userModel.user?.yearId.toString())];
-
     termsById = Utils.termsByYearId[Utils.termsByYearId.indexWhere((element) =>
         element.id.toString() == Utils.userModel.user?.termId.toString())];
     emit(SuccessGetAllLists());
@@ -95,7 +94,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       case 5:
         years = value;
          getTermsIdLists(id: value.id, changeState: true);
-
         break;
       case 6:
         termsById = value;
